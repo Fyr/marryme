@@ -1,0 +1,35 @@
+@font-face {
+	font-family: 'SCRIPTBL';
+	src: url('../fonts/SCRIPTBL.eot');
+	src: local('O'), 
+		 url('../fonts/SCRIPTBL.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/SCRIPTBL.woff') format('woff'), 
+		 url('../fonts/SCRIPTBL.ttf') format('truetype'), 
+		 url('../fonts/SCRIPTBL.svg#ScriptMTBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'minion_pro_meditalic';
+    src: url('../fonts/minionpro-mediumit-webfont.eot');
+    src: local('O'), 
+		 url('../fonts/minionpro-mediumit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/minionpro-mediumit-webfont.woff') format('woff'),
+         url('../fonts/minionpro-mediumit-webfont.ttf') format('truetype'),
+         url('../fonts/minionpro-mediumit-webfont.svg#minion_pro_meditalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'minion_proregular';
+    src: url('../fonts/minionpro-regular-webfont.eot');
+    src: local('O'), 
+		 url('../fonts/minionpro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/minionpro-regular-webfont.woff') format('woff'),
+         url('../fonts/minionpro-regular-webfont.ttf') format('truetype'),
+         url('../fonts/minionpro-regular-webfont.svg#minion_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,333 @@
+#ui-datepicker-div {
+	font-size: 10px !important;
+}
+
+#gzwStyles {
+	font-family: Tahoma, Verdana, Times New Roman;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000;
+	text-align: left;
+	vertical-align: middle;
+	float: left;
+	width: 100%;	
+}
+
+#gzwStyles .center20 {
+	width: 20%;
+	margin: 0 40%;
+}
+
+#gzwStyles .center60 {
+	width: 60%;
+	margin: 0 20%;
+}
+
+#gzwStyles p {
+	text-align: center;
+}
+
+#gzwStyles form input[type="text"] {
+	width: 90px;
+	font-family: Tahoma;
+	font-style: italic;
+	color: #666;
+	border: 1px solid #ccc;
+	outline: 0;
+	padding: 5px;
+}
+
+#gzwStyles form input[type="text"]:hover {
+	color: #444;
+	border: 1px solid #aaa;
+	outline: 0;
+}
+
+#gzwStyles form input[type="text"]:focus,
+#gzwStyles form input[type="text"]:active {
+	color: #000;
+	border: 1px solid #28f;
+	outline: 0;
+}
+
+#gzwStyles .row {
+	float: left;
+	width: 100%;
+}
+
+#gzwStyles .headblock {
+	margin-top: 15px;
+	text-align: left;
+	margin-bottom: 15px;
+}
+
+#gzwStyles h2 {
+	font-family: Tahoma, Verdana, Times New Roman;
+	color: #000;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 26px;
+	text-align: center;
+	vertical-align: middle;	
+}
+
+#gzwStyles #nowStatistics {
+	margin-bottom: 20px;
+}
+
+#gzwStyles #nowStatistics table {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#gzwStyles #nowStatistics table p {
+	font-family: Tahoma, Verdana, Times New Roman;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#gzwStyles #nowStatistics table tr td.one p {
+	text-align: left;
+}
+
+#gzwStyles #nowStatistics table tr td.three {
+	width: 100px;
+}
+
+#gzwStyles #nowStatistics table tr td.four {
+	width: 200px;
+}
+
+#gzwStyles #nowStatistics table thead {
+	font-weight: bold;
+}
+
+#gzwStyles #nowStatistics table tr {
+	width: 100%;
+	height: 100%;
+}
+
+#gzwStyles #nowStatistics table tr td {
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	vertical-align: middle;
+	text-align: center;	
+}
+
+#gzwStyles #nowStatistics table th {
+	background: #ddd;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	vertical-align: middle;
+	text-align: center;	
+}
+
+#gzwStyles #visitsGraph {
+	margin-bottom: 25px;
+}
+#gzwStyles #visitsGraph .header {
+	margin-bottom: 20px;
+}
+#gzwStyles #visitsGraph-chart {
+	float: left;
+	width: 40%;
+	margin: 0 30%;
+	height: 240px;
+	margin-bottom: 15px;
+}
+
+#gzwStyles #fromGraph {
+	margin-bottom: 25px;
+}
+#gzwStyles #fromGraph .header {
+	margin-bottom: 20px;
+}
+#gzwStyles #fromGraph-chart {
+	float: left;
+	width: 40%;
+	margin: 0 30%;
+	height: 240px;
+	margin-bottom: 15px;
+}
+
+#gzwStyles #searchWords {
+	margin-bottom: 25px;
+}
+
+#gzwStyles #searchWords .header {
+	margin-bottom: 10px;
+}
+
+#gzwStyles #searchWords table {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#gzwStyles #searchWords table p {
+	font-family: Tahoma, Verdana, Times New Roman;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#gzwStyles #searchWords table tr td.one p {
+	text-align: left;
+	font-weight: bold;
+}
+
+#gzwStyles #searchWords table tr td.three {
+	width: 100px;
+}
+
+#gzwStyles #searchWords table tr td.four {
+	width: 200px;
+}
+
+#gzwStyles #searchWords table thead {
+	font-weight: bold;
+}
+
+#gzwStyles #searchWords table tr {
+	width: 100%;
+	height: 100%;
+}
+
+#gzwStyles #searchWords table tr td {
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	vertical-align: middle;
+	text-align: center;	
+}
+
+#gzwStyles #searchWords table th {
+	background: #ddd;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	vertical-align: middle;
+	text-align: center;	
+}
+
+#gzwStyles .wordGraph {
+	float: left;
+	width: 100%;
+}
+#gzwStyles .wordGraph .wordGraph-chart {
+	float: left;
+	width: 100%;
+	height: 50px;
+}
+
+#gzwStyles #sEnginesGraph {
+	margin-bottom: 25px;
+}
+#gzwStyles #sEnginesGraph .header {
+	margin-bottom: 20px;
+}
+#gzwStyles #sEnginesGraph-chart {
+	float: left;
+	width: 40%;
+	margin: 0 30%;
+	height: 240px;
+	margin-bottom: 15px;
+}
+
+#gzwStyles #presets {
+	margin: 10px 0;
+}
+
+#gzwStyles #presets p {
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+
+#gzwStyles #presets p a {
+	width: 100px;
+	margin-right: 5px;
+}
+
+#gzwStyles #ready {
+	margin-bottom: 20px;
+}
+
+#gzwStyles #ready p {
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+
+#gzwStyles #ready p a {
+	width: 100px;
+	margin-right: 5px;
+}
+
+#gzwStyles #errorTable table {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#gzwStyles #errorTable table p {
+	font-family: Tahoma, Verdana, Times New Roman;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#gzwStyles #errorTable table tr td.one p {
+	text-align: left;
+	font-weight: bold;
+}
+
+#gzwStyles #errorTable table tr td.three {
+	width: 100px;
+}
+
+#gzwStyles #errorTable table tr td.four {
+	width: 200px;
+}
+
+#gzwStyles #errorTable table thead {
+	font-weight: bold;
+}
+
+#gzwStyles #errorTable table tr {
+	width: 100%;
+	height: 100%;
+}
+
+#gzwStyles #errorTable table tr td {
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	vertical-align: middle;
+	text-align: center;	
+}
+
+#gzwStyles #errorTable table th {
+	background: #ddd;
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	vertical-align: middle;
+	text-align: center;	
+}

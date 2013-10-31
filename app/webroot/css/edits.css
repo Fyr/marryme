@@ -1,0 +1,137 @@
+.footer .logo{
+	bottom:-1px;
+}
+
+.header h1{
+	position:absolute;
+	z-index:500;
+	top:55px;
+	left:55px;
+	text-align:right;
+	font-size:12px;
+	font-weight:normal;
+	line-height:11px;
+	font-family:minion_proregular;
+	color:#470303;
+}
+
+.footer h6{
+	position:absolute;
+	z-index:500;
+	top:42px;
+	left:500px;
+	text-align:right;
+	font-size:10px;
+	font-weight:normal;
+	line-height:10px;
+	font-family:minion_proregular;
+	color:#470303;
+}
+
+.header li{
+	position:relative;
+}
+
+.header li:hover .drop_m{
+	display:block;
+}
+
+.header .navigation ul li{
+	margin-right: 0px;
+}
+
+.header .navigation ul ul li{
+	margin-right:0px;
+}
+
+
+.header .navigation ul li a{
+	padding:0 0 0 10px;
+}
+
+.header .navigation ul li a span{
+	padding:0 12px 0 0px;
+}
+
+.header .navigation ul li a span span{
+	padding:0 0 0 3px;
+}
+
+
+.header .navigation li.expandable{
+	position:relative;
+	z-index:1000;
+}
+
+.header .navigation li.expandable:hover>a{
+	color:#173c67;
+}
+
+.header .navigation li.expandable:hover a{
+	background:url(/img/drop_left.png) no-repeat left top;
+}
+
+.header .navigation li.expandable:hover a>span{
+	background:url(/img/drop_right.png) no-repeat right top;
+	line-height:30px;
+	height:26px;
+	display:block;
+}
+.header .drop_m{
+	background:url(/img/drop_bottom.png) no-repeat left bottom;
+	width:139px;
+	position:absolute;
+	left:50%;
+	top:35px;
+	z-index:10000;
+	margin-left:-70px;
+	display:none;
+}
+
+.header .navigation .drop_m>div{
+	background:url(/img/drop_top.png) no-repeat left top;
+	width:139px;
+	padding:12px 0 12px 0;
+}
+
+.header .navigation .drop_m div ul{
+	width:139px;
+	background:white;
+	margin:0 ;
+}
+
+.header .navigation .drop_m div ul li{
+	width:139px;
+	display:block;
+	background:none;
+	height:auto;
+	margin:-3px 0 0px 0  !important;
+	padding:2px 0 2px 0px !important;
+	line-height:20px;
+}
+
+.header .navigation .drop_m div ul li a{
+	height:20px;
+	margin:0 !important;
+	font-size:13px;
+
+}
+
+.header .navigation li:hover .drop_m div ul li a{
+	background:none;
+	height:22px;
+	line-height:22px;
+	margin:0;
+	padding:0 0 0 20px;
+	display:block;
+
+}
+
+.header .navigation li:hover .drop_m div ul li a:hover{
+	background:#f4e7b8;
+
+}
+
+.header .navigation li:hover .drop_m div ul li:hover{
+	background:none;
+}
