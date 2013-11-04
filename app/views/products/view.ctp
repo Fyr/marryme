@@ -46,7 +46,7 @@
 <?
 	}
 ?>
-							<li><strong>В наличии:</strong> <?=($aArticle['Article']['is_active']) ? 'Да' : 'Нет'?></li>
+							<!--li><strong>В наличии:</strong> <?=($aArticle['Article']['is_active']) ? 'Да' : 'Нет'?></li-->
 						</ul>
 						<?=$this->element('article_view', array('plugin' => 'articles'))?>
 						<div class="atc">

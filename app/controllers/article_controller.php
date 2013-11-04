@@ -144,7 +144,8 @@ class ArticleController extends SiteController {
 			$aCategoryOptions = $this->Category->getOptions('brands');
 			$categoryTitle = ($this->categoryID) ? $aCategoryOptions[$this->categoryID] : 'Платье';
 			if ($this->objectType == 'brands') {
-				$aCollections = $this->Article->findAllByObject_id($articleID);
+				$aCollections = $this->Article->find('all', array('conditions' => array('Article.object_id' => $articleID, 'Article.published' => 1)));
+				// $aCollections = $this->Article->findAllByObject_id($articleID);
 				$this->set('aCollections', $aCollections);
 				$categoryID = $aArticle['Article']['object_id'];
 
@@ -179,7 +180,7 @@ class ArticleController extends SiteController {
 					$categoryTitle.', '.$brandTitle.', '.trim($aArticle['Article']['title']),
 					'купить платье '.$brandTitle.' из коллекции '.trim($aArticle['Article']['title']).' в магазине '.DOMAIN_TITLE.' недорого'
 				);
-				$aAnotherCollections = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'collections', 'Article.object_id' => $aArticle['Article']['object_id'], 'Article.id <> '.$articleID)));
+				$aAnotherCollections = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'collections', 'Article.object_id' => $aArticle['Article']['object_id'], 'Article.id <> '.$articleID, 'Article.published' => 1)));
 				$this->set('aAnotherCollections', $aAnotherCollections);
 			}
 			if ($categoryID == 18 || $categoryID == 19) {

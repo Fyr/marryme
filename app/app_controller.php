@@ -62,6 +62,9 @@ class SiteController extends AppController {
 		foreach($aFeatured as $article) {
 			$aID[] = $article['Article']['id'];
 		}
+		
+		$aProducts = $this->Article->getRandomRows(4, array('Article.object_type' => 'products', 'published' => 1, 'is_new' => 1));
+		$this->set('newProducts', $aProducts);
 
 		$aProducts = $this->Article->getRandomRows(4, array('Article.object_type' => 'products', 'published' => 1, 'is_active' => 1, 'NOT' => array('Article.id' => $aID)));
 		$this->set('activeProducts', $aProducts);

@@ -351,3 +351,9 @@ msgstr "Курс USD"
 
 msgid "Images filesize"
 msgstr "Размер фото"
+
+msgid "Show prices"
+msgstr "Показывать цены"
+
+msgid "Show active in search"
+msgstr "Форме поиска - В наличии"

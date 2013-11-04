@@ -101,6 +101,7 @@ class PCArticleComponent extends Object {
 			$data['Article']['featured'] = (isset($data['Article']['featured'])) ? 1 : 0;
 			$data['Article']['is_active'] = (isset($data['Article']['is_active'])) ? 1 : 0;
 			$data['Article']['is_pending'] = (isset($data['Article']['is_pending'])) ? 1 : 0;
+			$data['Article']['is_new'] = (isset($data['Article']['is_new'])) ? 1 : 0;
 
 			if ($this->_->Article->saveAll($data)) {
 				$id = $this->_->Article->id;

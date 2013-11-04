@@ -9,33 +9,24 @@
 <form id="settingsForm" name="settingsForm" action="" method="post">
 <table class="pad5" cellpadding="0" cellspacing="0">
 <?
-foreach($data as $input) {
-	echo $this->element('std_input', array_merge(array('plugin' => 'core'), $input));
-}
+	foreach($data as $input) {
+		echo $this->element('std_input', array_merge(array('plugin' => 'core'), $input));
+	}
 ?>
-<tr>
-	<td align="center" colspan="2">
-		<p><span>Скрыть блоки с главной страницы</span></p>
-	</td>
-</tr>
-
+</table>
+<br/>
+<fieldset>
+<legend>Блоки для левой полосы</legend>
+<table class="pad5" cellpadding="0" cellspacing="0">
 <?
-foreach($data2 as $input) :
+	foreach($data2 as $input) {
+		echo $this->element('std_input', array_merge(array('plugin' => 'core'), $input));
+	}
 ?>
-<tr>
-	<td align="center" colspan="2">
-<? echo $this->element('std_input', array_merge(array('plugin' => 'core'), $input)); ?>
-	</td>
-</tr>
-<?
-endforeach;
-?>
-
-<tr>
-	<td align="center" colspan="2">
+</table>
+</fieldset>
+<div align="center">
 		<br/>
 		<?=$this->element('btn_icon_save', array('plugin' => 'core', 'onclick' => 'document.settingsForm.submit()'))?>
-	</td>
-</tr>
-</table>
+</div>
 </form>
