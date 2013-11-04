@@ -1,4 +1,4 @@
-<h1><? __('Settings')?></h1>
+<h2><? __('Settings')?></h2>
 <?
 	if (isset($this->params['url']['success'])) {
 ?>
@@ -13,6 +13,24 @@ foreach($data as $input) {
 	echo $this->element('std_input', array_merge(array('plugin' => 'core'), $input));
 }
 ?>
+<tr>
+	<td align="center" colspan="2">
+		<p><span>Скрыть блоки с главной страницы</span></p>
+	</td>
+</tr>
+
+<?
+foreach($data2 as $input) :
+?>
+<tr>
+	<td align="center" colspan="2">
+<? echo $this->element('std_input', array_merge(array('plugin' => 'core'), $input)); ?>
+	</td>
+</tr>
+<?
+endforeach;
+?>
+
 <tr>
 	<td align="center" colspan="2">
 		<br/>

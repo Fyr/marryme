@@ -10,350 +10,23 @@ if (!count($errors)) :
 ?>
 
 <script type="text/javascript">
-	var visitsGraph = function () {
-		var self = this;
-		self._getter = {
-			start: '#visitsGraph',
-			placeholder: '#visitsGraph-chart'
-		};
-		self._objects = {};
-		self._buffer = {
-			data : [
-				{	
-					label: 'Посещения',
-					data: $.parseJSON('<? echo $json_pageviews; ?>'),
-					color: "rgba(0, 180, 255, 1)",
-					bars: {
-						fillColor: "rgba(0, 180, 255, 1)",
-					}							
-				},
-				{	
-					label: 'Визиты',
-					data: $.parseJSON('<? echo $json_visits; ?>'),
-					color: "rgba(255, 255, 0, 1)",
-					bars: {
-						fillColor: "rgba(255, 255, 0, 1)",
-					}							
-				},
-				{	
-					label: 'Посетители',
-					data: $.parseJSON('<? echo $json_visitors; ?>'),
-					color: "rgba(255, 0, 0, 1)",
-					bars: {
-						fillColor: "rgba(255, 0, 0, 1)",
-					}								
-				},
-				{	
-					label: 'Новые посетители',
-					data: $.parseJSON('<? echo $json_newvisitors; ?>'),
-					color: "rgba(0, 255, 0, 1)",
-					bars: {
-						fillColor: "rgba(0, 255, 0, 1)",
-					}								
-				}				
-			],
-			options : {
-				series: {
-					lines: {
-						show: false
-					},
-					points: {
-						show: false
-					},
-					bars: {
-						show: true,
-						align: 'left',
-						fill: true,
-						lineWidth: 0,
-						barWidth: (24 * 60 * 60 * 1000)/5,
-						zero: false,
-						horizontal: false
-					},
-					shadowSize: 0
-				},
-				legend: {
-					show: true,
-					labelBoxBorderColor: 0,
-					noColumns: 2,
-					position: 'ne',
-					margin: [0, 0],
-					backgroundColor: null,
-					backgroundOpacity: 1,
-					sorted: 'ascending'
-				},
-				xaxis: {
-					mode: 'time',
-					timeformat: '%d %b',
-					minTickSize: [1, "day"],
-					monthNames: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"]
-				},
-				grid: {
-					show: true,
-					color: '#888888',
-					backgroundColor: '#ffffff',
-					borderWidth: 1,
-					borderColor: '#dddddd',
-				}					
-			}
-		};
-		this.init = function () {
-			self._objects.start = $(self._getter.start);
-			if (!self._objects.start) return false;
-
-			for (var key in self._getter)
-				if (key != 'start')
-					self._objects[key] = self._objects.start.find(self._getter[key]);
-
-			
-			self._objects.placeholder.plot(self._buffer.data, self._buffer.options);
-		};
-		this.init();
-	};
-	var fromGraph = function () {
-		var self = this;
-		self._getter = {
-			start: '#fromGraph',
-			placeholder: '#fromGraph-chart'
-		};
-		self._objects = {};
-		self._buffer = {
-			data : [
-				{	
-					label: 'Поисковые системы',
-					data: $.parseJSON('<? echo $json_engines; ?>'),
-					color: "rgba(0, 180, 255, 1)",
-					bars: {
-						fillColor: "rgba(0, 180, 255, 1)",
-					}
-				},
-				{	
-					label: 'Прямые заходы',
-					data: $.parseJSON('<? echo $json_forwards; ?>'),
-					color: "rgba(255, 255, 0, 1)",
-					bars: {
-						fillColor: "rgba(255, 255, 0, 1)",
-					}
-				},
-				{	
-					label: 'Внутренние переходы',
-					data: $.parseJSON('<? echo $json_inbounds; ?>'),
-					color: "rgba(255, 0, 0, 1)",
-					bars: {
-						fillColor: "rgba(255, 0, 0, 1)",
-					}
-				},
-				{	
-					label: 'Ссылки на сайтах',
-					data: $.parseJSON('<? echo $json_links; ?>'),
-					color: "rgba(0, 255, 0, 1)",
-					bars: {
-						fillColor: "rgba(0, 255, 0, 1)"
-					}
-				}				
-			],
-			options : {
-				series: {
-					lines: {
-						show: false
-					},
-					points: {
-						show: false
-					},
-					bars: {
-						show: true,
-						align: 'left',
-						fill: true,
-						lineWidth: 0,
-						barWidth: (24 * 60 * 60 * 1000)/5,
-						zero: false,
-						horizontal: false
-					},
-					shadowSize: 0
-				},
-				legend: {
-					show: true,
-					labelBoxBorderColor: 0,
-					noColumns: 2,
-					position: 'ne',
-					margin: [0, 0],
-					backgroundColor: null,
-					backgroundOpacity: 1,
-					sorted: 'ascending'
-				},
-				xaxis: {
-					mode: 'time',
-					timeformat: '%d %b',
-					minTickSize: [1, "day"],
-					monthNames: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"]
-				},
-				grid: {
-					show: true,
-					color: '#888888',
-					backgroundColor: '#ffffff',
-					borderWidth: 1,
-					borderColor: '#dddddd',
-				}					
-			}
-		};
-		this.init = function () {
-			self._objects.start = $(self._getter.start);
-			if (!self._objects.start) return false;
-
-			for (var key in self._getter)
-				if (key != 'start')
-					self._objects[key] = self._objects.start.find(self._getter[key]);
-
-			self._objects.placeholder.plot(self._buffer.data, self._buffer.options);
-		};
-		this.init();
-	};
-	var wordGraph = function (obj, jsonData) {
-		var self = this;
-		self._getter = {
-			placeholder: '.wordGraph-chart'
-		};
-		self._objects = {};
-		self._buffer = {
-			data : [
-				{	
-					label: 'График',
-					color: "rgba(255, 0, 0, 0.8)"
-				},			
-			],
-			options : {
-				series: {
-					lines: {
-						show: true,
-						lineWidth: 1
-					},
-					points: {
-						show: false,
-					},
-					shadowSize: 0
-				},
-				legend: {
-					show: false,
-				},
-				xaxis: {
-					show: false,
-					mode: 'time',
-					timeformat: '%d %b',
-					minTickSize: [1, "day"],
-					monthNames: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"]
-				},
-				yaxis: {
-					show: true,
-					minTickSize: 1,
-				},
-				grid: {
-					show: true,
-					color: '#888888',
-					backgroundColor: 'rgba(255, 0, 0, 0.2)',
-					borderWidth: 1,
-					borderColor: 'rgba(255, 0, 0, 0.5)',
-				}					
-			}
-		};
-		this.init = function (obj, jsonData) {
-			self._objects.start = obj;
-			if (!self._objects.start) return false;
-
-			for (var key in self._getter)
-				if (key != 'start')
-					self._objects[key] = self._objects.start.find(self._getter[key]);
-			
-			self._buffer.data[0].data = $.parseJSON(jsonData),
-			self._objects.placeholder.plot(self._buffer.data, self._buffer.options);
-		};
-		this.init(obj, jsonData);
-	};
-
-	var sEnginesGraph = function (jsonData) {
-		var self = this;
-		self._getter = {
-			start: '#sEnginesGraph',
-			placeholder: '#sEnginesGraph-chart'
-		};
-		self._objects = {};
-		self._buffer = {
-			data : [
-				{}
-			],
-			options : {
-				series: {
-					lines: {
-						show: true
-					},
-					points: {
-						show: true,
-						radius: 1
-					}
-				},
-				legend: {
-					show: true,
-					labelBoxBorderColor: 0,
-					noColumns: 2,
-					position: 'ne',
-					margin: [0, 0],
-					backgroundColor: null,
-					backgroundOpacity: 1,
-					sorted: 'ascending'
-				},
-				xaxis: {
-					mode: 'time',
-					timeformat: '%d %b',
-					minTickSize: [1, "day"],
-					monthNames: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"]
-				},
-				grid: {
-					show: true,
-					color: '#888888',
-					backgroundColor: '#ffffff',
-					borderWidth: 1,
-					borderColor: '#dddddd',
-				}				
-			}
-		};
-		this.init = function (jsonData) {
-			self._objects.start = $(self._getter.start);
-			if (!self._objects.start) return false;
-
-			for (var key in self._getter)
-				if (key != 'start')
-					self._objects[key] = self._objects.start.find(self._getter[key]);
-
-			self._buffer.data = $.parseJSON(jsonData),
-			self._objects.placeholder.plot(self._buffer.data, self._buffer.options);
-		};
-		this.init(jsonData);
-	};					
-
 	$(function () {
-		var visitsGraphObj = new visitsGraph();
-		var fromGraphObj = new fromGraph();
-		var sEnginesGraphObj = new sEnginesGraph('<?=$jsonSEnginesData;?>');
+		obj = new datePicker();
+		App.dpObjs.push(obj);
 	});
 </script>
 
 <script type="text/javascript">
-	(function ($) {
-		var datePicker = function () {
-			var self = this;
-			self._buffer = {
-				dpOptions : {
-					dateFormat: 'dd.mm.yy'
-				}					
-			};
-			this.init = function () {
-				$('.datepicker-apply').datepicker(self._buffer.dpOptions);
-			};
-			this.init();
-		};
-		$(function () {
-			var dpStart = new datePicker();
-		});				
-	})(jQuery);
+	$(function () {
+		obj = new visitsGraph('<?=$jsonVisitsArr;?>');
+		App.visitsGraphObj.push(obj);
+		obj = new fromGraph('<?=$jsonFromArr;?>');
+		App.fromGraphObj.push(obj);
+		obj = new sEnginesGraph('<?=$jsonSEnginesData;?>');
+		App.sEnginesGraphObj.push(obj);
+	});
 </script>
+
 <div id="gzwStyles" class="row">
 	<div class="row">
 		<div class="row">
@@ -374,7 +47,7 @@ if (!count($errors)) :
 					<input type="hidden" name="data[dates][from]" value="<? echo $monthFormDate;?>">
 				</form>			
 				<p>
-					<?=$this->element('btn_icon_action', array('plugin' => 'core', 'img'=> 'calendar.png', 'title' => 'За день', 'onclick' => 'document.yesterdayForm.submit()'))?>
+					<?=$this->element('btn_icon_action', array('plugin' => 'core', 'img'=> 'calendar.png', 'title' => 'Со вчера', 'onclick' => 'document.yesterdayForm.submit()'))?>
 					<?=$this->element('btn_icon_action', array('plugin' => 'core', 'img'=> 'calendar.png', 'title' => 'За неделю', 'onclick' => 'document.weekForm.submit()'))?>
 					<?=$this->element('btn_icon_action', array('plugin' => 'core', 'img'=> 'calendar.png', 'title' => 'За месяц', 'onclick' => 'document.monthForm.submit()'))?>
 				</p>			
@@ -386,9 +59,9 @@ if (!count($errors)) :
 			<div id="dates" class="row">
 				<p><span>или Укажите временной интервал вручную:</span></p>
 				<p>
-					<span>с </span>
+					<span>с:</span>
 					<input type="text" value="<?=$dateFromForm;?>" autocomplete="off" name="data[dates][from]" class="datepicker-apply"/>
-					<span>по </span>
+					<span>по:</span>
 					<input type="text" value="<?=$dateForForm;?>" autocomplete="off" name="data[dates][for]" class="datepicker-apply"/>
 				</p>
 			</div>
@@ -487,9 +160,6 @@ if (!count($errors)) :
 			<p><span>За период: <?=$total[2];?></span></p>
 		</div>
 		<div class="row content">
-			<script type="text/javascript">
-				var wordGraphs = [];
-			</script>
 			<div class="center60">
 				<table>
 					<thead>
@@ -526,7 +196,7 @@ if (!count($errors)) :
 								</div>
 								<script type="text/javascript">
 									var obj = new wordGraph($('#wordGraph<?=$item['id'];?>'), '<?=$item['days']?>');
-									wordGraphs.push(obj);
+									App.wordGraphObjs.push(obj);
 								</script>
 							</td>						
 						</tr>
@@ -545,25 +215,14 @@ if (!count($errors)) :
 	<div id="gzwStyles" class="row">
 		<div class="row">
 			<p><a href="<?=$_SERVER['REQUEST_URI'];?>">Вернуться назад</a></p>
-		</div>		
-		<div id="errorTable" class="row">
-			<table>
-				<thead>
-					<th>Номер</th>
-					<th>Код</th>
-					<th>Текст ошибки</th>
-				</thead>
-				<tbody>
-			<? foreach ($errors as $key=>$item) : ?>
-					<tr class="item<?=$key;?> <? echo $text = ($key == 0) ? 'first' : ''; ?> <? echo $text = (($key != 0) && ($key == count($errors-1))) ? 'last' : ''; ?>">
-						<td class="one item1"><? echo ($key+1); ?>.</td>
-						<td class="item2"><? echo $item['code']; ?></td>
-						<td class="item3 last"><pre><? print_r($item['text']); ?></pre></td>
-					</tr>
-			<? endforeach; ?>
-				</tbody>
-			</table>
-		</div>	
+		</div>
+		<? foreach ($errors as $key=>$item) : ?>
+			<div class="error">
+				<div id="authMessage" class="message">
+					<?=($key+1)?>. Код <?=$item['code'];?> - <?=$item['text']?>
+				</div>
+			</div>
+		<? endforeach; ?>
 	</div>
 <?
 	endif;

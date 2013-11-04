@@ -8,6 +8,7 @@
 		<input type="checkbox" id="Article.featured" name="data[Article][featured]" value="1" <?=($this->PHA->read($aArticle, 'Article.featured')) ? 'checked="checked"' : ''?> /> <? __('New!!!');?>
 		<input type="checkbox" id="Article.is_active" name="data[Article][is_active]" value="1" <?=($this->PHA->read($aArticle, 'Article.is_active')) ? 'checked="checked"' : ''?> /> <? __('Active');?>
 		<input type="checkbox" id="Article.is_pending" name="data[Article][is_pending]" value="1" <?=($this->PHA->read($aArticle, 'Article.is_pending')) ? 'checked="checked"' : ''?> /> <? __('Pending');?>
+		<input type="checkbox" id="Article.is_new" name="data[Article][is_new]" value="1" <?=($this->PHA->read($aArticle, 'Article.is_new')) ? 'checked="checked"' : ''?> /> <? __('Is_New');?>
 	</td>
 </tr>
 <?//$this->element('std_input', array('plugin' => 'core', 'class' => 'autocompleteOff', 'caption' => __('Brand', true), 'field' => 'Article.brand_id', 'data' => $aArticle, 'required' => true, 'input' => 'dropdown', 'options' => $aBrandOptions))?>

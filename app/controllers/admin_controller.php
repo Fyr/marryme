@@ -108,7 +108,7 @@ class AdminController extends AppController {
 		} elseif ($objectType == 'products') {
 			$this->grid['SiteArticle'] = array(
 				'conditions' => array('Article.object_type' => $objectType),
-				'fields' => array('modified', 'object_type', 'object_id', 'title', 'price', 'images_filesize', 'featured', 'is_active', 'published'),
+				'fields' => array('modified', 'object_type', 'object_id', 'title', 'price', 'images_filesize', 'featured', 'is_active', 'is_new', 'published'),
 				'hidden' => array('body'),
 				'captions' => array(
 					'Category.title' => __('Category', true),
@@ -116,7 +116,8 @@ class AdminController extends AppController {
 					'Article.is_active' => __('Active', true),
 					'Article.object_id' => __('Collection', true),
 					'Article.images_filesize' => __('Images filesize', true),
-					'Article.object_type' => __('Brand', true)
+					'Article.object_type' => __('Brand', true),
+					'Article.is_new' => __('Is_New', true)
 				),
 				'filters' => array(
 					'Article.object_id' => array(
@@ -469,6 +470,11 @@ class AdminController extends AppController {
 			$this->data['Settings']['SHOW_PRICE'] = (isset($this->data['Settings']['SHOW_PRICE']) && $this->data['Settings']['SHOW_PRICE'])  ? '1' : '0';
 			$this->data['Settings']['SHOW_SEARCH_ACTIVE'] = (isset($this->data['Settings']['SHOW_SEARCH_ACTIVE']) && $this->data['Settings']['SHOW_SEARCH_ACTIVE'])  ? '1' : '0';
 
+			$this->data['Settings']['SHOW_BLOCK_FEATURED'] = (isset($this->data['Settings']['SHOW_BLOCK_FEATURED']) && $this->data['Settings']['SHOW_BLOCK_FEATURED'])  ? '1' : '0';
+			$this->data['Settings']['SHOW_BLOCK_NEWS'] = (isset($this->data['Settings']['SHOW_BLOCK_NEWS']) && $this->data['Settings']['SHOW_BLOCK_NEWS'])  ? '1' : '0';
+			$this->data['Settings']['SHOW_BLOCK_STOCK'] = (isset($this->data['Settings']['SHOW_BLOCK_STOCK']) && $this->data['Settings']['SHOW_BLOCK_STOCK'])  ? '1' : '0';
+			$this->data['Settings']['SHOW_BLOCK_AWAY'] = (isset($this->data['Settings']['SHOW_BLOCK_AWAY']) && $this->data['Settings']['SHOW_BLOCK_AWAY'])  ? '1' : '0';
+			
 			$php = "<?\r\n";
 			foreach($this->data['Settings'] as $key => $val) {
 				$php.= "define('{$key}', '{$val}');\r\n";
@@ -484,7 +490,15 @@ class AdminController extends AppController {
 			array('caption' => __('Show prices', true), 'field' => 'Settings.SHOW_PRICE', 'value' => SHOW_PRICE, 'input' => 'checkbox'),
 			array('caption' => __('Show active in search', true), 'field' => 'Settings.SHOW_SEARCH_ACTIVE', 'value' => SHOW_SEARCH_ACTIVE, 'input' => 'checkbox')
 		);
+		$data2 = array(
+				array('caption' => __('New!!!', true), 'field' => 'Settings.SHOW_BLOCK_FEATURED', 'value' => SHOW_BLOCK_FEATURED, 'input' => 'checkbox'),
+				array('caption' => __('Is_New', true), 'field' => 'Settings.SHOW_BLOCK_NEWS', 'value' => SHOW_BLOCK_NEWS, 'input' => 'checkbox'),
+				array('caption' => __('Active', true), 'field' => 'Settings.SHOW_BLOCK_STOCK', 'value' => SHOW_BLOCK_STOCK, 'input' => 'checkbox'),
+				array('caption' => __('Pending', true), 'field' => 'Settings.SHOW_BLOCK_AWAY', 'value' => SHOW_BLOCK_AWAY, 'input' => 'checkbox')
+		);
+		
 		$this->set('data', $data);
+		$this->set('data2', $data2);
 	}
 
 	function update() {
@@ -517,22 +531,11 @@ class AdminController extends AppController {
 			$this->data['dates']['from'] = (isset($this->data['dates']['from']) && $val = $this->data['dates']['from'])  ? $val : $weekFormDate;
 		}		
 		
-		App::import('Vendor', 'Yapi', array('file' => '../vendors/yapi/php/yapi.class.php'));
-		
-		$app_id = 'cb6240820447440fb0876d9d2284884f';
-		$app_pass = '63adce9ffd404075b79fdb5b8acbc38c';
-		$token = null;
-		$name = 'fyr-work';
-		$password = 'beHolder';
-		
-		$api = new Yapi($app_id, $app_pass, $token, $name, $password);
+		App::import('Vendor', 'Yapi', array('file' => '../vendors/yapi/yapi.class.php'));
+		$api = new Yapi(YAPI_appId, YAPI_appPass, YAPI_appToken, YAPI_login, YAPI_password);
 		
 		if (!$api) {
-			$i = count($errors);
-			$errors[$i]['code'] = 0;
-			$errors[$i]['text'] = 'Ошибка создания объекта Статистики. Сообщите администратору.';
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(1);
 			return false;
 		}
 				
@@ -544,21 +547,13 @@ class AdminController extends AppController {
 		$result = $api->MakeQuery('/counters');
 		
 		if (!$result) {
-			$i = count($errors);
-			$errors[$i]['code'] = 1;
-			$errors[$i]['text'] = 'Ошибка получения информации с сервера статистики. Сообщите администратору.';
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(2);
 			return false;
 		}
 		
 		$counters = $api->result['counters'];
 		if (!is_array($counters) || (!count($counters))) {
-			$i = count($errors);
-			$errors[$i]['code'] = 2;
-			$errors[$i]['text'] = 'Ошибка инициализации счетчиков или не объявлено ни одного счетчика. Сообщите администратору.';
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(3);
 			return false;
 		}
 		
@@ -567,11 +562,7 @@ class AdminController extends AppController {
 		
 		$convertor = $this->data['dates']['from'] ? $this->data['dates']['from'] : $weekFormDate;
 		if (!$convertor) {
-			$i = count($errors);
-			$errors[$i]['code'] = 4;
-			$errors[$i]['text'] = 'Ошибка даты - вы неверно указали дату начала периода.';
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(4);
 			return false;			
 		}
 		
@@ -583,11 +574,7 @@ class AdminController extends AppController {
 		
 		$convertor = $this->data['dates']['for'] ? $this->data['dates']['for'] : $todayFormDate;
 		if (!$convertor) {
-			$i = count($errors);
-			$errors[$i]['code'] = 5;
-			$errors[$i]['text'] = 'Ошибка даты - вы неверно указали дату конца периода.';		
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(5);
 			return false;
 		}
 
@@ -598,11 +585,7 @@ class AdminController extends AppController {
 		$dateForForm = $day.'.'.$month.'.'.$year;
 		
 		if ($dateFrom > $dateFor) {
-			$i = count($errors);
-			$errors[$i]['code'] = 6;
-			$errors[$i]['text'] = 'Ошибка даты - дата начала периода не может быть больше даты окончания.';		
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(6);
 			return false;
 		}
 		if ($dateFrom == $dateFor) {
@@ -626,11 +609,7 @@ class AdminController extends AppController {
 	
 		$result = $api->MakeQuery('/stat/sources/summary', $params);
 		if (!$result || !isset($api->result['data']) || !is_array($api->result['data'])) {
-			$i = count($errors);
-			$errors[$i]['code'] = 7;
-			$errors[$i]['text'] = 'Ошибка /stat/sources/summary или нет данных для текущего периода. Сообщите администратору.';		
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(7);
 			return false;
 		}
 		
@@ -662,25 +641,18 @@ class AdminController extends AppController {
 			
 			$counter++;
 		}
-		$json_engines = json_encode($engines);
-		$json_forwards = json_encode($forwards);
-		$json_inbounds = json_encode($inbounds);
-		$json_links = json_encode($links);
+		$fromArr[0] = $engines; 
+		$fromArr[1] = $forwards;
+		$fromArr[2] = $inbounds;
+		$fromArr[3] = $links;
 		
-		$jsonData['json_engines'] = $json_engines;
-		$jsonData['json_forwards'] = $json_forwards;
-		$jsonData['json_inbounds'] = $json_inbounds;
-		$jsonData['json_links'] = $json_links;
+		$jsonData['jsonFromArr'] = json_encode($fromArr);
 		
 		$datesArr = $api->result['period_groups']; // needs for the next request balancing; don't touch this!!!
 		
 		$result = $api->MakeQuery('/stat/traffic/summary', $params);
 		if (!$result || !is_array($api->result['data'])) {
-			$i = count($errors);
-			$errors[$i]['code'] = 8;
-			$errors[$i]['text'] = 'Ошибка /stat/traffic/summary или нет данных для текущего периода. Сообщите администратору.';		
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(8);
 			return false;
 		}
 
@@ -737,23 +709,16 @@ class AdminController extends AppController {
 			
 			$counter++;
 		}		
-		$json_pageviews = json_encode($pageviews);
-		$json_visitors = json_encode($visitors);
-		$json_newvisitors = json_encode($newvisitors);
-		$json_visits = json_encode($visits);
+		$visitsArr[0] = $pageviews;
+		$visitsArr[1] = $visits;
+		$visitsArr[2] = $visitors;
+		$visitsArr[3] = $newvisitors;
 		
-		$jsonData['json_pageviews'] = $json_pageviews;
-		$jsonData['json_visitors'] = $json_visitors;
-		$jsonData['json_newvisitors'] = $json_newvisitors;
-		$jsonData['json_visits'] = $json_visits;		
+		$jsonData['jsonVisitsArr'] = json_encode($visitsArr);
 		
 		$result = $api->MakeQuery('/stat/sources/phrases', $params);
 		if (!$result || !is_array($api->result['data'])) {
-			$i = count($errors);
-			$errors[$i]['code'] = 9;
-			$errors[$i]['text'] = 'Ошибка /stat/sources/phrases или нет данных для текущего периода. Сообщите администратору.';		
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(9);
 			return false;
 		}
 		
@@ -791,12 +756,9 @@ class AdminController extends AppController {
 		$viewData['wordsTotal'] = $wordsTotal;
 		
 		$result = $api->MakeQuery('/stat/sources/search_engines', $params);
+		
 		if (!$result || !is_array($api->result['data'])) {
-			$i = count($errors);
-			$errors[$i]['code'] = 10;
-			$errors[$i]['text'] = 'Ошибка /stat/sources/search_engines или нет данных для текущего периода. Сообщите администратору.';		
-			$this->set('errors', $errors);
-			$this->render('statistics');
+			$this->errorHandler(10);
 			return false;
 		}
 		
@@ -872,5 +834,53 @@ class AdminController extends AppController {
 		$this->set('viewData', $viewData);
 		$this->render('statistics');
 		return true;
-	}	
+	}
+	
+	private $errors = array();
+	private function errorHandler($code = 0, $action = 'statistics', $text = null) {
+			if (!$text) {
+				switch ($code) {
+					case 1:
+						$text ='Ошибка создания объекта Статистики. Сообщите администратору.';
+						break;
+					case 2:
+						$text ='Ошибка получения информации с сервера статистики. Сообщите администратору.';
+						break;
+					case 3:
+						$text ='Ошибка инициализации счетчиков или не объявлено ни одного счетчика. Сообщите администратору.';
+						break;
+					case 4:
+						$text ='Ошибка Даты - вы неверно указали дату начала периода.';
+						break;
+					case 5:
+						$text ='Ошибка Даты - вы неверно указали дату конца периода.';
+						break;
+					case 6:
+						$text ='Ошибка даты - дата начала периода не может быть больше даты окончания.';
+						break;
+					case 7:
+						$text ='Ошибка /stat/sources/summary или нет данных для текущего периода. Сообщите администратору.';
+						break;
+					case 8:
+						$text ='Ошибка /stat/traffic/summary или нет данных для текущего периода. Сообщите администратору.';
+						break;
+					case 9:
+						$text ='Ошибка /stat/sources/phrases или нет данных для текущего периода. Сообщите администратору.';
+						break;
+					case 10:
+						$text = 'Ошибка получения информации про поисковые системы. Сообщите администратору.';
+						break;
+					case 0:
+					default:
+						$text = 'Ошибка, не определенная в спецификации. Сообщите администратору.';
+						break;
+				}
+			}
+			
+			$i = count($this->errors);
+			$this->errors[$i]['code'] = $code;
+			$this->errors[$i]['text'] = $text;		
+			$this->set('errors', $this->errors);
+			$this->render($action);
+	}
 }

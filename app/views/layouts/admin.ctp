@@ -1,30 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="language" content="en" />
 	<meta name="viewport" content="width=device-width"/>
 	
 	<title>Админ-панель для <?=DOMAIN_TITLE?></title>
 
-<?=$this->Html->css(array('common', 'admin'))?>
+<?=$this->Html->charset()?>
 
-<!-- YANDEX API && STATISTICS STUFF -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
-<script language="javascript" type="text/javascript" src="/js/flot/jquery.flot.min.js"></script>
-<script language="javascript" type="text/javascript" src="/js/flot/jquery.flot.time.min.js"></script>
-<!--[if lte IE 8]>
-	<script language="javascript" type="text/javascript" src="/flot/excanvas.min.js"></script>
-<![endif]-->
-<link rel="stylesheet" type="text/css" href="/css/gzwStyles.css" />
-<!-- END STATISTICS -->
 
-<?
-	// For categories
-	echo $this->Html->css('/core/css/btn_icon');
-?>
+<?=$this->Html->script(array(
+	'/js/flot/jquery.flot.min.js',
+	'/js/flot/jquery.flot.time.min.js',
+	'/js/gzw/statistics.js',
+	'/js/gzw/datepickers.js',
+	))?>
+<!--[if lte IE 8]>
+<?=$this->Html->script(array(
+	'/js/flot/excanvas.min.js',
+	))?>
+<![endif]-->
+<?=$this->Html->css(array('common', 'admin', 'gzwStyles', 'jquery-ui.min', '/core/css/btn_icon'))?>
 
 <?=$scripts_for_layout?>
 <script type="text/javascript">

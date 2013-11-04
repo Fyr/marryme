@@ -65,6 +65,12 @@ define('VIDEO_FB_FAQ', 1);
 
 define('PHOTOSLIDER_ID', 751);
 
+define('YAPI_appId', 'cb6240820447440fb0876d9d2284884f');
+define('YAPI_appPass', '63adce9ffd404075b79fdb5b8acbc38c');
+define('YAPI_appToken', null);
+define('YAPI_login', 'fyr-work');
+define('YAPI_password', 'beHolder');
+
 require_once('extra.php');
 
 // session_start();

@@ -394,6 +394,9 @@ html{
 .sticker.new{
 	background:url(/img/sticker_new.png) no-repeat;
 }
+.sticker.newproduct{
+	background:url(/img/sticker_is_new.png) no-repeat;
+}
 .sticker.active{
 	background:url(/img/sticker_in_stock.png)  no-repeat;
 }

@@ -146,6 +146,8 @@
 <?
 	}
 ?>
+
+
 				<div class="block">
 					<h3><span><span><span>Новости</span></span></span></h3>
 					<div class="item">
@@ -158,6 +160,7 @@
 					</div>
 				</div>
 
+<? if (SHOW_BLOCK_FEATURED) : ?>
 				<div class="block">
 					<h3><span><span><span>Акции</span></span></span></h3>
 					<div class="new_items">
@@ -177,6 +180,30 @@
 ?>
 					</div>
 				</div>
+	<? endif; ?>
+
+<? if (SHOW_BLOCK_NEWS) : ?>	
+				<div class="block">
+					<h3><span><span><span>Новинки</span></span></span></h3>
+					<div class="new_items">
+<?
+	foreach($newProducts as $article) {
+		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
+?>
+						<div class="item">
+							<div class="image">
+								<a href="<?=$url?>"><img src="<?=$src?>" alt="<?=$title?>"/></a>
+								<span class="sticker newproduct"></span>
+							</div>
+							<h4><a href="<?=$url?>"><?=$title?></a></h4>
+						</div>
+<?
+	}
+?>
+					</div>
+				</div>
+<? endif; ?>
+				<? if (SHOW_BLOCK_STOCK) : ?>
 				<div class="block">
 					<h3><span><span><span>В наличии</span></span></span></h3>
 					<div class="new_items">
@@ -196,6 +223,9 @@
 ?>
 					</div>
 				</div>
+<? endif; ?>				
+				
+<? if (SHOW_BLOCK_AWAY) : ?>				
 				<div class="block">
 					<h3><span><span><span>В пути</span></span></span></h3>
 					<div class="new_items">
@@ -215,6 +245,7 @@
 ?>
 					</div>
 				</div>
+<? endif; ?>
 				<div class="block">
 					<?=$this->element('sb_search_form')?>
 				</div>

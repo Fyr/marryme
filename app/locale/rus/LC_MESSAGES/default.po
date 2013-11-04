@@ -196,6 +196,9 @@ msgstr "Создать новость"
 msgid "New!!!"
 msgstr "Акция"
 
+msgid "Is_New"
+msgstr "Новинка"
+
 msgid "New!"
 msgstr "Осн.каталог"
 
@@ -324,6 +327,18 @@ msgstr "Редактирование Подкатегории"
 
 msgid "Settings"
 msgstr "Настройки"
+
+msgid "Statistics"
+msgstr "Статистика"
+
+msgid "DateStart"
+msgstr "Дата начала периода: "
+
+msgid "DateEnd"
+msgstr "Дата конца периода: "
+
+msgid "DateStart"
+msgstr "Статистика"
 
 msgid "Price prefix"
 msgstr "Префикс для цен"
