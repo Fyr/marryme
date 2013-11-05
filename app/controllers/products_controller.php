@@ -178,7 +178,7 @@ class ProductsController extends SiteController {
 	function activeProducts() {
 		$this->grid['SiteArticle'] = array(
 			'conditions' => array('Article.object_type' => 'products', 'Article.published' => 1, 'Article.is_active' => 1, 'Article.category_id' => array(18, 19)),
-			'fields' => array('Category.id', 'Category.title', 'Article.object_type', 'Article.title', 'Article.teaser', 'Article.featured', 'Article.price', 'Article.is_active'),
+			'fields' => array('Category.id', 'Category.title', 'Article.object_type', 'Article.title', 'Article.teaser', 'Article.featured', 'Article.price', 'Article.is_active', 'Article.is_pending', 'Article.is_new'),
 			'order' => array('Article.featured' => 'desc', 'Article.modified' => 'desc'),
 			'limit' => self::PER_PAGE
 		);
@@ -201,7 +201,7 @@ class ProductsController extends SiteController {
 		$aFilters['conditions'] = array_merge(array('Article.object_type' => 'products', 'Article.published' => 1), $aFilters['conditions']);
 		$this->grid['SiteArticle'] = array(
 			'conditions' => $aFilters['conditions'],
-			'fields' => array('Category.id', 'Category.title', 'Article.object_type', 'Article.title', 'Article.teaser', 'Article.featured', 'Article.is_active', 'Article.is_pending', 'Article.price', 'Article.price2'),
+			'fields' => array('Category.id', 'Category.title', 'Article.object_type', 'Article.title', 'Article.teaser', 'Article.featured', 'Article.is_active', 'Article.is_pending', 'Article.is_new', 'Article.price', 'Article.price2'),
 			'order' => array('Article.modified' => 'desc'),
 			'limit' => self::PER_PAGE
 		);

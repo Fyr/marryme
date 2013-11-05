@@ -108,12 +108,13 @@ class AdminController extends AppController {
 		} elseif ($objectType == 'products') {
 			$this->grid['SiteArticle'] = array(
 				'conditions' => array('Article.object_type' => $objectType),
-				'fields' => array('modified', 'object_type', 'object_id', 'title', 'price', 'images_filesize', 'featured', 'is_active', 'is_new', 'published'),
+				'fields' => array('modified', 'object_type', 'object_id', 'title', 'price', 'images_filesize', 'featured', 'is_active', 'is_new', 'is_pending', 'published'),
 				'hidden' => array('body'),
 				'captions' => array(
 					'Category.title' => __('Category', true),
 					'Article.featured' => __('New!!!', true),
 					'Article.is_active' => __('Active', true),
+					'Article.is_pending' => __('Pending', true),
 					'Article.object_id' => __('Collection', true),
 					'Article.images_filesize' => __('Images filesize', true),
 					'Article.object_type' => __('Brand', true),
@@ -474,7 +475,7 @@ class AdminController extends AppController {
 			$this->data['Settings']['SHOW_BLOCK_NEWS'] = (isset($this->data['Settings']['SHOW_BLOCK_NEWS']) && $this->data['Settings']['SHOW_BLOCK_NEWS'])  ? '1' : '0';
 			$this->data['Settings']['SHOW_BLOCK_STOCK'] = (isset($this->data['Settings']['SHOW_BLOCK_STOCK']) && $this->data['Settings']['SHOW_BLOCK_STOCK'])  ? '1' : '0';
 			$this->data['Settings']['SHOW_BLOCK_AWAY'] = (isset($this->data['Settings']['SHOW_BLOCK_AWAY']) && $this->data['Settings']['SHOW_BLOCK_AWAY'])  ? '1' : '0';
-			
+
 			$php = "<?\r\n";
 			foreach($this->data['Settings'] as $key => $val) {
 				$php.= "define('{$key}', '{$val}');\r\n";
@@ -496,7 +497,7 @@ class AdminController extends AppController {
 				array('caption' => __('Active', true), 'field' => 'Settings.SHOW_BLOCK_STOCK', 'value' => SHOW_BLOCK_STOCK, 'input' => 'checkbox'),
 				array('caption' => __('Pending', true), 'field' => 'Settings.SHOW_BLOCK_AWAY', 'value' => SHOW_BLOCK_AWAY, 'input' => 'checkbox')
 		);
-		
+
 		$this->set('data', $data);
 		$this->set('data2', $data2);
 	}
@@ -508,13 +509,13 @@ class AdminController extends AppController {
 		}
 		exit;
 	}
-	
+
 	function statistics() {
 		$data = array();
 		$errors = array();
-		
+
 		$timeOfDay = (24 * 60 * 60 * 1000); //jQuery Flot issue - PHP fix;
-		
+
 		$time = time();
 		$todayScriptDate = date('Ymd');
 		$yesterdayScriptDate = date('Ymd', $time - 1 * 24 * 3600);
@@ -529,49 +530,49 @@ class AdminController extends AppController {
 		if (isset($this->data)) {
 			$this->data['dates']['for'] = (isset($this->data['dates']['for']) && $val = $this->data['dates']['for'])  ? $val : $todayFormDate;
 			$this->data['dates']['from'] = (isset($this->data['dates']['from']) && $val = $this->data['dates']['from'])  ? $val : $weekFormDate;
-		}		
-		
+		}
+
 		App::import('Vendor', 'Yapi', array('file' => '../vendors/yapi/yapi.class.php'));
 		$api = new Yapi(YAPI_appId, YAPI_appPass, YAPI_appToken, YAPI_login, YAPI_password);
-		
+
 		if (!$api) {
 			$this->errorHandler(1);
 			return false;
 		}
-				
+
 		$viewData['todayFormDate'] = $todayFormDate;
 		$viewData['yesterdayFormDate'] = $yesterdayFormDate;
 		$viewData['weekFormDate'] = $weekFormDate;
 		$viewData['monthFormDate'] = $monthFormDate;
-		
+
 		$result = $api->MakeQuery('/counters');
-		
+
 		if (!$result) {
 			$this->errorHandler(2);
 			return false;
 		}
-		
+
 		$counters = $api->result['counters'];
 		if (!is_array($counters) || (!count($counters))) {
 			$this->errorHandler(3);
 			return false;
 		}
-		
+
 		$counterid = 19619107; //marry-me.by counter;
 		$viewData['counterid'] = $counterid;
-		
+
 		$convertor = $this->data['dates']['from'] ? $this->data['dates']['from'] : $weekFormDate;
 		if (!$convertor) {
 			$this->errorHandler(4);
-			return false;			
+			return false;
 		}
-		
+
 		$year = substr($convertor, 6, 4);
 		$month = substr($convertor, 3, 2);
 		$day = substr($convertor, 0, 2);
 		$dateFrom = $year.$month.$day;
 		$dateFromForm = $day.'.'.$month.'.'.$year;
-		
+
 		$convertor = $this->data['dates']['for'] ? $this->data['dates']['for'] : $todayFormDate;
 		if (!$convertor) {
 			$this->errorHandler(5);
@@ -583,7 +584,7 @@ class AdminController extends AppController {
 		$day = substr($convertor, 0, 2);
 		$dateFor = $year.$month.$day;
 		$dateForForm = $day.'.'.$month.'.'.$year;
-		
+
 		if ($dateFrom > $dateFor) {
 			$this->errorHandler(6);
 			return false;
@@ -591,65 +592,65 @@ class AdminController extends AppController {
 		if ($dateFrom == $dateFor) {
 			$time = mktime(1,1,1,(int) $month, (int) $day, (int)$year);
 			$fromTime = $time - (24 * 3600);
-			
+
 			$dateFrom = date('Ymd', $fromTime);
 			$dateFromForm = date('d.m.Y', $fromTime);
 		}
-		
+
 		$viewData['dateFromForm'] = $dateFromForm;
-		$viewData['dateForForm'] = $dateForForm;		
-		
+		$viewData['dateForForm'] = $dateForForm;
+
 		$group = 'day';
 		$params = array(
 			'id' => $counterid,
 			'date1' => $dateFrom,
 			'date2' => $dateFor,
 			'group' => $group,
-		);			
-	
+		);
+
 		$result = $api->MakeQuery('/stat/sources/summary', $params);
 		if (!$result || !isset($api->result['data']) || !is_array($api->result['data'])) {
 			$this->errorHandler(7);
 			return false;
 		}
-		
+
 		$engines = array();
 		$forwards = array();
 		$inbounds = array();
 		$links = array();
-		
+
 		$counter = 0;
 		foreach ($api->result['period_groups'] as $key=>$item) {
 			$year = substr($item['0'], 0, 4);
 			$month = substr($item['0'], 4, 2);
 			$day = substr($item['0'], 6, 2);
-			
+
 			$date = $day.'.'.$month.'.'.$year;
 			$time = strtotime("$year-$month-$day UTC") * 1000;
-			
+
 			$engines[$counter][] = $time;
 			$engines[$counter][] = $api->result['data'][0]['visits'][$key];
-			
+
 			$forwards[$counter][] = $time+(1*($timeOfDay/5));;
 			$forwards[$counter][] = $api->result['data'][1]['visits'][$key];
-			
+
 			$inbounds[$counter][] = $time+(2*($timeOfDay/5));;
 			$inbounds[$counter][] = $api->result['data'][2]['visits'][$key];
-			
+
 			$links[$counter][] = $time+(3*($timeOfDay/5));;
 			$links[$counter][] = $api->result['data'][3]['visits'][$key];
-			
+
 			$counter++;
 		}
-		$fromArr[0] = $engines; 
+		$fromArr[0] = $engines;
 		$fromArr[1] = $forwards;
 		$fromArr[2] = $inbounds;
 		$fromArr[3] = $links;
-		
+
 		$jsonData['jsonFromArr'] = json_encode($fromArr);
-		
+
 		$datesArr = $api->result['period_groups']; // needs for the next request balancing; don't touch this!!!
-		
+
 		$result = $api->MakeQuery('/stat/traffic/summary', $params);
 		if (!$result || !is_array($api->result['data'])) {
 			$this->errorHandler(8);
@@ -661,19 +662,19 @@ class AdminController extends AppController {
 		$newvisitors = array();
 		$visits = array();
 		$wday = array();
-		
+
 		$year1 = substr($api->result['date1'], 0, 4);
 		$month1 = substr($api->result['date1'], 4, 2);
 		$day1 = substr($api->result['date1'], 6, 2);
 		$date1 = $day1.'.'.$month1.'.'.$year1;
-		
+
 		$year2 = substr($api->result['date2'], 0, 4);
 		$month2 = substr($api->result['date2'], 4, 2);
 		$day2 = substr($api->result['date2'], 6, 2);
 		$date2 = $day2.'.'.$month2.'.'.$year2;
-		
+
 		$date = $date1.' - '.$date2;
-		
+
 		$total = array(
 			null,
 			null,
@@ -681,47 +682,47 @@ class AdminController extends AppController {
 			$api->result['totals']['page_views'],
 			$api->result['totals']['visits'],
 			$api->result['totals']['visitors'],
-			$api->result['totals']['new_visitors']	
+			$api->result['totals']['new_visitors']
 		);
-		
+
 		$viewData['total'] = $total;
-	
+
 		$counter = 0;
 		foreach ($datesArr as $key=>$item) {
 			$year = substr($item['0'], 0, 4);
 			$month = substr($item['0'], 4, 2);
 			$day = substr($item['0'], 6, 2);
-			
+
 			$date = $day.'.'.$month.'.'.$year;
 			$time = strtotime("$year-$month-$day UTC") * 1000;
-			
+
 			$pageviews[$counter][] = $time;
 			$pageviews[$counter][] = array_key_exists($key, $api->result['data']) ? $api->result['data'][$key]['page_views'] : 0;
-			
+
 			$visitors[$counter][] = $time+(2*($timeOfDay/5));
 			$visitors[$counter][] = array_key_exists($key, $api->result['data']) ? $api->result['data'][$key]['visitors'] : 0;
-			
+
 			$newvisitors[$counter][] = $time+(3*($timeOfDay/5));
 			$newvisitors[$counter][] = array_key_exists($key, $api->result['data']) ? $api->result['data'][$key]['new_visitors'] : 0;
-			
+
 			$visits[$counter][] = $time+(1*($timeOfDay/5));
 			$visits[$counter][] = array_key_exists($key, $api->result['data']) ? $api->result['data'][$key]['visits'] : 0;
-			
+
 			$counter++;
-		}		
+		}
 		$visitsArr[0] = $pageviews;
 		$visitsArr[1] = $visits;
 		$visitsArr[2] = $visitors;
 		$visitsArr[3] = $newvisitors;
-		
+
 		$jsonData['jsonVisitsArr'] = json_encode($visitsArr);
-		
+
 		$result = $api->MakeQuery('/stat/sources/phrases', $params);
 		if (!$result || !is_array($api->result['data'])) {
 			$this->errorHandler(9);
 			return false;
 		}
-		
+
 		$words = array();
 		$wordsTotal = 0;
 		$counter = 0;
@@ -730,38 +731,38 @@ class AdminController extends AppController {
 			$words[$counter]['total'] = 0;
 			$words[$counter]['name'] = $dataitem['name'];
 			$words[$counter]['id'] = $dataitem['id'];
-			
+
 			$counter2 = 0;
 			foreach ($api->result['period_groups'] as $key=>$item) {
 				$year = substr($item['0'], 0, 4);
 				$month = substr($item['0'], 4, 2);
 				$day = substr($item['0'], 6, 2);
-				
+
 				$date = $day.'.'.$month.'.'.$year;
 				$time = strtotime("$year-$month-$day UTC") * 1000;
-				
+
 				$words[$counter]['days'][$counter2][] = $time;
 				$words[$counter]['days'][$counter2][] = $dataitem['visits'][$key];
 				$words[$counter]['total'] = $words[$counter]['total'] + $dataitem['visits'][$key];
 				$words[$counter]['max'] = ($dataitem['visits'][$key] > $words[$counter]['max']) ? $dataitem['visits'][$key] : $words[$counter]['max'];
-				
+
 				$counter2++;
 			}
 			$words[$counter]['days'] = json_encode($words[$counter]['days']);
 			$wordsTotal += $words[$counter]['total'];
 			$counter++;
 		}
-		
+
 		$viewData['words'] = $words;
 		$viewData['wordsTotal'] = $wordsTotal;
-		
+
 		$result = $api->MakeQuery('/stat/sources/search_engines', $params);
-		
+
 		if (!$result || !is_array($api->result['data'])) {
 			$this->errorHandler(10);
 			return false;
 		}
-		
+
 		$sEngines = array();
 		$counter = 0;
 		foreach ($api->result['data'] as $datakey=>$dataitem) {
@@ -769,22 +770,22 @@ class AdminController extends AppController {
 			$sEngines[$counter]['total'] = 0;
 			$sEngines[$counter]['name'] = $dataitem['name'];
 			$sEngines[$counter]['id'] = $dataitem['id'];
-			
+
 			$counter2 = 0;
 			foreach ($api->result['period_groups'] as $key=>$item) {
 				$year = substr($item['0'], 0, 4);
 				$month = substr($item['0'], 4, 2);
 				$day = substr($item['0'], 6, 2);
-				
+
 				$date = $day.'.'.$month.'.'.$year;
 				$time = strtotime("$year-$month-$day UTC") * 1000;
-				
+
 				$sEngines[$counter]['days'][$counter2][] = $time;
 				$sEngines[$counter]['days'][$counter2][] = $dataitem['visits'][$key];
-				
+
 				$sEngines[$counter]['total'] = $sEngines[$counter]['total'] + $dataitem['visits'][$key];
 				$sEngines[$counter]['max'] = ($dataitem['visits'][$key] > $sEngines[$counter]['max']) ? $dataitem['visits'][$key] : $sEngines[$counter]['max'];
-				
+
 				$counter2++;
 			}
 			$counter++;
@@ -793,16 +794,16 @@ class AdminController extends AppController {
 		$jsonSEnginesData = '';
 		foreach ($sEngines as $item) {
 			$oneEngine = array();
-			
+
 			$oneEngine['label'] = $item['name'];
 			$oneEngine['data'] = $item['days'];
-			
+
 			$SEnginesData[] = $oneEngine;
 		}
 		$jsonSEnginesData = json_encode($SEnginesData);
-		
+
 		$jsonData['jsonSEnginesData'] = $jsonSEnginesData;
-		
+
 		$data = array(
 			'dateFromInput' => array(
 				'caption' => __('DateStart', true),
@@ -825,9 +826,9 @@ class AdminController extends AppController {
 				'field' => 'Statistics.dates.for',
 				'value' => $dateForForm,
 				'input' => 'hidden'
-			),				
+			),
 		);
-		
+
 		$this->set('data', $data);
 		$this->set('errors', $errors);
 		$this->set('jsonData', $jsonData);
@@ -835,7 +836,7 @@ class AdminController extends AppController {
 		$this->render('statistics');
 		return true;
 	}
-	
+
 	private $errors = array();
 	private function errorHandler($code = 0, $action = 'statistics', $text = null) {
 			if (!$text) {
@@ -876,10 +877,10 @@ class AdminController extends AppController {
 						break;
 				}
 			}
-			
+
 			$i = count($this->errors);
 			$this->errors[$i]['code'] = $code;
-			$this->errors[$i]['text'] = $text;		
+			$this->errors[$i]['text'] = $text;
 			$this->set('errors', $this->errors);
 			$this->render($action);
 	}

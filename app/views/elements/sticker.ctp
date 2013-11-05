@@ -11,5 +11,9 @@
 ?>
 								<span class="sticker pending"></span>
 <?
+			} elseif ($article['Article']['is_new']) {
+?>
+								<span class="sticker newproduct"></span>
+<?
 			}
 ?>

@@ -62,7 +62,7 @@ class SiteController extends AppController {
 		foreach($aFeatured as $article) {
 			$aID[] = $article['Article']['id'];
 		}
-		
+
 		$aProducts = $this->Article->getRandomRows(4, array('Article.object_type' => 'products', 'published' => 1, 'is_new' => 1));
 		$this->set('newProducts', $aProducts);
 
@@ -188,7 +188,7 @@ class AppController extends Controller {
 		$this->set('aBrandCategories', $aBrandCategories);
 		$this->set('aBrandOptions', $aBrandOptions);
 
-		$aCollections = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'collections'), 'order' => 'Article.object_id'));
+		$aCollections = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'collections', 'Article.published' => 1), 'order' => 'Article.object_id'));
 		$aCollectionOptions = array();
 		$aBrandCollections = array();
 

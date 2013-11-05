@@ -160,13 +160,15 @@
 					</div>
 				</div>
 
-<? if (SHOW_BLOCK_FEATURED) : ?>
+<?
+	if (SHOW_BLOCK_FEATURED && $randomProducts) {
+?>
 				<div class="block">
 					<h3><span><span><span>Акции</span></span></span></h3>
 					<div class="new_items">
 <?
-	foreach($randomProducts as $article) {
-		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
+		foreach($randomProducts as $article) {
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
 ?>
 						<div class="item">
 							<div class="image">
@@ -176,19 +178,20 @@
 							<h4><a href="<?=$url?>"><?=$title?></a></h4>
 						</div>
 <?
-	}
+		}
 ?>
 					</div>
 				</div>
-	<? endif; ?>
-
-<? if (SHOW_BLOCK_NEWS) : ?>	
+<?
+	}
+	if (SHOW_BLOCK_NEWS && $newProducts) {
+?>
 				<div class="block">
 					<h3><span><span><span>Новинки</span></span></span></h3>
 					<div class="new_items">
 <?
-	foreach($newProducts as $article) {
-		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
+		foreach($newProducts as $article) {
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
 ?>
 						<div class="item">
 							<div class="image">
@@ -198,18 +201,20 @@
 							<h4><a href="<?=$url?>"><?=$title?></a></h4>
 						</div>
 <?
-	}
+		}
 ?>
 					</div>
 				</div>
-<? endif; ?>
-				<? if (SHOW_BLOCK_STOCK) : ?>
+<?
+	}
+	if (SHOW_BLOCK_STOCK && $activeProducts) {
+?>
 				<div class="block">
 					<h3><span><span><span>В наличии</span></span></span></h3>
 					<div class="new_items">
 <?
-	foreach($activeProducts as $article) {
-		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
+		foreach($activeProducts as $article) {
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
 ?>
 						<div class="item">
 							<div class="image">
@@ -219,19 +224,23 @@
 							<h4><a href="<?=$url?>"><?=$title?></a></h4>
 						</div>
 <?
-	}
+		}
 ?>
 					</div>
 				</div>
-<? endif; ?>				
-				
-<? if (SHOW_BLOCK_AWAY) : ?>				
+<?
+	}
+?>
+
+<?
+	if (SHOW_BLOCK_AWAY && $pendingProducts) {
+?>
 				<div class="block">
 					<h3><span><span><span>В пути</span></span></span></h3>
 					<div class="new_items">
 <?
-	foreach($pendingProducts as $article) {
-		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
+		foreach($pendingProducts as $article) {
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
 ?>
 						<div class="item">
 							<div class="image">
@@ -241,11 +250,13 @@
 							<h4><a href="<?=$url?>"><?=$title?></a></h4>
 						</div>
 <?
-	}
+		}
 ?>
 					</div>
 				</div>
-<? endif; ?>
+<?
+	}
+?>
 				<div class="block">
 					<?=$this->element('sb_search_form')?>
 				</div>
