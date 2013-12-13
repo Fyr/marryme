@@ -1,5 +1,5 @@
 <?=$this->element('feedback')?>
-<h3><span><span><span>Оставить отзыв</span></span></span></h3>
+<?=$this->element('title', array('title' => 'Оставить отзыв'))?>
 
 <form id="postForm" name="postForm" action="" method="post">
 

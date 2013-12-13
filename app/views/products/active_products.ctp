@@ -2,14 +2,14 @@
 	$this->PHCore->css(array('jquery.fancybox'));
 	$this->PHCore->js(array('jquery.fancybox'));
 ?>
-<h3><span><span><span><?=$aArticle['Article']['title']?></span></span></span></h3>
+<?=$this->element('title', array('title' => $aArticle['Article']['title']))?>
 <div class="block">
 	<div class="list">
 		<div class="item">
 			<?=$this->element('article_view', array('plugin' => 'articles'))?>
 		</div>
 	</div>
-	<h3><span><span><span>Платья в наличии</span></span></span></h3>
+	<?=$this->element('title', array('title' => 'Платья в наличии'))?>
 	<div class="new_items">
 <?
 	$aText = array();

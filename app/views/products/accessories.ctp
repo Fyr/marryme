@@ -3,7 +3,7 @@
 	$this->PHCore->js(array('jquery.fancybox'));
 	$url = $this->Router->catUrl(($aArticle['Category']['id'] == 20) ? 'subcategories' : 'brands', $aArticle['Category']);
 ?>
-<h3><span><span><span><?=$aArticle['Article']['title']?></span></span></span></h3>
+<?=$this->element('title', array('title' => $aArticle['Article']['title']))?>
 <div class="block">
 	<div class="list">
 		<div class="item">
@@ -13,7 +13,7 @@
 			<?=$this->element('article_view', array('plugin' => 'articles'))?>
 		</div>
 	</div>
-	<h3><span><span><span>Аксессуары: <?=$aArticle['Article']['title']?></span></span></span></h3>
+	<?=$this->element('title', array('title' => 'Аксессуары: '.$aArticle['Article']['title']))?>
 	<div class="new_items">
 <?
 	$aText = array();

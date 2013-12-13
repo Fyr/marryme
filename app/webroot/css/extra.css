@@ -167,9 +167,7 @@ a.small, span.small {
 	padding-left: 5px;
 	font-weight: bold;
 }
-.content h3 span span {
-	height: 45px;
-}
+
 .content .main_content a.unvisited, .content .main_content a.unvisited:visited { color:#173C67; }
 
 .prices .price {
@@ -193,3 +191,81 @@ a.small, span.small {
 	font-size: 12px;
 	font-weight: normal;
 }
+
+.footer {
+	margin-top: -20px;
+}
+
+ol, ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px; }
+
+.article {
+	width: 940px;
+	height: 160px;
+	margin: 10px auto;
+	display: block;
+	background: url(../img/dots.gif) repeat-x left bottom; }
+
+	.article li {
+		position: relative;
+		float: left;
+		background: #fff;
+		border-radius: 5px;
+		padding: 5px;
+		width: 220px;
+		height: 128px;
+		margin-left: 6px; }
+
+		.article li:first-child { margin-left: 0px; }
+
+		.article li:after {
+			content: "";
+			background: url(../img/shadow.png);
+			width: 205px;
+			height: 9px;
+			float: left;
+			margin-top: 2px; }
+
+		.article li span {
+			background: url('../img/border-top.png') no-repeat;
+			width: 206px;
+			height: 26px;
+			float: left;
+			margin: -16px 0px 0px 7px;
+			z-index: 10; }
+
+		.article li div {
+			width: 220px;
+			height: 128px;
+			background-position: center center !important;
+			background-repeat: no-repeat !important;
+			background-size: cover !important;
+			margin: 0px 0px 0px 0px; }
+
+			.article li div a {
+				background-color: rgba(255, 255, 255, 0.7);
+				padding: 6px 0px 12px 12px;
+				margin: 0px 0px 0px 0px;
+				border-radius: 0px 0px 5px 5px;
+				position: absolute;
+				bottom: 0;
+				left: 0px;
+				color: #333;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				width: 100%;
+				word-wrap: break-word;
+				font-size: 12px;
+				font-family: "Arial";
+				color: rgb( 71, 3, 3 );
+				font-style: italic;
+				line-height: 1.333;
+				text-align: left; }
+
+				.article li div a:hover {
+					color: #173C67;
+					text-decoration: underline;
+					cursor: pointer; }

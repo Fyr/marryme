@@ -1,5 +1,5 @@
 				<div class="block">
-					<h3><span><span><span><?=$aCategory['Category']['title']?></span></span></span></h3>
+					<?=$this->element('title', array('title' => $aCategory['Category']['title']))?>
 					<div class="list">
 <?
 	foreach($aArticles as $article) {

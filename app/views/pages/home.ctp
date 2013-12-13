@@ -4,11 +4,11 @@
 }
 </style>
 				<div class="block">
-					<h3><span><span><span><?=$content['Article']['title']?></span></span></span></h3>
+					<?=$this->element('title', array('title' => $content['Article']['title']))?>
 					<?=$this->element('article_view', array('plugin' => 'articles', 'aArticle' => $content))?>
 				</div>
 				<div class="block">
-					<h3><span><span><span>Новости</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Новости'))?>
 					<div class="list">
 <?
 		foreach($aNews as $article) {
@@ -40,7 +40,7 @@
 				</div>
 
 				<div class="block">
-					<h3><span><span><span>Последние поступления</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Последние поступления'))?>
 					<div class="list_items">
 <?
 	foreach($aProducts as $article) {

@@ -67,6 +67,21 @@
 					</div>
 				</div>
 		</div>
+		<ul class="article">
+<?
+	foreach($randomArticles as $article) {
+		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '220x');
+?>
+		   <li>
+		      <span></span>
+		      <div style="background: url('<?=$src?>');">
+		         <a href="<?=$url?>"><?=$title?></a>
+		      </div>
+		   </li>
+<?
+	}
+?>
+		</ul>
 <?
 	} else {
 ?>
@@ -74,6 +89,7 @@
 <?
 	}
 ?>
+
 		<div class="content">
 			<div class="side_bar">
 				<div class="side_in"><div class="side_in_in">
@@ -82,7 +98,7 @@
 	if (isset($showMainCategories) && $showMainCategories) {
 ?>
 				<div class="block">
-					<h3><span><span><span>Каталог</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Каталог'))?>
 					<div class="ddnMenu">
 <?
 		foreach($aMainCategories as $category) {
@@ -101,7 +117,7 @@
 	if (isset($showSBCategories) && $showSBCategories) {
 ?>
 				<div class="block">
-					<h3><span><span><span>Бренды</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Бренды'))?>
 					<div class="ddnMenu">
 <?
 		foreach($aBrandCollections as $brandID => $aID) {
@@ -129,7 +145,7 @@
 	if (isset($showAcsCategories) && $showAcsCategories) {
 ?>
 				<div class="block">
-					<h3><span><span><span>Аксессуары</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Аксессуары'))?>
 					<div class="ddnMenu">
 <?
 		foreach($aAcsCategories as $article) {
@@ -149,7 +165,7 @@
 
 
 				<div class="block">
-					<h3><span><span><span>Новости</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Новости'))?>
 					<div class="item">
 <?
 	$this->ArticleVars->init($upcomingEvent, $url, $title, $teaser);
@@ -164,7 +180,7 @@
 	if (SHOW_BLOCK_FEATURED && $randomProducts) {
 ?>
 				<div class="block">
-					<h3><span><span><span>Акции</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Акции'))?>
 					<div class="new_items">
 <?
 		foreach($randomProducts as $article) {
@@ -187,7 +203,7 @@
 	if (SHOW_BLOCK_NEWS && $newProducts) {
 ?>
 				<div class="block">
-					<h3><span><span><span>Новинки</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Новинки'))?>
 					<div class="new_items">
 <?
 		foreach($newProducts as $article) {
@@ -210,7 +226,7 @@
 	if (SHOW_BLOCK_STOCK && $activeProducts) {
 ?>
 				<div class="block">
-					<h3><span><span><span>В наличии</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'В наличии'))?>
 					<div class="new_items">
 <?
 		foreach($activeProducts as $article) {
@@ -236,7 +252,7 @@
 	if (SHOW_BLOCK_AWAY && $pendingProducts) {
 ?>
 				<div class="block">
-					<h3><span><span><span>В пути</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'В пути'))?>
 					<div class="new_items">
 <?
 		foreach($pendingProducts as $article) {
@@ -261,6 +277,9 @@
 					<?=$this->element('sb_search_form')?>
 				</div>
 
+				<div class="block">
+					<a href="javascript:void(0)" onclick="var url='http://gfc.by'; window.location.href=url;"><img src="/img/gfc.png" alt="Grand Fiesta Company"/></a>
+				</div>
 
 				</div></div>
 			</div>
@@ -283,6 +302,9 @@
 			<h6>Салон свадебной<br/>и вечерней<br/>моды</h6>
 			<div class="navigation">
 				<?=$this->element('bottom_links')?>
+				<!--noindex-->
+				<a href="https://plus.google.com/u/0/101878855187512164541?rel=author" rel="me"><img title="Присоединиться в Google+" src="http://dreams.by/google-plus-icon-32-2.png" alt="Присоединиться в Google+" width="20" height="20" border="0"></a>
+				<!--/noindex-->
 			</div>
 
 			<div class="address">
@@ -290,6 +312,23 @@
 				<p class="phone">8 029 555 55 79 M</p>
 				<address>г.Минск, ул.Кульман 15</address>
 				<address style="margin-top: 20px; font-size: 11px; font-family: minion_proregular">Разработка сайта: <a href="mailto:fyr@tut.by">fyr@tut.by</a></address>
+<?
+	if (!TEST_ENV) {
+?>
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t26.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число посетителей за"+
+" сегодня' "+
+"border='0' width='88' height='15'><\/a>")
+//--></script><!--/LiveInternet-->
+<?
+	}
+?>
 			</div>
 	</div>
 </div>

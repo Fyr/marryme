@@ -31,7 +31,7 @@
 ?>
 </div>
 <div class="block">
-			<h3><span><span><span>Модели коллекции <?=$aArticle['Article']['title']?></span></span></span></h3>
+			<?=$this->element('title', array('title' => 'Модели коллекции '.$aArticle['Article']['title']))?>
 			<!--div align="center" style="margin-bottom: 20px">
 				<a href="javascript:void(0)" onclick="gallery_onClick()">Посмотреть галерею</a>
 			</div-->
@@ -65,7 +65,7 @@
 	if ($aAnotherCollections) {
 ?>
 	<div class="block">
-			<h3><span><span><span>Другие коллекции <?=$aBrand['Article']['title']?></span></span></span></h3>
+			<?=$this->element('title', array('title' => 'Другие коллекции '.$aBrand['Article']['title']))?>
 <?
 		foreach($aAnotherCollections as $article) {
 			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x', $featured);

@@ -1,2 +1,2 @@
-<h3><span><span><span><?=$page_title?></span></span></span></h3>
+<?=$this->element('title', array('title' => $page_title))?>
 <?=$this->element('view_'.$objectType)?>

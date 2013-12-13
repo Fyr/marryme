@@ -1,4 +1,4 @@
-<h3><span><span><span>Отзывы</span></span></span></h3>
+<?=$this->element('title', array('title' => 'Отзывы'))?>
 <div class="block">
 <div class="news_block">
 <?

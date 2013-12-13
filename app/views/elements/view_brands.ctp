@@ -10,7 +10,7 @@
 			<?=$this->element('article_view', array('plugin' => 'articles'))?>
 		</div>
 	</div>
-	<h3><span><span><span>Коллекции <?=$aArticle['Article']['title']?></span></span></span></h3>
+	<?=$this->element('title', array('title' => 'Коллекции '.$aArticle['Article']['title']))?>
 	<div class="list_items">
 <?
 	$aText = array();

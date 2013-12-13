@@ -2,7 +2,7 @@
 	$this->PHCore->css(array('jquery.fancybox'));
 	$this->PHCore->js(array('jquery.fancybox'));
 ?>
-<h3><span><span><span>Поиск по каталогу</span></span></span></h3>
+<?=$this->element('title', array('title' => 'Поиск по каталогу'))?>
 <div class="block">
 	<div class="new_items">
 <?

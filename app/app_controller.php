@@ -52,6 +52,9 @@ class SiteController extends AppController {
 		$this->set('aErrFields', $this->aErrFields);
 		$this->set('aBreadCrumbs', $this->aBreadCrumbs);
 
+		$aArticles = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'articles', 'published' => 1), 'order' => array('Article.featured DESC', 'Article.id desc'), 'limit' => 4));
+		$this->set('randomArticles', $aArticles);
+
 		$aArticles = $this->Article->find('list', array('conditions' => array('Article.object_type' => 'news', 'published' => 1), 'order' => 'Article.id DESC', 'limit' => 5));
 		$aEvents = $this->Article->getRandomRows(1, array('Article.id' => array_keys($aArticles)));
 		$this->set('upcomingEvent', ($aEvents) ? $aEvents[0] : false);

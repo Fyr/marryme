@@ -9,7 +9,7 @@
 	$is_active_checked = (isset($aFilters['data']['is_active']) && $aFilters['data']['is_active']) ? 'checked="checked"' : '';
 
 ?>
-					<h3><span><span><span>Поиск по каталогу</span></span></span></h3>
+					<?=$this->element('title', array('title' => 'Поиск по каталогу'))?>
 					<div class="item">
 						<form class="search" action="/products/search/" method="get">
 						<table class="pad5" border="0" cellpadding="0" cellspacing="0">
@@ -84,6 +84,3 @@
 						</table>
 						</form>
 					</div>
-<script type="text/javascript">
-
-</script>

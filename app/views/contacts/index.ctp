@@ -3,14 +3,13 @@
 	cursor: pointer;
 }
 </style>
-<h3><span><span><span><?=$aArticle['Article']['title']?></span></span></span></h3>
+<?=$this->element('title', array('title' => $aArticle['Article']['title']))?>
 <div class="block mapContainer">
 	<?=$this->element('article_view', array('plugin' => 'articles'))?>
 	<br/>
 	<div style="clear: both;"></div>
 </div>
-
-<h3><span><span><span>Отправить сообщение</span></span></span></h3>
+<?=$this->element('title', array('title' => 'Отправить сообщение'))?>
 <form id="postForm" name="postForm" action="" method="post">
 <p>Поля с пометкой <span class="required">*</span> обязательны для заполнения.</p>
 <div class="box">

@@ -4,7 +4,7 @@
 	$orig = $orig = $this->PHMedia->getUrl($media['object_type'], $media['id'], 'noresize', $media['file'].$media['ext']);
 ?>
 				<div class="block">
-					<h3><span><span><span><?=$title?></span></span></span></h3>
+					<?=$this->element('title', array('title' => $title))?>
 					<div class="item_photo">
 						<div class="big">
 							<a href="<?=$orig?>" target="_blank" title="Показать оригинал"><img src="<?=$src?>" alt="" /></a>
