@@ -5,7 +5,7 @@ class AdminController extends AppController {
 	var $components = array('Auth', 'articles.PCArticle', 'grid.PCGrid', 'Email', 'SiteEmail');
 	var $helpers = array('Text', 'Session', 'core.PHFcke', 'core.PHA', 'grid.PHGrid');
 
-	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'category.Category', 'comments.Comment', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'SiteComment', 'SiteProduct');
+	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'category.Category', 'comments.Comment', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'SiteComment', 'SiteProduct', 'TagcloudLink');
 	// var $helpers = array('Html'); // 'Form', 'Fck', 'Ia'
 
 	var $aMenu = array(
@@ -21,7 +21,7 @@ class AdminController extends AppController {
 		'photoslider' => '/admin/photoslider/',
 		'settings' => '/admin/settings/',
 		'statistics' => '/admin/statistics/',
-		// 'FAQs' => '/admin/faqList/'
+		'tagcloud' => '/admin/tagcloud/'
 	);
 	var $currMenu = '';
 
@@ -883,5 +883,12 @@ class AdminController extends AppController {
 			$this->errors[$i]['text'] = $text;
 			$this->set('errors', $this->errors);
 			$this->render($action);
+	}
+
+	function tagcloud() {
+		$this->grid['TagcloudLink'] = array(
+			'order' => array('size' => 'desc')
+		);
+		$this->PCGrid->paginate('TagcloudLink');
 	}
 }

@@ -52,7 +52,8 @@ class SiteController extends AppController {
 		$this->set('aErrFields', $this->aErrFields);
 		$this->set('aBreadCrumbs', $this->aBreadCrumbs);
 
-		$aArticles = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'articles', 'published' => 1), 'order' => array('Article.featured DESC', 'Article.id desc'), 'limit' => 4));
+		$aArticles = $this->Article->getRandomRows(4, array('Article.object_type' => 'articles', 'published' => 1, 'featured' => 1));
+		// $aArticles = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'articles', 'published' => 1), 'order' => array('Article.featured DESC', 'Article.id desc'), 'limit' => 4));
 		$this->set('randomArticles', $aArticles);
 
 		$aArticles = $this->Article->find('list', array('conditions' => array('Article.object_type' => 'news', 'published' => 1), 'order' => 'Article.id DESC', 'limit' => 5));
@@ -88,6 +89,9 @@ class SiteController extends AppController {
 		}
 		// $aSearch['Brands'] = $aBrands;
 		$this->set('aSearch', $aSearch);
+
+		$this->loadModel('TagcloudLink');
+		$this->set('aTags', $this->TagcloudLink->find('all'));
 	}
 
 

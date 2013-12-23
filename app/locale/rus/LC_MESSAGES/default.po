@@ -357,3 +357,13 @@ msgstr "Показывать цены"
 
 msgid "Show active in search"
 msgstr "Форме поиска - В наличии"
+
+msgid "Tagcloud"
+msgstr "Облако тэгов"
+
+msgid "Url"
+msgstr "URL"
+
+msgid "Size"
+msgstr "Размер"
+

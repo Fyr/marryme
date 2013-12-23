@@ -303,13 +303,13 @@ html{
 	line-height:150%;
 }
 
-.content p.more{
+p.more {
 	text-align:right;
 	font:normal 11px arial;
 	font-size:11px !important
 }
 
-.content p.more a{
+p.more a {
 	color:#173c67;
 	font-style:italic;
 }

@@ -6,7 +6,7 @@
 	<title><?=$pageTitle?></title>
 	<?=$this->element('seo_info', array('plugin' => 'seo', 'data' => $this->PHA->read($this->data, 'SEO')))?>
 <?=$this->Html->css(array('style', 'extra', 'edits'))?>
-<?=$this->Html->script(array('jquery', 'jquery.bxSlider.min', 'script', '/core/js/jquery.preload-images', 'preload', '/ddaccordion/js/ddaccordion', 'ddn'))?>
+<?=$this->Html->script(array('jquery', 'jquery.bxSlider.min', 'script', '/core/js/jquery.preload-images', 'preload', '/ddaccordion/js/ddaccordion', 'ddn', 'swfobject', 'tagcloud'))?>
 <?=$scripts_for_layout?>
 </head>
 <body>
@@ -67,7 +67,15 @@
 					</div>
 				</div>
 		</div>
-		<ul class="article">
+<?
+	} else {
+?>
+	<div class="categories_selection" style="background: none; height: 46px;"></div>
+<?
+	}
+?>
+	<div class="article">
+		<ul>
 <?
 	foreach($randomArticles as $article) {
 		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '220x');
@@ -82,14 +90,9 @@
 	}
 ?>
 		</ul>
-<?
-	} else {
-?>
-	<div class="categories_selection" style="background: none; height: 46px;"></div>
-<?
-	}
-?>
-
+		<div class="clear"></div>
+		<p class="more" style="margin: 2px"><a href="/articles/">все статьи</a></p>
+	</div>
 		<div class="content">
 			<div class="side_bar">
 				<div class="side_in"><div class="side_in_in">
@@ -281,6 +284,10 @@
 					<a href="javascript:void(0)" onclick="var url='http://gfc.by'; window.location.href=url;"><img src="/img/gfc.png" alt="Grand Fiesta Company"/></a>
 				</div>
 
+				<div class="block">
+					<?=$this->element('tag_cloud')?>
+				</div>
+
 				</div></div>
 			</div>
 
@@ -303,7 +310,8 @@
 			<div class="navigation">
 				<?=$this->element('bottom_links')?>
 				<!--noindex-->
-				<a href="https://plus.google.com/u/0/101878855187512164541?rel=author" rel="me"><img title="Присоединиться в Google+" src="http://dreams.by/google-plus-icon-32-2.png" alt="Присоединиться в Google+" width="20" height="20" border="0"></a>
+				<a href="https://plus.google.com/u/0/101878855187512164541?rel=author" rel="me" target="_blank"><img title="Присоединиться в Google+" src="http://dreams.by/google-plus-icon-32-2.png" alt="Присоединиться в Google+" width="20" height="20" border="0"></a>
+				<a href="http://vk.com/club47611192" target="_blank"><img src="/img/icons/vk.png" alt="Присоединиться ВКонтакте"/></a>
 				<!--/noindex-->
 			</div>
 
