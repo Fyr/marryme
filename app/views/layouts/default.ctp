@@ -91,7 +91,7 @@
 ?>
 		</ul>
 		<div class="clear"></div>
-		<p class="more" style="margin: 2px"><a href="/articles/">все статьи</a></p>
+		<p class="more" style="margin: 2px"><a href="/articles/">Все статьи</a></p>
 	</div>
 		<div class="content">
 			<div class="side_bar">
