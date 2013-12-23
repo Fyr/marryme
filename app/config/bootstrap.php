@@ -71,6 +71,9 @@ define('YAPI_appToken', null);
 define('YAPI_login', 'fyr-work');
 define('YAPI_password', 'beHolder');
 
+define('TAG_CLOUD_W', 217);
+define('TAG_CLOUD_H', 200);
+
 require_once('extra.php');
 
 // session_start();
