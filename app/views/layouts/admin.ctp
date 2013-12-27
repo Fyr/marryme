@@ -3,25 +3,11 @@
 <head>
 	<meta name="language" content="en" />
 	<meta name="viewport" content="width=device-width"/>
-	
+
 	<title>Админ-панель для <?=DOMAIN_TITLE?></title>
 
 <?=$this->Html->charset()?>
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-
-<?=$this->Html->script(array(
-	'/js/flot/jquery.flot.min.js',
-	'/js/flot/jquery.flot.time.min.js',
-	'/js/gzw/statistics.js',
-	'/js/gzw/datepickers.js',
-	))?>
-<!--[if lte IE 8]>
-<?=$this->Html->script(array(
-	'/js/flot/excanvas.min.js',
-	))?>
-<![endif]-->
+<?=$this->Html->script(array('jquery'))?>
 <?=$this->Html->css(array('common', 'admin', 'gzwStyles', 'jquery-ui.min', '/core/css/btn_icon'))?>
 
 <?=$scripts_for_layout?>

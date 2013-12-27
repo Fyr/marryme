@@ -100,6 +100,10 @@
 <?
 	}
 ?>
+<br/>
+<br/>
+<br/>
+<?=$this->element('comments')?>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('.unvisited').get(0).href = 'javascript:void(0)';

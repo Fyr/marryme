@@ -196,6 +196,10 @@ a.small, span.small {
 	margin-top: -20px;
 }
 
+.main_content .block .news_block {
+	margin: 0;
+}
+
 ol, ul {
 	list-style: none;
 	padding: 0px;

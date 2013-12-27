@@ -381,8 +381,8 @@ class AdminController extends AppController {
 	function commentsList() {
 		$this->grid['SiteComment'] = array(
 			'fields' => array('created', 'username', 'email', 'body', 'published'),
-			//'captions' => array('object_id' => __('Article', true)),
-			'hidden' => array('object_type', 'object_id', 'Article.title', 'Comment.body'),
+			'captions' => array('Comment.object_id' => __('URL', true)),
+			'hidden' => array('Comment.object_type', 'Comment.object_id', 'Article.id', 'Article.object_id', 'Article.object_type', 'Article.teaser', 'Article.title', 'Comment.body'),
 			'order' => array('Comment.created' => 'desc')
 		);
 		$this->PCGrid->paginate('SiteComment');

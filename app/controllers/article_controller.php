@@ -3,9 +3,9 @@ class ArticleController extends SiteController {
 	const PER_PAGE = 10;
 
 	var $name = 'Article';
-	var $components = array('articles.PCArticle', 'grid.PCGrid', 'captcha.PCCaptcha', 'comments.PCComment');
+	var $components = array('articles.PCArticle', 'grid.PCGrid', 'captcha.PCCaptcha', 'comments.PCComment', 'SiteComment');
 	var $helpers = array('core.PHA', 'Time', 'core.PHTime', 'articles.HtmlArticle');
-	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'seo.Seo', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'category.Category', 'comments.Comment');
+	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'seo.Seo', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'category.Category', 'comments.Comment', 'Contact');
 
 	var $Router;
 	var $objectType = 'articles';
@@ -134,6 +134,8 @@ class ArticleController extends SiteController {
 		}
 
 		$articleID = $aArticle['Article']['id'];
+
+		$this->SiteComment->listForm($articleID);
 
 		unset($aArticle['Media']);
 		$aArticle['Media'] = $this->Media->getMedia('Article', $articleID);

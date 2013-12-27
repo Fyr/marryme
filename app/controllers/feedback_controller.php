@@ -47,8 +47,7 @@ class FeedbackController extends SiteController {
 			    $this->data['Comment'] = $this->data['Contact'];
 				$this->PCComment->post('Guestbook', '0', 1);
 
-				$this->redirect('/feedback/success#send');
-				exit;
+				return $this->redirect('/feedback/success#send');
 			} else {
 				$this->aErrFields['Contact'] = $this->Contact->invalidFields();
 			}
@@ -59,7 +58,7 @@ class FeedbackController extends SiteController {
 		$this->set('captchaKey', $captchaKey);
 
 		$this->grid['Comment'] = array(
-			'conditions' => array('published' => 1),
+			'conditions' => array('object_type' => 'Guestbook', 'published' => 1),
 			'order' => array('Comment.created' => 'desc'),
 			'limit' => self::PER_PAGE
 		);
@@ -70,7 +69,7 @@ class FeedbackController extends SiteController {
 
 	function success() {
 		$this->grid['Comment'] = array(
-			'conditions' => array('published' => 1),
+			'conditions' => array('object_type' => 'Guestbook', 'published' => 1),
 			'order' => array('Comment.created' => 'desc'),
 			'limit' => self::PER_PAGE
 		);

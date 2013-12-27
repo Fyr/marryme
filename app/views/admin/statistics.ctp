@@ -1,3 +1,18 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<?=$this->Html->script(array(
+	'/js/flot/jquery.flot.min.js',
+	'/js/flot/jquery.flot.time.min.js',
+	'/js/gzw/statistics.js',
+	'/js/gzw/datepickers.js',
+	))?>
+<!--[if lte IE 8]>
+<?=$this->Html->script(array(
+	'/js/flot/excanvas.min.js',
+	))?>
+<![endif]-->
+
 <h2><? __('Statistics')?></h2>
 
 <?
@@ -37,20 +52,20 @@ if (!count($errors)) :
 				<form id="yesterdayForm" name="yesterdayForm" action="" method="POST">
 					<input type="hidden" name="data[dates][for]" value="<? echo $todayFormDate;?>">
 					<input type="hidden" name="data[dates][from]" value="<? echo $yesterdayFormDate;?>">
-				</form>			
+				</form>
 				<form id="weekForm" name="weekForm" action="" method="POST">
 					<input type="hidden" name="data[dates][for]" value="<? echo $todayFormDate;?>">
 					<input type="hidden" name="data[dates][from]" value="<? echo $weekFormDate;?>">
-				</form>			
+				</form>
 				<form id="monthForm" name="monthForm" action="" method="POST">
 					<input type="hidden" name="data[dates][for]" value="<? echo $todayFormDate;?>">
 					<input type="hidden" name="data[dates][from]" value="<? echo $monthFormDate;?>">
-				</form>			
+				</form>
 				<p>
 					<?=$this->element('btn_icon_action', array('plugin' => 'core', 'img'=> 'calendar.png', 'title' => 'Со вчера', 'onclick' => 'document.yesterdayForm.submit()'))?>
 					<?=$this->element('btn_icon_action', array('plugin' => 'core', 'img'=> 'calendar.png', 'title' => 'За неделю', 'onclick' => 'document.weekForm.submit()'))?>
 					<?=$this->element('btn_icon_action', array('plugin' => 'core', 'img'=> 'calendar.png', 'title' => 'За месяц', 'onclick' => 'document.monthForm.submit()'))?>
-				</p>			
+				</p>
 			</div>
 		</div>
 	</div>
@@ -69,7 +84,7 @@ if (!count($errors)) :
 				<p>
 					<?=$this->element('btn_icon_save', array('plugin' => 'core', 'title' => 'Обновить', 'onclick' => 'document.handleForm.submit()'))?>
 				</p>
-			</div>			
+			</div>
 		</form>
 	</div>
 	<div class="row hr"></div>
@@ -90,7 +105,7 @@ if (!count($errors)) :
 							</th>
 							<th>
 								<p><span>Данные</span></p>
-							</th>					
+							</th>
 						</thead>
 						<tbody>
 							<tr>
@@ -99,7 +114,7 @@ if (!count($errors)) :
 								</td>
 								<td class="two">
 									<b><?=$total[3];?></b>
-								</td>					
+								</td>
 							</tr>
 							<tr>
 								<td class="one">
@@ -107,7 +122,7 @@ if (!count($errors)) :
 								</td>
 								<td class="two">
 									<b><?=$total[4];?></b>
-								</td>					
+								</td>
 							</tr>
 							<tr>
 								<td class="one">
@@ -115,20 +130,20 @@ if (!count($errors)) :
 								</td>
 								<td class="two">
 									<b><?=$total[5];?></b>
-								</td>					
-							</tr>					
+								</td>
+							</tr>
 							<tr>
 								<td class="one">
 									<p><span>Новых посетителей:</span></p>
 								</td>
 								<td class="two">
 									<b><?=$total[6];?></b>
-								</td>					
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-			</div>			
+			</div>
 		</div>
 	</div>
 	<div id="visitsGraph" class="row">
@@ -143,7 +158,7 @@ if (!count($errors)) :
 		<div class="row content">
 			<div id="fromGraph-chart"></div>
 		</div>
-	</div>	
+	</div>
 	<div class="row headblock">
 		<h2><span>СТАТИСТИКА ПО ПОИСКОВЫМ СИСТЕМАМ</span></h2>
 	</div>
@@ -154,7 +169,7 @@ if (!count($errors)) :
 	</div>
 	<div class="row headblock">
 		<h2><span>ПОИСКОВЫЕ ФРАЗЫ</span></h2>
-	</div>		
+	</div>
 	<div id="searchWords" class="row">
 		<div class="row header">
 			<p><span>За период: <?=$total[2];?></span></p>
@@ -174,7 +189,7 @@ if (!count($errors)) :
 						</th>
 						<th>
 							<p><span>График</span></p>
-						</th>					
+						</th>
 					</thead>
 					<tbody>
 						<? foreach ($words as $item) : ?>
@@ -198,7 +213,7 @@ if (!count($errors)) :
 									var obj = new wordGraph($('#wordGraph<?=$item['id'];?>'), '<?=$item['days']?>');
 									App.wordGraphObjs.push(obj);
 								</script>
-							</td>						
+							</td>
 						</tr>
 						<? endforeach; ?>
 					</tbody>
@@ -211,7 +226,7 @@ if (!count($errors)) :
 
 <?
 	if (isset($errors) && count($errors)) :
-?>		
+?>
 	<div id="gzwStyles" class="row">
 		<div class="row">
 			<p><a href="<?=$_SERVER['REQUEST_URI'];?>">Вернуться назад</a></p>

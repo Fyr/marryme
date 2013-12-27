@@ -1,10 +1,11 @@
-<?=$this->element('feedback')?>
-
 <a name="send"></a>
-<?=$this->element('title', array('title' => 'Оставить отзыв'))?>
+<?
+	$text = (isset($this->params['url']['comment'])) ? 'комментарий' : 'отзыв';
+?>
+
+<?=$this->element('title', array('title' => 'Оставить '.$text))?>
 <br />
 <p><b>Ваше сообщение было успешно отправлено.<br/>
-Спасибо за ваш отзыв!</b></p>
-
-</form>
-
+Спасибо за ваш <?=$text?>!</b></p>
+<br/><br/>
+Кликните <a href="/">сюда</a>, чтобы вернуться на главную страницу.

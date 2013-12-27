@@ -1,34 +1,45 @@
+<a name="comment_form"></a>
 <form id="postForm" name="postForm" action="#comment_form" method="post">
-<div class="comments_head_title post_comment">Оставить комментарий</div>
+
+<p>Поля с пометкой <span class="required">*</span> обязательны для заполнения.</p>
+<div class="box">
 <?
-	if ($commentPosted) {
+	if (isset($aErrFields['Contact'])) {
 ?>
-	<div>
-		<b>Спасибо за ваш комментарий!</b><br />
-		<!--Ваш комментарий будет опубликован после проверки администратором.-->
+	<div class="error">
+<?
+		foreach($aErrFields['Contact'] as $field => $err_msg) {
+?>
+			<?=$err_msg?><br />
+<?
+	}
+?>
+	<br />
 	</div>
 <?
 	}
 ?>
-<div class="comment_write_box">
-<?
-	if (isset($aErrFields['Comment'])) {
-		$keys = array_keys($aErrFields['Comment']);
-		$error = $aErrFields['Comment'][$keys[0]]; // show 1st error
-?>
-	<div class="invalid_box"><?=$error?></div>
-<?
-	}
-	
-	$username = $this->PHA->read($aComment, 'Comment.username');
-	$email = $this->PHA->read($aComment, 'Comment.email');
-	$body = $this->PHA->read($aComment, 'Comment.body');
-?>
-	<input type="text" id="data_Comment__username" name="data[Comment][username]" value="<?=$username?>" class="textbox"><br />
-	<input type="text" id="data_Comment__email" name="data[Comment][email]" value="<?=$email?>" class="textbox"><br />
-	<textarea id="data_Comment__body" name="data[Comment][body]"><?=$body?></textarea><br />
-	<?=$this->element('comments_captcha', array('field' => 'Comment.captcha'))?>
-	<div class="clear"></div>
-	<a class="post_button" href="javascript:void(0)" onclick="comment_onSubmit()">Отправить</a>
+<table class="pad5" border="0" cellpadding="0" cellspacing="0">
+<?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Your name', true), 'required' => true, 'field' => 'Contact.username', 'data' => $this->data))?>
+<?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Your e-mail for reply', true), 'required' => true, 'field' => 'Contact.email', 'data' => $this->data))?>
+<tr>
+	<td colspan="2">
+		<span class="required">*</span> Текст сообщения:<br/>
+		<textarea cols="46" rows="5" name="data[Contact][body]"><?=$this->PHA->read($data, 'Contact.body')?></textarea>
+	</td>
+</tr>
+<tr>
+	<td class="captcha" colspan="2">
+		<?=$this->element('captcha_img', array('plugin' => 'captcha', 'field'=> 'Contact.captcha', 'captcha_key' => $captchaKey, 'aErrFields' => $aErrFields))?>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+		<?=$this->element('button', array('caption' => 'Send', 'onclick' => 'document.postForm.submit();'))?>
+	</td>
+</tr>
+</table>
 </div>
+
+<input type="hidden" name="data[send]" value="1" />
 </form>
