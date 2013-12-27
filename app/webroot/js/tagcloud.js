@@ -6,32 +6,32 @@ function embedFlashCloud(tagContainerID) {
 		.replace(/(class=)(?!")(\w*)/g, 'class="$2"')
 		.replace(/(name=)(?!")(\w*)/g, 'name="$2"')
 		.replace(/(id=)(?!")(\w*)/g, 'id="$2"');
-		
+
 	mytags = encodeURIComponent(mytags).replace(/!/g, '%21')
 		.replace(/'/g, '%27').replace(/\(/g, '%28')
 		.replace(/\)/g, '%29').replace(/\*/g, '%2A');
-		
+
 	var rnumber = Math.floor(Math.random()*9999999);
 	// 0x2A62C8
 	var flashvars = {
-		tcolor: "0xFF0000",
-		tcolor2:  "0x2A62C8",
-		hicolor:"0xB12AC8",
+		tcolor: "0x470303",
+		tcolor2:  "0x470303",
+		hicolor:"0x470303",
 		tspeed: "110",
 		distr: "true",
 		mode: "tags",
 		tagcloud: mytags
 	};
-	
+
 	var params = {
 		allowScriptAccess:"always",
 		wmode: 'transparent'
 	};
-	
+
 	var attributes = {
 		id: "flash_cloud"
 	};
-	
+
 	var swfUrl = "/tagcloud.swf?r=" + rnumber;
 	var swfContainerID = "tags";
 	var width = 240;
