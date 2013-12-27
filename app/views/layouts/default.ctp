@@ -284,7 +284,7 @@
 					<a href="javascript:void(0)" onclick="var url='http://gfc.by'; window.location.href=url;"><img src="/img/gfc.png" alt="Grand Fiesta Company"/></a>
 				</div>
 
-				<div class="block">
+				<div class="block tag-cloud">
 					<?=$this->element('tag_cloud')?>
 				</div>
 

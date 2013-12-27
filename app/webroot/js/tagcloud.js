@@ -45,5 +45,7 @@ $(document).ready(function () {
 	// TODO: Detect if browser can display SWF
 	if (swfobject.hasFlashPlayerVersion("9")) {
 		embedFlashCloud('tags');
+	} else {
+		$('.tag-cloud').hide();
 	}
 });
