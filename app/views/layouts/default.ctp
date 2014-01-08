@@ -319,20 +319,19 @@
 				<p class="phone">8 029 333 33 79 V</p>
 				<p class="phone">8 029 555 55 79 M</p>
 				<address>г.Минск, ул.Кульман 15</address>
-				<address style="margin-top: 20px; font-size: 11px; font-family: minion_proregular">Разработка сайта: <a href="mailto:fyr@tut.by">fyr@tut.by</a></address>
+				<address style="font-size: 11px; font-family: minion_proregular">Разработка сайта: <a href="mailto:fyr@tut.by">fyr@tut.by</a></address>
 <?
 	if (!TEST_ENV) {
 ?>
 <!--LiveInternet counter--><script type="text/javascript"><!--
 document.write("<a href='http://www.liveinternet.ru/click' "+
-"target=_blank><img src='//counter.yadro.ru/hit?t26.6;r"+
+"target=_blank><img src='//counter.yadro.ru/hit?t44.6;r"+
 escape(document.referrer)+((typeof(screen)=="undefined")?"":
 ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
 screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 ";"+Math.random()+
-"' alt='' title='LiveInternet: показано число посетителей за"+
-" сегодня' "+
-"border='0' width='88' height='15'><\/a>")
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31'><\/a>")
 //--></script><!--/LiveInternet-->
 <?
 	}

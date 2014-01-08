@@ -128,7 +128,7 @@ class AppController extends Controller {
 
 	var $aMenu = array(
 		'news' => array('title' => 'Новости', 'href' => '/news/'),
-		'products' => array('title' => 'Каталог', 'href' => 'javascript:void(0)'),
+		'products' => array('title' => 'Каталог', 'href' => '#'),
 		'feedback' => array('title' => 'Отзывы', 'href' => '/feedback/'),
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
 		'articles' => array('title' => 'Статьи', 'href' => '/articles/'),

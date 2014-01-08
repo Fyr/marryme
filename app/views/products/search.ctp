@@ -54,7 +54,13 @@
 			<li><a href="/svadebnye-platjya-18/brands/">Свадебные платья</a></li>
 			<li><a href="/vechernie-platjya-19/brands/">Вечерние платья</a></li>
 			<li><a href="/aksessuary-20/subcategories/">Аксессуары</a></li>
+<?
+		if (SHOW_SEARCH_ACTIVE) {
+?>
 			<li><a href="/products/activeProducts/">Платья в наличии</a></li>
+<?
+		}
+?>
 		</ul>
 <?
 	}
