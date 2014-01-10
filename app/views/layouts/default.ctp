@@ -319,19 +319,20 @@
 				<p class="phone">8 029 333 33 79 V</p>
 				<p class="phone">8 029 555 55 79 M</p>
 				<address>г.Минск, ул.Кульман 15</address>
-				<address style="font-size: 11px; font-family: minion_proregular">Разработка сайта: <a href="mailto:fyr@tut.by">fyr@tut.by</a></address>
+				<address style="margin: 15px 0 10px 0; font-size: 11px; font-family: minion_proregular">Разработка сайта: <a href="mailto:fyr@tut.by">fyr@tut.by</a></address>
 <?
 	if (!TEST_ENV) {
 ?>
 <!--LiveInternet counter--><script type="text/javascript"><!--
 document.write("<a href='http://www.liveinternet.ru/click' "+
-"target=_blank><img src='//counter.yadro.ru/hit?t44.6;r"+
+"target=_blank><img src='//counter.yadro.ru/hit?t26.1;r"+
 escape(document.referrer)+((typeof(screen)=="undefined")?"":
 ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
 screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 ";"+Math.random()+
-"' alt='' title='LiveInternet' "+
-"border='0' width='31' height='31'><\/a>")
+"' alt='' title='LiveInternet: показано число посетителей за"+
+" сегодня' "+
+"border='0' width='88' height='15'><\/a>")
 //--></script><!--/LiveInternet-->
 <?
 	}
@@ -371,6 +372,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 </script>
 <noscript><div><img src="//mc.yandex.ru/watch/19619107" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<script async="async" src="https://w.uptolike.com/widgets/v1/zp.js?pid=46282"></script>
 <?
 	}
 ?>
