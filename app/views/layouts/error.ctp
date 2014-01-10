@@ -25,16 +25,12 @@
 				</div>
 
 				<div class="address">
-					<p class="phone">(044) 765 67 78</p>
-					<p class="phone">(044) 567 89 98</p>
-					<address>г.Минск, ул.Кульман 15</address>
+					<?=$this->element('address')?>
 				</div>
 
 				<div class="slider">
 					<ul>
-						<li><img src="/img/top_slide_photo.jpg" alt="" /></li>
-						<li><img src="/img/top_slide_photo_2.jpg" alt="" /></li>
-						<li><img src="/img/top_slide_photo_3.jpg" alt="" /></li>
+						<li><img src="/img/top_slide_photo.jpg" alt="" style="width: 186px" /></li>
 					</ul>
 				</div>
 			</div>
@@ -93,24 +89,7 @@
 	</div>
 </div>
 
-<div class="footer">
-	<div class="footer_in">
-			<a href="" class="logo"><img src="/img/footer_logo.jpg" alt="Marry Me" /></a>
-			<h6>Салон свадебной<br/>и вечерней<br/>моды</h6>
-			<div class="navigation">
-				<?=$this->element('bottom_links')?>
-			</div>
-
-			<div class="address">
-				<p class="phone">(044) 765 67 78</p>
-				<p class="phone">(044) 567 89 98</p>
-				<address>г.Минск, ул.Кульман 15</address>
-				<address>Copyright © 2012 MarryMe</address>
-			</div>
-	</div>
-</div>
-
-<div id="ovl"></div>
+<?=$this->element('footer')?>
 
 </body>
 </html>
