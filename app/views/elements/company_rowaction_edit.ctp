@@ -1,0 +1,1 @@
+<?=$this->element('icon_edit', array('plugin' => 'core', 'href' => '/admin/companiesEdit/'.$row['Company']['id']))?>

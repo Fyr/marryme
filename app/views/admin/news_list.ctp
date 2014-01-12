@@ -1,4 +1,4 @@
-<h1><? __('Manage news');?></h1>
+<h2><? __('Manage news');?></h2>
 <?
 
 	$aActions = array(

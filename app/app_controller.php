@@ -52,6 +52,8 @@ class SiteController extends AppController {
 		$this->set('aErrFields', $this->aErrFields);
 		$this->set('aBreadCrumbs', $this->aBreadCrumbs);
 
+		$this->Article = $this->SiteArticle;
+
 		$aArticles = $this->Article->getRandomRows(4, array('Article.object_type' => 'articles', 'published' => 1, 'featured' => 1));
 		// $aArticles = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'articles', 'published' => 1), 'order' => array('Article.featured DESC', 'Article.id desc'), 'limit' => 4));
 		$this->set('randomArticles', $aArticles);
@@ -84,6 +86,7 @@ class SiteController extends AppController {
 		$this->set('showMainCategories', !$this->isHomePage());
 
 		$aBrands = $this->Article->findAllByObjectType('brands');
+		fdebug($aBrands);
 		foreach($aBrands as $rec) {
 			$aSearch['Brands'][$rec['Category']['id']][] = $rec;
 		}

@@ -10,13 +10,15 @@ class RouterHelper extends AppHelper {
 		*/
 		$dir = $this->getDir($aArticle['Article']['object_type']);
 		$id = (isset($aArticle['Article']['page_id']) && $aArticle['Article']['page_id']) ? $aArticle['Article']['page_id'] : $aArticle['Article']['id'];
-
+		if ($aArticle['Article']['object_type'] == 'companies') {
+			return '/companies/view/'.$aArticle['Article']['id'];
+		}
 		if ($aArticle['Article']['object_type'] == 'photos') {
 			return $dir.'view/'.$id.'.html';
 		}
 		if ($aArticle['Article']['object_type'] == 'pages') {
 			return $dir.'show/'.$id.'.html';
-		} elseif ($aArticle['Article']['object_type'] == 'news' || $aArticle['Article']['object_type'] == 'articles') {
+		} elseif (in_array($aArticle['Article']['object_type'], array('news', 'articles'))) {
 			return $dir.$id.'.html';
 		} else {
 			$category = (isset($aArticle['Category']['id']) && $aArticle['Category']['title']) ? $this->PHTranslit->convert($aArticle['Category']['title'], true).'-'.$aArticle['Category']['id'] : 'empty';

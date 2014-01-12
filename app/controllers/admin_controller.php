@@ -5,7 +5,7 @@ class AdminController extends AppController {
 	var $components = array('Auth', 'articles.PCArticle', 'grid.PCGrid', 'Email', 'SiteEmail');
 	var $helpers = array('Text', 'Session', 'core.PHFcke', 'core.PHA', 'grid.PHGrid');
 
-	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'category.Category', 'comments.Comment', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'SiteComment', 'SiteProduct', 'TagcloudLink');
+	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'category.Category', 'comments.Comment', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'SiteComment', 'SiteProduct', 'TagcloudLink', 'Company', 'SiteCompany');
 	// var $helpers = array('Html'); // 'Form', 'Fck', 'Ia'
 
 	var $aMenu = array(
@@ -19,6 +19,7 @@ class AdminController extends AppController {
 		'photos' => '/admin/articlesList/Article.object_type:photos',
 		'comments' => '/admin/commentsList/',
 		'photoslider' => '/admin/photoslider/',
+		'companies' => '/admin/companiesList/',
 		'settings' => '/admin/settings/',
 		'statistics' => '/admin/statistics/',
 		'tagcloud' => '/admin/tagcloud/'
@@ -890,5 +891,53 @@ class AdminController extends AppController {
 			'order' => array('size' => 'desc')
 		);
 		$this->PCGrid->paginate('TagcloudLink');
+	}
+
+	function companiesList() {
+		$this->Article = $this->SiteCompany;
+		$this->currMenu = 'companies';
+		$this->grid['SiteCompany'] = array(
+			'fields' => array('Company.id', 'Article.title', 'Company.phones', 'Company.address', 'Company.email', 'Company.site_url'),
+			'conditions' => array('Article.object_type' => 'companies'),
+			'order' => array('id' => 'desc')
+		);
+		$this->PCGrid->paginate('SiteCompany');
+	}
+
+	function companiesEdit($id = 0) {
+		$this->Article = $this->SiteCompany;
+		$objectType = 'companies';
+		$this->currMenu = $objectType;
+		if (isset($this->data['Company']) && $this->data['Company']) {
+			$this->data['Company']['site_url'] = str_replace('http://', '', $this->data['Company']['site_url']);
+		}
+		$aArticle = $this->PCArticle->adminEdit(&$id, &$lSaved);
+		fdebug($aArticle);
+		if ($lSaved) {
+			// fdebug($this->data);
+			// $this->Company->save($this->data);
+			$this->redirect('/admin/companiesEdit/'.$id);
+		}
+
+		if ($id) {
+			// $aCompany = $this->SiteCompany->findById($company_id);
+			unset($aArticle['Media']);
+			$aArticle['Media'] = $this->Media->getMedia('Article', $aArticle['Article']['id']);
+			// $aArticle['Gallery'] = $this->Media->getMedia('Company', $aArticle['Article']['id']);
+		} else {
+			// значения по умолчанию для статьи
+			$aArticle['Article']['published'] = 1;
+		}
+		$this->set('aArticle', $aArticle);
+		// fdebug($aArticle);
+		// $this->set('objectType', $objectType);
+	}
+
+	function companiesGallery($id) {
+		$this->Article = $this->SiteCompany;
+		$aArticle = $this->SiteCompany->findById($id);
+		unset($aArticle['Media']);
+		$aArticle['Media'] = $this->Media->getMedia('Company', $aArticle['Article']['id']);
+		$this->set('aArticle', $aArticle);
 	}
 }
