@@ -6,13 +6,14 @@
  * - video
  * - audio
  * - raw file
+ * @param array $aMedia - array of media files
  * @param mixed $aAllowedTypes - string or array for allowed media types. By default all media types are allowed.
  */
 
 	// $aAllowedTypes = isset($aAllowedTypes) ? $aAllowedTypes : array('image', 'video', 'audio', 'raw_file');
 
 ?>
-<h2><? __('Manage files');?></h2>
+<h2><?=(isset($title)) ? $title : __('Manage files', true)?></h2>
 	<?=$this->element('media_input', array('plugin' => 'media'))?>
 	<?=$this->element('jslist', array('plugin' => 'core', 'item' => $this->element('media_input', array('plugin' => 'media'))))?>
 	<br />

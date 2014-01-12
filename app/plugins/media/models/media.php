@@ -200,7 +200,7 @@ class Media extends AppModel
 		$size = 0;
 		foreach($aMedia as $media) {
 			$media = $media['Media'];
-			$file = $this->PHMedia->getPath('Article', $media['id']).$media['file'].$media['ext'];
+			$file = $this->PHMedia->getPath($objectType, $media['id']).$media['file'].$media['ext'];
 			$size+= filesize($file);
 		}
 
