@@ -1,4 +1,4 @@
-				<ul>
+				<ul class="no-touch">
 				    <li<?=($isHomePage) ? ' class="current"' : ''?>><a href="/"><span><span><?=$homePage['title']?></span></span></a></li>
 <?
 	foreach($aMenu as $item => $menu) {

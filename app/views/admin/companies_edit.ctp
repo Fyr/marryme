@@ -17,6 +17,7 @@
 ?>
 <div class="errMsg"><?=$errMsg?></div>
 <form id="articleForm" name="articleForm" action="" method="post">
+<input type="hidden" name="data[Article][object_type]" value="<?=$objectType?>" />
 <input type="hidden" name="data[Company][id]" value="<?=$this->PHA->read($aArticle, 'Company.id')?>" />
 <?
 	if ($id) {

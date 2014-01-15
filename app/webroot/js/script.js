@@ -118,5 +118,21 @@ $('.fancybox').fancybox({
 		}
 	})
 
+
+    $('.touch .navigation li.expandable').live('click',function(e){
+        e.preventDefault();
+        $(this).find('.drop_m').toggle();
+    })
+
+    $('.touch .navigation li.expandable li a').live('click',function(e){
+        e.stopPropagation();
+        //$(this).find('.drop_m').toggle();
+    })
+
+    if ('ontouchstart' in document) {
+        $('.no-touch').removeClass('no-touch');
+    }
+
+
 });
 

@@ -86,7 +86,6 @@ class SiteController extends AppController {
 		$this->set('showMainCategories', !$this->isHomePage());
 
 		$aBrands = $this->Article->findAllByObjectType('brands');
-		fdebug($aBrands);
 		foreach($aBrands as $rec) {
 			$aSearch['Brands'][$rec['Category']['id']][] = $rec;
 		}
@@ -135,7 +134,7 @@ class AppController extends Controller {
 		'feedback' => array('title' => 'Отзывы', 'href' => '/feedback/'),
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
 		'articles' => array('title' => 'Статьи', 'href' => '/articles/'),
-		'services' => array('title' => 'Оптовикам', 'href' => '/pages/show/services.html'),
+		'companies' => array('title' => 'Агентства', 'href' => '/companies/'),
 		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides.html'),
 		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us.html'),
 		'contacts' => array('title' => 'Контакты', 'href' => '/contacts/')
@@ -147,7 +146,7 @@ class AppController extends Controller {
 		'products' => array('title' => 'Каталог', 'href' => '/svadebnye-platjya-18/brands/'),
 		'feedback' => array('title' => 'Отзывы', 'href' => '/feedback/'),
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
-		'services' => array('title' => 'Оптовикам', 'href' => '/pages/show/services.html'),
+		'companies' => array('title' => 'Агентства', 'href' => '/companies/'),
 		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides.html'),
 		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us.html'),
 		'contacts' => array('title' => 'Контакты', 'href' => '/contacts/')

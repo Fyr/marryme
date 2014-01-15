@@ -897,7 +897,8 @@ class AdminController extends AppController {
 		$this->Article = $this->SiteCompany;
 		$this->currMenu = 'companies';
 		$this->grid['SiteCompany'] = array(
-			'fields' => array('Company.id', 'Article.title', 'Company.phones', 'Company.address', 'Company.email', 'Company.site_url'),
+			'fields' => array('Company.id', 'Article.title', 'Company.phones', 'Company.address', 'Company.email', 'Company.site_url', 'Article.published'),
+			'captions' => array('Company.site_url' => __('Site', true)),
 			'conditions' => array('Article.object_type' => 'companies'),
 			'order' => array('id' => 'desc')
 		);
@@ -912,10 +913,7 @@ class AdminController extends AppController {
 			$this->data['Company']['site_url'] = str_replace('http://', '', $this->data['Company']['site_url']);
 		}
 		$aArticle = $this->PCArticle->adminEdit(&$id, &$lSaved);
-		fdebug($aArticle);
 		if ($lSaved) {
-			// fdebug($this->data);
-			// $this->Company->save($this->data);
 			$this->redirect('/admin/companiesEdit/'.$id);
 		}
 
@@ -929,8 +927,7 @@ class AdminController extends AppController {
 			$aArticle['Article']['published'] = 1;
 		}
 		$this->set('aArticle', $aArticle);
-		// fdebug($aArticle);
-		// $this->set('objectType', $objectType);
+		$this->set('objectType', $objectType);
 	}
 
 	function companiesGallery($id) {

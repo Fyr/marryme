@@ -367,3 +367,26 @@ msgstr "URL"
 msgid "Size"
 msgstr "Размер"
 
+msgid "Companies"
+msgstr "Компании"
+
+msgid "Site"
+msgstr "Сайт"
+
+msgid "Manage companies"
+msgstr "Компании"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "Phones"
+msgstr "Тел."
+
+msgid "Work time"
+msgstr "График работы"
+
+msgid "New company"
+msgstr "Новая компания"
+
+msgid "Edit company"
+msgstr "Редактирование компании"
