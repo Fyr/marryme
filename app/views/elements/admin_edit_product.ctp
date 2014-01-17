@@ -13,7 +13,7 @@
 </tr>
 <?//$this->element('std_input', array('plugin' => 'core', 'class' => 'autocompleteOff', 'caption' => __('Brand', true), 'field' => 'Article.brand_id', 'data' => $aArticle, 'required' => true, 'input' => 'dropdown', 'options' => $aBrandOptions))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Title', true), 'class' => 'autocompleteOff', 'required' => true, 'field' => 'Article.title', 'data' => $aArticle, 'size' => 78, 'onkeyup' => 'article_onChangeTitle()'))?>
-<?//$this->element('std_input', array('plugin' => 'core', 'caption' => __('Page ID', true), 'class' => 'autocompleteOff', 'field' => 'Article.page_id', 'data' => $aArticle, 'size' => 78, 'onchange' => 'article_onChangePageID()'))?>
+<?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Page ID', true), 'class' => 'autocompleteOff', 'field' => 'Article.page_id', 'data' => $aArticle, 'size' => 78, 'onchange' => 'article_onChangePageID()'))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Price', true), 'class' => 'autocompleteOff', /*'required' => true,*/ 'field' => 'Article.price', 'data' => $aArticle, 'size' => 5))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Price2', true), 'class' => 'autocompleteOff', /*'required' => true,*/ 'field' => 'Article.price2', 'data' => $aArticle, 'size' => 5))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Sorting', true), 'class' => 'autocompleteOff', /*'required' => true,*/ 'field' => 'Article.sorting', 'data' => $aArticle, 'size' => 5))?>
@@ -53,6 +53,3 @@ function translit(str) {
 	</td>
 </tr>
 </table>
-<!--
-</fieldset>
--->

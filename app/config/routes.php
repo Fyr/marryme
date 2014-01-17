@@ -258,7 +258,7 @@
 		'action' => 'view',
 		'category' => '[a-z0-9\-]+',
 		'object_type' => 'products',
-		'id' => '[0-9]+'
+		'id' => '[a-z0-9\-]+\.html',
 	));
 
 	Router::connect('/:category/product/', array(

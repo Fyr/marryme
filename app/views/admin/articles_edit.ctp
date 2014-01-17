@@ -223,7 +223,7 @@ function editProduct_onChangeBrand() {
 	} elseif ($objectType == 'products') {
 		echo $this->element('admin_edit_product');
 	} else {
-		echo $this->element('admin_edit', array('plugin' => 'articles', 'showPageID' => ($objectType == 'articles' || $objectType == 'news')));
+		echo $this->element('admin_edit', array('plugin' => 'articles', 'showPageID' => (in_array($objectType, array('articles', 'news', 'brands', 'collections')))));
 	}
 ?>
 </form>

@@ -943,10 +943,9 @@ class AdminController extends AppController {
 		App::import('Helper', 'Router');
 		$this->Router = new RouterHelper();
 		$this->Router->PHTranslit = new PHTranslitHelper();
-		$aArticles = $this->Article->findAllByObjectType(array('companies'));
+		$aArticles = $this->Article->findAllByObjectType(array('collections', 'brands', 'products'));
 		foreach ($aArticles as $article) {
 			$data = array('id' => $article['Article']['id'], 'page_id' => $this->Router->PHTranslit->convert($article['Article']['title'], true));
-			// fdebug($data);
 			$this->Article->save($data);
 		}
 		echo count($aArticles).' records processed';

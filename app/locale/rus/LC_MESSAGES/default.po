@@ -58,10 +58,10 @@ msgstr "Отзывы"
 msgid "Brands"
 msgstr "Брэнды"
 
-msgid "New Brand"
+msgid "New brand"
 msgstr "Новый Брэнд"
 
-msgid "Edit Brand"
+msgid "Edit brand"
 msgstr "Редактирование Брэнда"
 
 msgid "New collection"

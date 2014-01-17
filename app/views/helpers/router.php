@@ -21,6 +21,12 @@ class RouterHelper extends AppHelper {
 			$category = (isset($aArticle['Category']['id']) && $aArticle['Category']['title']) ? $this->PHTranslit->convert($aArticle['Category']['title'], true).'-'.$aArticle['Category']['id'] : 'empty';
 		}
 
+		if ($aArticle['Article']['object_type'] == 'products') {
+			$id = $aArticle['Article']['id'];
+			if (isset($aArticle['Article']['page_id']) && $aArticle['Article']['page_id']) {
+				$id.= '-'.$aArticle['Article']['page_id'];
+			}
+		}
 		return '/'.$category.$dir.$id.'.html';
 	}
 

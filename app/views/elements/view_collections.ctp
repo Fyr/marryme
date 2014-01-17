@@ -11,14 +11,15 @@
 			</ul>
 			<?=$this->element('article_view', array('plugin' => 'articles'))?>
 <?
-	if ($aAnotherCollections && false) {
+/*
+	if ($aAnotherCollections) {
 ?>
 			<ul class="description">
 				<li>
 					<strong>Другие коллекции этого брэнда:</strong><br />
 <?
 		foreach($aAnotherCollections as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x', $featured);
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '151x', $featured);
 ?>
 					<a href="<?=$url?>"><?=$title?></a><br />
 <?
@@ -28,6 +29,7 @@
 			</ul>
 <?
 	}
+	*/
 ?>
 </div>
 <div class="block">
@@ -38,7 +40,7 @@
 					<div class="new_items">
 <?
 		foreach($aProducts as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x', $featured);
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '151x', $featured);
 			$id = $article['Article']['id'];
 			$media = $article['Media'][0];
 			$src_orig = $this->PHMedia->getUrl($media['object_type'], $media['id'], null, $media['file'].$media['ext']);
@@ -68,7 +70,7 @@
 			<?=$this->element('title', array('title' => 'Другие коллекции '.$aBrand['Article']['title']))?>
 <?
 		foreach($aAnotherCollections as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x', $featured);
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '151x', $featured);
 ?>
 					<h4><a href="<?=$url?>"><?=$title?></a></h4><br />
 <?

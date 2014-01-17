@@ -117,7 +117,8 @@ class ProductsController extends SiteController {
 
 
 	function view() {
-		$aArticle = $this->SiteArticle->findById($this->params['id']);
+		list($id) = explode('-', $this->params['id']);
+		$aArticle = $this->SiteArticle->findById($id);
 		if (!$aArticle) {
 			$this->redirect('/pages/nonExist');
 		}
@@ -125,27 +126,6 @@ class ProductsController extends SiteController {
 		$articleID = $aArticle['Article']['id'];
 		$this->SiteComment->listForm($articleID);
 
-		/*
-		$captchaKey = md5(_SALT.mt_rand());
-		if (isset($this->data['send']) && isset($this->data['Contact'])
-				&& $this->Contact->saveAll($this->data['Contact'], array('validate' => 'only'))) {
-			$this->data['Comment'] = $this->data['Contact'];
-			$this->PCComment->post('Comment', $articleID, 1);
-			return $this->redirect('http://'.DOMAIN_NAME.'/feedback/success?comment=1#send');
-		} else {
-			$this->aErrFields['Contact'] = $this->Contact->invalidFields();
-		}
-		$this->set('data', $this->data);
-		$this->set('captchaKey', $captchaKey);
-		$this->grid['Comment'] = array(
-			'conditions' => array('object_type' => 'Comment', 'published' => 1),
-			'order' => array('Comment.created' => 'desc'),
-			'limit' => 1000
-		);
-
-		$aComments = $this->PCGrid->paginate('Comment');
-		$this->set('aComments', $aComments);
-*/
 		unset($aArticle['Media']);
 		$aArticle['Media'] = $this->Media->getMedia('Article', $aArticle['Article']['id']);
 
