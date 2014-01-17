@@ -1,11 +1,13 @@
 <?
 	$this->PHCore->css(array('jquery.fancybox'));
 	$this->PHCore->js(array('jquery.fancybox'));
-	$company = $aArticle['Company']
+	$company = $aArticle['Company'];
+	$this->ArticleVars->init($aArticle, $url, $title, $teaser, $src, '200x');
 ?>
 <div class="block">
-	<?=$this->element('title', array('title' => $aArticle['Article']['title']))?>
+	<?=$this->element('title', array('title' => $title))?>
 	<ul class="description">
+		<img src="<?=$src?>" alt="<?=$title?>" style="float: right; margin: 0 0 10px 10px" />
 <?
 	if ($company['address']) {
 ?>
@@ -35,14 +37,16 @@
 ?>
 	</ul>
 	<?=$this->element('article_view', array('plugin' => 'articles'))?>
+	<div class="clear"></div>
 </div>
+
 <?
-	if ($aArticle['Media']) {
+	if ($aArticle['Gallery']) {
 ?>
 <div class="block">
 					<div class="new_items">
 <?
-		foreach($aArticle['Media'] as $media) {
+		foreach($aArticle['Gallery'] as $media) {
 			$src = $this->PHMedia->getUrl($media['object_type'], $media['id'], '113x', $media['file'].$media['ext']);
 			$src_orig = $this->PHMedia->getUrl($media['object_type'], $media['id'], null, $media['file'].$media['ext']);
 ?>

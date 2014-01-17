@@ -267,4 +267,20 @@
 		'object_type' => 'products',
 		'action' => 'index'
 	));
+
+	/* -= companies =- */
+	Router::connect('/prazdnichnie-agentstva/page/:page', array(
+		'controller' => 'companies',
+		'action' => 'index',
+		'page' => '[0-9]+'
+	));
+	Router::connect('/prazdnichnie-agentstva/:id', array(
+		'controller' => 'companies',
+		'action' => 'view',
+		'id' => '[a-z0-9\-]+\.html',
+	));
+	Router::connect('/prazdnichnie-agentstva/', array(
+		'controller' => 'companies',
+		'action' => 'index',
+	));
 ?>

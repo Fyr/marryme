@@ -1,9 +1,20 @@
-				<div class="block">
+<style type="text/css">
+.list .item .image img {
+	width: auto;
+}
+/*
+.description-left {
+	float: left;
+    margin: 0 15px 0 0;
+    width: 273px;
+}
+*/
+</style>
 					<?=$this->element('title', array('title' => __('Companies', true)))?>
 					<div class="list">
 <?
 		foreach($aArticles as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '173x');
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '200x');
 			$company = $article['Company'];
 ?>
 						<div class="item">
@@ -43,6 +54,9 @@
 ?>
 	</ul>
 
+							</div>
+							<div class="clear"></div>
+							<div class="description">
 								<p><?=$teaser?></p>
 								<p class="more"><a href="<?=$url?>">подробнее</a></p>
 							</div>
@@ -52,4 +66,6 @@
 ?>
 <?=$this->element('pagination2')?>
 					</div>
+				<div class="block" style="margin-top: 20px;">
+					<?=$this->element('article_view', array('plugin' => 'articles', 'aArticle' => $content))?>
 				</div>

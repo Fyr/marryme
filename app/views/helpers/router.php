@@ -3,29 +3,25 @@ class RouterHelper extends AppHelper {
 	var $helpers = array('articles.PHTranslit');
 
 	function url($aArticle) {
-		/*
-		if ($aArticle['Article']['object_type'] == 'pages') {
-			return '/pages/show/'.$aArticle['Article']['page_id'];
-		}
-		*/
 		$dir = $this->getDir($aArticle['Article']['object_type']);
 		$id = (isset($aArticle['Article']['page_id']) && $aArticle['Article']['page_id']) ? $aArticle['Article']['page_id'] : $aArticle['Article']['id'];
+		/*
 		if ($aArticle['Article']['object_type'] == 'companies') {
-			return '/companies/view/'.$aArticle['Article']['id'];
+			return '/prazdnichnie-agentstva/'.$id;
 		}
+		*/
 		if ($aArticle['Article']['object_type'] == 'photos') {
 			return $dir.'view/'.$id.'.html';
 		}
 		if ($aArticle['Article']['object_type'] == 'pages') {
 			return $dir.'show/'.$id.'.html';
-		} elseif (in_array($aArticle['Article']['object_type'], array('news', 'articles'))) {
+		} elseif (in_array($aArticle['Article']['object_type'], array('news', 'articles', 'companies'))) {
 			return $dir.$id.'.html';
 		} else {
 			$category = (isset($aArticle['Category']['id']) && $aArticle['Category']['title']) ? $this->PHTranslit->convert($aArticle['Category']['title'], true).'-'.$aArticle['Category']['id'] : 'empty';
 		}
 
 		return '/'.$category.$dir.$id.'.html';
-		// return $dir.'view/'.$id;
 	}
 
 	function catUrl($objectType, $aCategory = null) {
@@ -39,7 +35,8 @@ class RouterHelper extends AppHelper {
 		$aDir = array(
 			'photos' => 'photo',
 			'videos' => 'video',
-			'products' => 'product'
+			'products' => 'product',
+			'companies' => 'prazdnichnie-agentstva'
 		);
 		$dir = (isset($aDir[$objectType])) ? $aDir[$objectType] : $objectType;
 		return '/'.$dir.'/';

@@ -15,9 +15,8 @@ class PHTranslitHelper extends AppHelper {
 		));
 		
 		if ($lUrlMode) {
-			$st = strtolower(strtr($st, array(
-				"'" => "", '"' => '', ' ' => '-'
-			)));
+			$st = strtolower(str_replace(array("'", '"', ':', '!', '?', '(', ')', ',', '.'), '', $st));
+			$st = str_replace(' ', '-', $st);
 		}
 		
 		return $st;

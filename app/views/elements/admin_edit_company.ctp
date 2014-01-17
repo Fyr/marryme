@@ -9,7 +9,7 @@
 	</td>
 </tr>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Title', true), 'class' => 'autocompleteOff', 'required' => true, 'field' => 'Article.title', 'data' => $aArticle, 'size' => 78, 'onkeyup' => 'article_onChangeTitle()'))?>
-<?//$this->element('std_input', array('plugin' => 'core', 'caption' => __('Page ID', true), 'class' => 'autocompleteOff', 'field' => 'Article.page_id', 'data' => $aArticle, 'size' => 78, 'onchange' => 'article_onChangePageID()'))?>
+<?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Page ID', true), 'class' => 'autocompleteOff', 'field' => 'Article.page_id', 'data' => $aArticle, 'size' => 78, 'onchange' => 'article_onChangePageID()'))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Site', true), 'class' => 'autocompleteOff', /*'required' => true,*/ 'field' => 'Company.site_url', 'data' => $aArticle, 'size' => 78))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Email', true), 'class' => 'autocompleteOff', /*'required' => true,*/ 'field' => 'Company.email', 'data' => $aArticle, 'size' => 78))?>
 <tr>
@@ -66,7 +66,3 @@ function translit(str) {
 	return ru2en.tr_url(str);
 }
 </script>
-
-<!--
-</fieldset>
--->

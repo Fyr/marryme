@@ -1,6 +1,6 @@
 <?
 class CompaniesController extends SiteController {
-	const PER_PAGE = 1;
+	const PER_PAGE = 2;
 
 	var $components = array('articles.PCArticle', 'grid.PCGrid', 'comments.PCComment', 'SiteComment');
 	var $helpers = array('core.PHA', 'core.PHCore', 'Time', 'core.PHTime', 'articles.HtmlArticle', 'ArticleVars');
@@ -28,7 +28,7 @@ class CompaniesController extends SiteController {
 		$this->Article = $this->SiteCompany; // что работало все, что написано для Article в самом плагине
 		$this->grid['SiteCompany'] = array(
 			'conditions' => array('Article.object_type' => $this->objectType, 'Article.published' => 1),
-			'fields' => array('Article.object_type', 'Article.title', 'Article.teaser', 'Article.featured', 'Company.id', 'Company.phones', 'Company.address', 'Company.work_time', 'Company.email', 'Company.site_url'),
+			'fields' => array('Article.object_type', 'Article.page_id', 'Article.title', 'Article.teaser', 'Article.featured', 'Company.id', 'Company.phones', 'Company.address', 'Company.work_time', 'Company.email', 'Company.site_url'),
 			'order' => array('Article.featured' => 'desc', 'Article.created' => 'asc'),
 			'limit' => self::PER_PAGE
 		);
@@ -38,30 +38,32 @@ class CompaniesController extends SiteController {
 		$this->aBreadCrumbs = array('/' => 'Главная', __('Companies', true));
 		$this->pageTitle = __('Companies', true);
 
-		/*
-		$content = $this->SiteArticle->findByPageId('akksessuary');
+		$content = $this->Article->findByPageId('prazdnichnye-agentstva');
 		$content['Seo'] = $this->Seo->defaultSeo($content['Seo'],
 			$content['Article']['title'],
-			'акксессуары, свадебные акксессуары',
-			'купить свадебные акксессуары в магазине '.DOMAIN_TITLE.' недорого'
+			'праздничные агентства',
+			'праздничные агентства на '.DOMAIN_TITLE
 		);
 		$this->data['SEO'] = $content['Seo'];
+		if (isset($this->params['page']) && intval($this->params['page']) > 1) {
+			// show relev.text only for 1st page
+			$content = false;
+		}
 		$this->set('content', $content);
-		*/
 	}
 
-	function view($id) {
+	function view() {
 		$this->Article = $this->SiteCompany; // что работало все, что написано для Article в самом плагине
-		$aArticle = $this->SiteCompany->findById($id);
+		$aArticle = $this->PCArticle->view(str_replace('.html', '', $this->params['id']));
 		if (!$aArticle) {
 			$this->redirect('/pages/nonExist');
 		}
 
 		$articleID = $aArticle['Article']['id'];
+
 		$this->SiteComment->listForm($articleID);
 
-		unset($aArticle['Media']);
-		$aArticle['Media'] = $this->Media->getMedia('Company', $aArticle['Article']['id']);
+		$aArticle['Gallery'] = $this->Media->getMedia('Company', $aArticle['Article']['id']);
 
 		$this->set('aArticle', $aArticle);
 

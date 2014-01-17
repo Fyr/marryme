@@ -503,14 +503,6 @@ class AdminController extends AppController {
 		$this->set('data2', $data2);
 	}
 
-	function update() {
-		$aArticles = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'products')));
-		foreach($aArticles as $article) {
-			$this->Media->recalcStats('Article', $article['Article']['id']);
-		}
-		exit;
-	}
-
 	function statistics() {
 		$data = array();
 		$errors = array();
@@ -936,5 +928,28 @@ class AdminController extends AppController {
 		unset($aArticle['Media']);
 		$aArticle['Media'] = $this->Media->getMedia('Company', $aArticle['Article']['id']);
 		$this->set('aArticle', $aArticle);
+	}
+
+	function update() {
+		$aArticles = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'products')));
+		foreach($aArticles as $article) {
+			$this->Media->recalcStats('Article', $article['Article']['id']);
+		}
+		exit;
+	}
+
+	function update2() {
+		App::import('Helper', 'articles.PHTranslit');
+		App::import('Helper', 'Router');
+		$this->Router = new RouterHelper();
+		$this->Router->PHTranslit = new PHTranslitHelper();
+		$aArticles = $this->Article->findAllByObjectType(array('companies'));
+		foreach ($aArticles as $article) {
+			$data = array('id' => $article['Article']['id'], 'page_id' => $this->Router->PHTranslit->convert($article['Article']['title'], true));
+			// fdebug($data);
+			$this->Article->save($data);
+		}
+		echo count($aArticles).' records processed';
+		exit;
 	}
 }
