@@ -6,7 +6,7 @@
 	<title><?=$pageTitle?></title>
 	<?=$this->element('seo_info', array('plugin' => 'seo', 'data' => $this->PHA->read($this->data, 'SEO')))?>
 <?=$this->Html->css(array('style', 'extra', 'edits'))?>
-<?=$this->Html->script(array('jquery', 'jquery.bxSlider.min', 'script', '/core/js/jquery.preload-images', 'preload', '/ddaccordion/js/ddaccordion', 'ddn', 'swfobject', 'tagcloud'))?>
+<?=$this->Html->script(array('modernizr-2.6.2.min', 'jquery', 'jquery.bxSlider.min', 'script', '/core/js/jquery.preload-images', 'preload', '/ddaccordion/js/ddaccordion', 'ddn', 'swfobject', 'tagcloud'))?>
 <?=$scripts_for_layout?>
 </head>
 <body>
