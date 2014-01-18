@@ -124,6 +124,12 @@ class ProductsController extends SiteController {
 		}
 
 		$articleID = $aArticle['Article']['id'];
+		$_id = str_replace('.html', '', $this->params['id']);
+		if (is_numeric($_id) && $aArticle['Article']['page_id']) { // redirect from old URLs
+			$url = $this->Router->url($aArticle);
+			return $this->redirect($url);
+		}
+
 		$this->SiteComment->listForm($articleID);
 
 		unset($aArticle['Media']);

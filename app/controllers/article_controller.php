@@ -128,12 +128,18 @@ class ArticleController extends SiteController {
 
 	function view() {
 
-		$aArticle = $this->PCArticle->view(str_replace('.html', '', $this->params['id']));
+		$aArticle = $this->PCArticle->view($this->params['id']);
 		if (!$aArticle) {
 			$this->redirect('/pages/nonExist');
 		}
 
 		$articleID = $aArticle['Article']['id'];
+
+		$_id = str_replace('.html', '', $this->params['id']);
+		if (is_numeric($_id) && $aArticle['Article']['page_id']) { // redirect from old URLs
+			$url = $this->Router->url($aArticle);
+			return $this->redirect($url);
+		}
 
 		$this->SiteComment->listForm($articleID);
 
