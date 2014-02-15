@@ -10,7 +10,7 @@ class ContactsController extends SiteController {
 
 		if (isset($this->data['send']) && $this->Contact->saveAll($this->data['Contact'], array('validate' => 'only'))) {
 			    $this->SiteEmail->to = EMAIL_ADMIN;
-			    $this->SiteEmail->subject = 'A message from '.DOMAIN_NAME;
+			    $this->SiteEmail->subject = 'Сообщение сайта '.DOMAIN_NAME;
 			    $this->SiteEmail->replyTo = $this->data['Contact']['email'];
 			    $this->SiteEmail->from = $this->data['Contact']['email'];
 			    $this->SiteEmail->template = 'contact_us';

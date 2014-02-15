@@ -12,7 +12,6 @@
 
 			<div class="address">
 				<?=$this->element('address')?>
-				<address style="margin: 15px 0 10px 0; font-size: 11px; font-family: minion_proregular">Разработка сайта: <a href="mailto:fyr@tut.by">fyr@tut.by</a></address>
 <?
 	if (!TEST_ENV) {
 ?>

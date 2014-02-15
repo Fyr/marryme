@@ -3,11 +3,10 @@ class ArticleController extends SiteController {
 	const PER_PAGE = 10;
 
 	var $name = 'Article';
-	var $components = array('articles.PCArticle', 'grid.PCGrid', 'captcha.PCCaptcha', 'comments.PCComment', 'SiteComment');
+	var $components = array('articles.PCArticle', 'grid.PCGrid', 'captcha.PCCaptcha', 'comments.PCComment', 'SiteComment', 'Email', 'SiteEmail');
 	var $helpers = array('core.PHA', 'Time', 'core.PHTime', 'articles.HtmlArticle');
 	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'seo.Seo', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'category.Category', 'comments.Comment', 'Contact');
 
-	var $Router;
 	var $objectType = 'articles';
 	var $aCatTitle = array(
 			'articles' => 'Статьи',
@@ -25,13 +24,6 @@ class ArticleController extends SiteController {
 
 		// Configure::write('Config.language', 'rus');
 		$this->Article = $this->SiteArticle; // что работало все, что написано для Article в самом плагине
-
-		App::import('Helper', 'articles.PHTranslit');
-		App::import('Helper', 'Router');
-		$this->Router = new RouterHelper();
-		// $this->Router->checkPageParams();
-
-		$this->Router->PHTranslit = new PHTranslitHelper();
 	}
 
 	private function getCategoryID($category) {

@@ -10,7 +10,7 @@
 }
 */
 </style>
-					<?=$this->element('title', array('title' => __('Companies', true)))?>
+					<?=$this->element('title', array('title' => 'Праздничные агентства'))?>
 					<div class="list">
 <?
 		foreach($aArticles as $article) {

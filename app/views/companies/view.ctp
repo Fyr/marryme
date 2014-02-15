@@ -36,10 +36,11 @@
 	}
 ?>
 	</ul>
-	<?=$this->element('article_view', array('plugin' => 'articles'))?>
 	<div class="clear"></div>
 </div>
-
+<div class="block">
+	<?=$this->element('article_view', array('plugin' => 'articles'))?>
+</div>
 <?
 	if ($aArticle['Gallery']) {
 ?>

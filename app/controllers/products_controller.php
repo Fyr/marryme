@@ -2,7 +2,7 @@
 class ProductsController extends SiteController {
 	const PER_PAGE = 10000;
 
-	var $components = array('articles.PCArticle', 'grid.PCGrid', 'comments.PCComment', 'SiteComment');
+	var $components = array('articles.PCArticle', 'grid.PCGrid', 'comments.PCComment', 'SiteComment', 'Email', 'SiteEmail');
 	var $helpers = array('core.PHA', 'core.PHCore', 'Time', 'core.PHTime', 'articles.HtmlArticle', 'ArticleVars');
 	var $uses = array('category.Category', 'articles.Article', 'media.Media', 'seo.Seo', 'SiteArticle', 'comments.Comment', 'Contact');
 
@@ -14,12 +14,6 @@ class ProductsController extends SiteController {
 
 		// Configure::write('Config.language', 'rus');
 		$this->Article = $this->SiteArticle; // что работало все, что написано для Article в самом плагине
-
-		App::import('Helper', 'articles.PHTranslit');
-		App::import('Helper', 'Router');
-		$this->Router = new RouterHelper();
-
-		$this->Router->PHTranslit = new PHTranslitHelper();
 		$this->categoryID = (isset($this->params['category']) && $this->params['category']) ? $this->getCategoryID($this->params['category']) : '';
 	}
 

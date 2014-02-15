@@ -15,6 +15,23 @@ class SiteCommentComponent extends Object {
 					&& $this->_->Contact->saveAll($this->_->data['Contact'], array('validate' => 'only'))) {
 				$this->_->data['Comment'] = $this->_->data['Contact'];
 				$this->_->PCComment->post('Comment', $articleID, 1);
+
+				$this->_->SiteEmail->to = EMAIL_ADMIN;
+			    $this->_->SiteEmail->subject = 'Добавлен комментарий на '.DOMAIN_NAME;
+			    $this->_->SiteEmail->replyTo = $this->_->data['Contact']['email'];
+			    $this->_->SiteEmail->from = $this->_->data['Contact']['email'];
+			    $this->_->SiteEmail->template = 'comment';
+			    $this->_->SiteEmail->sendAs = 'html';
+
+			    $this->_->data['Contact']['body'] = nl2br(str_replace(array('<', '>'), array('&lt;', '&gt;'), $this->_->data['Contact']['body']));
+
+			    $aArticle = $this->_->Article->findById($articleID);
+
+			    $this->_->data['Contact']['url'] = $this->_->Router->url($aArticle);
+			    $this->_->data['Contact']['url_title'] = $aArticle['Article']['title'];
+			    $this->_->set('data', $this->_->data);
+
+			    $this->_->SiteEmail->send();
 				return $this->_->redirect('/feedback/success?comment=1#send');
 			} else {
 				$this->_->aErrFields['Contact'] = $this->_->Contact->invalidFields();

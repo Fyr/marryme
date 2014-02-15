@@ -2,16 +2,18 @@
 class SiteController extends AppController {
 	// var $uses = array('articles.Article', 'SiteArticle');
 	var $uses = array('category.Category');
-
+	var $Router;
 	// ---------------------
 	// Custom variables
 	// ---------------------
 
 
 	function beforeFilter() {
-		//Configure::write('Config.language', 'rus');
-		//Security::setHash("md5");
-		//$this->Auth->allow();
+		App::import('Helper', 'articles.PHTranslit');
+		App::import('Helper', 'Router');
+		$this->Router = new RouterHelper();
+
+		$this->Router->PHTranslit = new PHTranslitHelper();
 		$this->beforeFilterMenu();
 		$this->beforeFilterLayout();
 	}
