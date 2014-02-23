@@ -27,6 +27,7 @@
 ?>
 <?=$this->element('pagination', array('filterURL' => $aFilters['url']))?>
 					</div>
+					<?=$this->element('banner2')?>
 					<div>
 						<?=$this->element('article_view', array('plugin' => 'articles', 'aArticle' => $content))?>
 					</div>

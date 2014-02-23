@@ -32,6 +32,7 @@
 	*/
 ?>
 </div>
+<?=$this->element('banner2')?>
 <div class="block">
 			<?=$this->element('title', array('title' => 'Модели коллекции '.$aArticle['Article']['title']))?>
 			<!--div align="center" style="margin-bottom: 20px">

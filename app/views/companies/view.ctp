@@ -41,6 +41,7 @@
 <div class="block">
 	<?=$this->element('article_view', array('plugin' => 'articles'))?>
 </div>
+<?=$this->element('banner2')?>
 <?
 	if ($aArticle['Gallery']) {
 ?>

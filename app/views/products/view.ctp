@@ -75,6 +75,7 @@
 					</div>
 
 				</div>
+				<?=$this->element('banner2')?>
 				<p>
 					<b>Смотрите также:</b>
 				</p>

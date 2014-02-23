@@ -15,6 +15,7 @@
 						</div>
 <?
 	}
+	echo $this->element('banner2');
 	if (isset($content)) {
 ?>
 				<div>

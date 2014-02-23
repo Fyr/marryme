@@ -21,3 +21,4 @@
 ?>
 					</div>
 				</div>
+<?=$this->element('banner2')?>

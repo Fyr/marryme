@@ -68,7 +68,7 @@
 <?=$this->element('pagination2', array('filterURL' => $aFilters['url']))?>
 	</div>
 </div>
-
+<?=$this->element('banner2')?>
 
 <script type="text/javascript">
 $(document).ready(function(){

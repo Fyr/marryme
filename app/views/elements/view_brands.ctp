@@ -10,6 +10,7 @@
 			<?=$this->element('article_view', array('plugin' => 'articles'))?>
 		</div>
 	</div>
+	<?=$this->element('banner2')?>
 	<?=$this->element('title', array('title' => 'Коллекции '.$aArticle['Article']['title']))?>
 	<div class="list_items">
 <?

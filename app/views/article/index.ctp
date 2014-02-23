@@ -33,3 +33,8 @@
 <?=$this->element('pagination', array('objectType' => $objectType))?>
 					</div>
 				</div>
+<?
+	if ($objectType != 'brands') {
+		echo $this->element('banner2');
+	}
+?>

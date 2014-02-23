@@ -66,6 +66,7 @@
 ?>
 <?=$this->element('pagination2')?>
 					</div>
-				<div class="block" style="margin-top: 20px;">
-					<?=$this->element('article_view', array('plugin' => 'articles', 'aArticle' => $content))?>
-				</div>
+					<?=$this->element('banner2')?>
+					<div class="block" style="margin-top: 10px;">
+						<?=$this->element('article_view', array('plugin' => 'articles', 'aArticle' => $content))?>
+					</div>
