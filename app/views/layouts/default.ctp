@@ -288,12 +288,7 @@
 	if (!TEST_ENV) {
 ?>
 				<div class="block">
-<script type="text/javascript" src="//vk.com/js/api/openapi.js?105"></script>
-<!-- VK Widget -->
-<div id="vk_groups"></div>
-<script type="text/javascript">
-VK.Widgets.Group("vk_groups", {mode: 0, width: "242", height: "400", color1: 'fff', color2: 'a08383', color3: 'a08383'}, 47611192);
-</script>					
+<iframe width="240" scrolling="no" height="390" frameborder="0" style="border:0px none;" noresize="" marginheight="0" marginwidth="0" src="http://inpro.by/1/Social_tabs_240x400.html" name="social_frame"></iframe>
 				</div>
 <?
 	}
