@@ -43,9 +43,7 @@
 					</ul>
 				</div>
 			</div>
-<?
-	if ($this->params['controller'] == 'pages' && $this->params['action'] == 'home') {
-?>
+
 			<div class="categories_selection">
 
 					<div class="item">
@@ -65,13 +63,7 @@
 					</div>
 				</div>
 		</div>
-<?
-	} else {
-?>
-	<div class="categories_selection" style="background: none; height: 46px;"></div>
-<?
-	}
-?>
+	    
 	<div class="article">
 		<ul>
 <?
