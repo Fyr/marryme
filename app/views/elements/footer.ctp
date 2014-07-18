@@ -5,7 +5,7 @@
 			<div class="navigation">
 				<?=$this->element('bottom_links')?>
 				<!--noindex-->
-				<a href="https://plus.google.com/u/0/101878855187512164541?rel=author" rel="me" target="_blank"><img title="Присоединиться в Google+" src="http://dreams.by/google-plus-icon-32-2.png" alt="Присоединиться в Google+" width="20" height="20" border="0"></a>
+				<a href="https://plus.google.com/u/0/101878855187512164541?rel=author" rel="me" target="_blank"><img title="Присоединиться в Google+" src="/img/icons/google-plus.png" alt="Присоединиться в Google+" width="20" height="20" border="0"></a>
 				<a href="http://vk.com/club47611192" target="_blank"><img src="/img/icons/vk.png" alt="Присоединиться ВКонтакте"/></a>
 				<!--/noindex-->
 			</div>
