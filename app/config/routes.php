@@ -28,9 +28,11 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/pages/', array('controller' => 'pages', 'action' => 'home'));
-/**
- * ...and connect the rest of 'Pages' controller's urls.
- */
+
+	Router::connect('/sitemap.xml', array(
+		'controller' => 'sitemap',
+		'action' => 'xml'
+	));
 
 /*
 	Router::connect('/article/:category/page/:page', array(

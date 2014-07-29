@@ -282,6 +282,16 @@
 				<div class="block">
 <iframe width="240" scrolling="no" height="390" frameborder="0" style="border:0px none;" noresize="" marginheight="0" marginwidth="0" src="http://inpro.by/1/Social_tabs_240x400.html" name="social_frame"></iframe>
 				</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53239655-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 <?
 	}
 ?>

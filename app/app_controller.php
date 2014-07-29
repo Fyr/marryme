@@ -214,7 +214,11 @@ class AppController extends Controller {
 		$this->set('aBrandCollections', $aBrandCollections);
 		$this->set('aCollectionOptions', $aCollectionOptions);
 
-		$aCollections = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'collections', 'Article.category_id' => $categoryID), 'order' => 'Article.brand_id'));
+		$conditions = array('Article.object_type' => 'collections');
+		if ($categoryID) {
+			$conditions['Article.category_id'] = $categoryID;
+		}
+		$aCollections = $this->Article->find('all', array('conditions' => $conditions, 'order' => 'Article.brand_id'));
 		$aCatCollections = array();
 		foreach($aCollections as $item) {
 			$aCatCollections[$item['Article']['id']] = $item;
