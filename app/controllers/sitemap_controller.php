@@ -9,7 +9,7 @@ class SitemapController extends SiteController {
 		$this->layout = 'empty';
 		$aArticles = $this->SiteProduct->find('all', array(
 			'fields' => array('Category.id', 'Category.title', 'Category.object_id', 'Article.id', 'Article.object_type', 'Article.object_id', 'Article.title', 'Article.page_id'),
-			'conditions' => array('Article.object_type' => array('articles', 'news', 'companies'), 'Article.published' => 1),
+			'conditions' => array('Article.object_type' => array('brands', 'articles', 'news', 'companies'), 'Article.published' => 1),
 			'order' => array('Article.object_type', 'Article.modified')
 		));
 		$this->set('aArticles', $aArticles);
