@@ -1,8 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta http-equiv="Content-Language" content="ru"/>
 	<title><?=$pageTitle?></title>
 	<?=$this->element('seo_info', array('plugin' => 'seo', 'data' => $this->PHA->read($this->data, 'SEO')))?>
 <?=$this->Html->css(array('style', 'extra', 'edits'))?>
@@ -280,9 +279,9 @@
 	if (!TEST_ENV) {
 ?>
 				<div class="block">
-<iframe width="240" scrolling="no" height="390" frameborder="0" style="border:0px none;" noresize="" marginheight="0" marginwidth="0" src="http://inpro.by/1/Social_tabs_240x400.html" name="social_frame"></iframe>
+<object data="http://inpro.by/1/Social_tabs_240x400.html" name="social_frame"></object>
 				</div>
-<script>
+<script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

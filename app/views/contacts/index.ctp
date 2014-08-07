@@ -1,8 +1,3 @@
-<style type="text/css">
-.mapContainer img {
-	cursor: pointer;
-}
-</style>
 <?=$this->element('title', array('title' => $aArticle['Article']['title']))?>
 <div class="block mapContainer">
 	<?=$this->element('article_view', array('plugin' => 'articles'))?>
@@ -10,7 +5,7 @@
 	<div style="clear: both;"></div>
 </div>
 <?=$this->element('title', array('title' => 'Отправить сообщение'))?>
-<form id="postForm" name="postForm" action="" method="post">
+<form id="postForm" name="postForm" method="post">
 <p>Поля с пометкой <span class="required">*</span> обязательны для заполнения.</p>
 <div class="box">
 <div class="error">
@@ -23,7 +18,7 @@
 ?>
 <br />
 </div>
-<table class="pad5" border="0" cellpadding="0" cellspacing="0">
+<table class="pad5">
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Your name', true), 'required' => true, 'field' => 'Contact.username', 'data' => $this->data))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Your e-mail for reply', true), 'required' => true, 'field' => 'Contact.email', 'data' => $this->data))?>
 <tr>

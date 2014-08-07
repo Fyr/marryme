@@ -1,7 +1,7 @@
-<div id="tags" style="width: <?=TAG_CLOUD_W?>px; height: <?=TAG_CLOUD_H?>px">
+<div id="tags-not-shown" style="width: <?=TAG_CLOUD_W?>px; height: <?=TAG_CLOUD_H?>px; position: absolute;">
 <?
 	foreach($aTags as $item) {
-		$title = $item['TagcloudLink']['title'];
+		$title = str_replace('&', '&amp;', $item['TagcloudLink']['title']);
 		$url = $item['TagcloudLink']['url'];
 		$fontSize = $item['TagcloudLink']['size'];
 ?>
@@ -10,3 +10,8 @@
 	}
 ?>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#tags-not-shown').css('left', '-9999px');
+});
+</script>

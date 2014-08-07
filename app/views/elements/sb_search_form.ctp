@@ -12,9 +12,9 @@
 					<?=$this->element('title', array('title' => 'Поиск по каталогу'))?>
 					<div class="item">
 						<form class="search" action="/products/search/" method="get">
-						<table class="pad5" border="0" cellpadding="0" cellspacing="0">
+						<table class="pad5">
 						<tr>
-							<td width="50">Название модели</td>
+							<td class="w50">Название модели</td>
 							<td>
 								<input class="input" type="text" name="data[filter][title]" value="<?=$title?>" />
 							</td>
@@ -77,7 +77,7 @@
 	}
 ?>
 						<tr>
-							<td colspan="2" align="center">
+							<td colspan="2" class="search_button">
 								<input type="submit" name="go" value="Искать" />
 							</td>
 						</tr>
