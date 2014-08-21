@@ -49,6 +49,10 @@ class RouterHelper extends AppHelper {
 	}
 
 	function transformPageParams($objectType, $url, $filterURL = '') {
+		if ($objectType == 'brands') {
+			$url = str_replace('/article/view_brand/page:', '/'.$this->params['url']['url'].'?page=', $url);
+			return str_replace('?page=1', '', $url);
+		}
 		$category = (isset($this->params['category']) && $this->params['category']) ? '/'.$this->params['category'] : '';
 		$url = str_replace(array('/article/', '/products/'), $category.$this->getDir($objectType), $url);
 		return str_replace('page/1', '', str_replace('index/', '', str_replace('page:', 'page/', $url)));

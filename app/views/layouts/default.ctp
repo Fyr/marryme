@@ -315,5 +315,6 @@
 </div>
 
 <?=$this->element('footer')?>
+<?//$this->element('sql_dump')?>
 </body>
 </html>

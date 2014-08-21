@@ -5,7 +5,7 @@ class ArticleController extends SiteController {
 	var $name = 'Article';
 	var $components = array('articles.PCArticle', 'grid.PCGrid', 'captcha.PCCaptcha', 'comments.PCComment', 'SiteComment', 'Email', 'SiteEmail');
 	var $helpers = array('core.PHA', 'Time', 'core.PHTime', 'articles.HtmlArticle');
-	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'seo.Seo', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'category.Category', 'comments.Comment', 'Contact');
+	var $uses = array('articles.Article', 'media.Media', 'stats.Stat', 'seo.Seo', 'tags.Tag', 'tags.TagObject', 'SiteArticle', 'BrandProduct', 'category.Category', 'comments.Comment', 'Contact');
 
 	var $objectType = 'articles';
 	var $aCatTitle = array(
@@ -220,5 +220,61 @@ class ArticleController extends SiteController {
 			$aRelatedArticles = $this->SiteArticle->getRelatedObjects($aRelatedTags, $this->objectType, $articleID);
 			$this->set('aRelatedArticles', $aRelatedArticles);
 		}
+	}
+	
+	public function view_brand() {
+		$aArticle = $this->PCArticle->view($this->params['id']);
+		if (!$aArticle) {
+			$this->redirect('/pages/nonExist');
+		}
+
+		$articleID = $aArticle['Article']['id'];
+		
+		$_id = str_replace('.html', '', $this->params['id']);
+		if (is_numeric($_id) && $aArticle['Article']['page_id']) { // redirect from old URLs
+			$url = $this->Router->url($aArticle);
+			return $this->redirect($url);
+		}
+		
+		$page_title = $aArticle['Article']['title'];
+		$this->pageTitle = (isset($aArticle['Seo']['title']) && $aArticle['Seo']['title']) ? $aArticle['Seo']['title'] : $aArticle['Article']['title'];
+		$aCategoryOptions = $this->Category->getOptions('brands');
+		$categoryTitle = ($this->categoryID) ? $aCategoryOptions[$this->categoryID] : 'Платье';
+		$categoryID = $aArticle['Article']['object_id'];
+
+		$this->aBreadCrumbs = array(
+			'/' => 'Главная',
+			$this->Router->catUrl('brands', $aArticle['Category']) => $aArticle['Category']['title'],
+			$aArticle['Article']['title']
+		);
+		$aArticle['Seo'] = $this->Seo->defaultSeo($aArticle['Seo'],
+			$categoryTitle.' коллекции '.trim($aArticle['Article']['title']),
+			$categoryTitle.', '.trim($aArticle['Article']['title']),
+			'купить платье '.trim($aArticle['Article']['title']).' в магазине '.DOMAIN_TITLE.' недорого'
+		);
+		$this->data['SEO'] = $aArticle['Seo'];
+		$this->set('page_title', $page_title);
+		$this->set('aArticle', $aArticle);
+		
+		$this->Article = $this->BrandProduct;
+		
+		$this->grid['BrandProduct'] = array(
+			'conditions' => array('Article.object_type' => 'products', 'Article.brand_id' => $articleID),
+			'fields' => array('Category.id', 'Category.title', 'Collection.id', 'Collection.title', 'Collection.body', 'title', 'featured', 'body', 'teaser', 'page_id', 'object_type', 'created', 'modified', 'Stat.visited', 'Stat.comments', 'Stat.photos'),
+			'order' => array('Collection.id' => 'asc', 'Article.created' => 'desc'),
+			'limit' => 60
+		);
+		$aProducts = $this->PCGrid->paginate('BrandProduct');
+		$aCollectionProducts = array();
+		foreach($aProducts as $product) {
+			$collection_id = $product['Collection']['id'];
+			$aCollectionProducts[$collection_id][] = $product;
+		}
+		$this->set('aCollectionProducts', $aCollectionProducts);
+		
+		if ($categoryID == 18 || $categoryID == 19) {
+			$this->_initSBCategories($categoryID);
+		}
+		$this->set('showMainCategories', true);
 	}
 }

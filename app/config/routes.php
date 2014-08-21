@@ -111,9 +111,17 @@
 		'category' => '[a-z0-9\-]+',
 		'object_type' => 'brands'
 	));
+	/*
 	Router::connect('/:category/brands/:id', array(
 		'controller' => 'article',
 		'action' => 'view',
+		'id' => '[a-z0-9\-]+\.html',
+		'object_type' => 'brands'
+	));
+	*/
+	Router::connect('/:category/brands/:id', array(
+		'controller' => 'article',
+		'action' => 'view_brand',
 		'id' => '[a-z0-9\-]+\.html',
 		'object_type' => 'brands'
 	));
