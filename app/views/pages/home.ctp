@@ -1,8 +1,3 @@
-<style type="text/css">
-.list .item {
-	background: none;
-}
-</style>
 				<div class="block">
 					<?=$this->element('title', array('title' => $content['Article']['title']))?>
 					<?=$this->element('article_view', array('plugin' => 'articles', 'aArticle' => $content))?>
@@ -35,7 +30,7 @@
 		}
 ?>
 					</div>
-					<div align="right">
+					<div class="textright">
 						<a href="/news/">Посмотреть все новости</a>
 					</div>
 				</div>

@@ -862,3 +862,16 @@ ul.description li strong{
 {clear:both;}
 .content,.list .item
 {zoom:1}
+
+/* fix validate w3c */
+.w50 {width: 50px;}
+.w240 {width: 240px;}
+object[name="social_frame"] {width: 240px;border:0px none;height:400px;}
+.list .item {background: none;}
+.textright {text-align: right;}
+table>.pad5 {border-spacing: 0;border-collapse:separate;}
+.pad5 td {padding: 3px 5px;}
+.gplusico {width:20px;height:20px;border:0;}
+.search_button {text-align: center}
+.mapContainer img {cursor: pointer;}
+.list .item .image img {width: auto;}

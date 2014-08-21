@@ -19,7 +19,7 @@
 <?
 	}
 ?>
-<table class="pad5" border="0" cellpadding="0" cellspacing="0">
+<table class="pad5">
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Your name', true), 'required' => true, 'field' => 'Contact.username', 'data' => $this->data))?>
 <?=$this->element('std_input', array('plugin' => 'core', 'caption' => __('Your e-mail for reply', true), 'required' => true, 'field' => 'Contact.email', 'data' => $this->data))?>
 <tr>
