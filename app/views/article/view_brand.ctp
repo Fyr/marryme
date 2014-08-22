@@ -8,7 +8,8 @@
 			<ul class="description">
 				<li><strong>Категория:</strong> <a href="<?=$url?>"><?=$aArticle['Category']['title']?></a> </li>
 			</ul>
-			<?=$this->element('article_view', array('plugin' => 'articles'))?>
+			<?=$this->element('show_article')?>
+			<?//$this->element('article_view', array('plugin' => 'articles'))?>
 		</div>
 	</div>
 	<?=$this->element('banner2')?>

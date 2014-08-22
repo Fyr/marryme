@@ -262,7 +262,7 @@ class ArticleController extends SiteController {
 			'conditions' => array('Article.object_type' => 'products', 'Article.brand_id' => $articleID),
 			'fields' => array('Category.id', 'Category.title', 'Collection.id', 'Collection.title', 'Collection.body', 'title', 'featured', 'body', 'teaser', 'page_id', 'object_type', 'created', 'modified', 'Stat.visited', 'Stat.comments', 'Stat.photos'),
 			'order' => array('Collection.id' => 'asc', 'Article.created' => 'desc'),
-			'limit' => 60
+			'limit' => 30
 		);
 		$aProducts = $this->PCGrid->paginate('BrandProduct');
 		$aCollectionProducts = array();
