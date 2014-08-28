@@ -136,3 +136,26 @@ $('.fancybox').fancybox({
 
 });
 
+$(document).ready(function(){
+	$('.articleShow').each(function(){
+		var $article = $(this);
+	
+	$('.more a.expand', $article).click(function(){
+		$('.article-show', $article).removeClass('collapsed');
+		$('.article-show', $article).hide();
+		$('.article-show', $article).slideDown('slow');
+		
+		$('.more .expand', $article).hide();
+		$('.more .collapse', $article).show();
+	});
+	$('.more a.collapse', $article).click(function(){
+		$('.article-show', $article).slideUp('slow', function(){
+			$('.article-show', $article).addClass('collapsed');
+			$('.article-show', $article).show();
+			$('.more .expand', $article).show();
+			$('.more .collapse', $article).hide();
+		});
+	});
+	
+	});
+});

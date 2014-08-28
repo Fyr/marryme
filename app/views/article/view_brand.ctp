@@ -1,20 +1,3 @@
-<?=$this->element('title', array('title' => $page_title))?>
-<?
-	$url = $this->Router->catUrl(($aArticle['Category']['id'] == 20) ? 'subcategories' : 'brands', $aArticle['Category']);
-?>
-<div class="block">
-	<div class="list">
-		<div class="item">
-			<ul class="description">
-				<li><strong>Категория:</strong> <a href="<?=$url?>"><?=$aArticle['Category']['title']?></a> </li>
-			</ul>
-			<?=$this->element('show_article')?>
-			<?//$this->element('article_view', array('plugin' => 'articles'))?>
-		</div>
-	</div>
-	<?=$this->element('banner2')?>
-</div>
-
 <?
 	$this->PHCore->css(array('jquery.fancybox'));
 	$this->PHCore->js(array('jquery.fancybox'));
@@ -25,8 +8,6 @@
 		$collection = $aProducts[0];
 		echo $this->element('title', array('title' => $aArticle['Article']['title'].': Модели коллекции '.$collection['Collection']['title']));
 ?>
-					<?=$this->HtmlArticle->fulltext($collection['Collection']['body'])?>
-					<br />
 					<div class="new_items">
 <?
 		foreach($aProducts as $article) {
@@ -57,6 +38,35 @@
 ?>
 <?=$this->element('pagination', array('objectType' => $objectType))?>
 </div>
+<?
+	$url = $this->Router->catUrl(($aArticle['Category']['id'] == 20) ? 'subcategories' : 'brands', $aArticle['Category']);
+?>
+<?=$this->element('banner2')?>
+<?=$this->element('title', array('title' => $page_title))?>
+<div class="block">
+	<div class="list">
+		<div class="item">
+			<ul class="description">
+				<li><strong>Категория:</strong> <a href="<?=$url?>"><?=$aArticle['Category']['title']?></a> </li>
+			</ul>
+			<?=$this->element('show_article')?>
+			<?//$this->element('article_view', array('plugin' => 'articles'))?>
+		</div>
+	</div>
+</div>
+
+<div class="block">
+<?
+	foreach($aCollectionProducts as $collection_id => $aProducts) {
+		$collection = $aProducts[0];
+		echo $this->element('title', array('title' => 'Коллекция '.$collection['Collection']['title']));
+		// echo $this->HtmlArticle->fulltext($collection['Collection']['body']);
+		echo $this->element('show_article', array('body' => $collection['Collection']['body']));
+	}
+?>
+</div>
+
+
 <script type="text/javascript">
 function gallery_onClick() {
 	//$('.new_items .image a').eq(0).trigger('click');
