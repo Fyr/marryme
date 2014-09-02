@@ -260,7 +260,7 @@ class ArticleController extends SiteController {
 		
 		$this->grid['BrandProduct'] = array(
 			'conditions' => array('Article.object_type' => 'products', 'Article.brand_id' => $articleID),
-			'fields' => array('Category.id', 'Category.title', 'Collection.id', 'Collection.title', 'Collection.body', 'title', 'featured', 'body', 'teaser', 'page_id', 'object_type', 'created', 'modified', 'Stat.visited', 'Stat.comments', 'Stat.photos'),
+			'fields' => array('Category.id', 'Category.title', 'Collection.id', 'Collection.title', 'Collection.body', 'title', 'is_active', 'featured', 'is_pending', 'is_new', 'body', 'teaser', 'page_id', 'object_type', 'created', 'modified', 'Stat.visited', 'Stat.comments', 'Stat.photos'),
 			'order' => array('Collection.id' => 'asc', 'Article.created' => 'desc'),
 			'limit' => 30
 		);
