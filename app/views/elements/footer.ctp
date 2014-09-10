@@ -4,14 +4,14 @@
 			<h6>Салон свадебной<br/> и вечерней<br/> моды</h6>
 			<div class="navigation">
 				<?=$this->element('bottom_links')?>
-				<!--noindex-->
-				<a href="https://plus.google.com/u/0/101878855187512164541?rel=author" rel="me" target="_blank"><img title="Присоединиться в Google+" src="/img/icons/google-plus.png" alt="Присоединиться в Google+" class="gplusico"></a>
-				<a href="http://vk.com/club47611192" target="_blank"><img src="/img/icons/vk.png" alt="Присоединиться ВКонтакте"/></a>
-				<!--/noindex-->
 			</div>
 
 			<div class="address">
 				<?=$this->element('address')?>
+				<!--noindex-->
+				<a href="https://plus.google.com/u/0/101878855187512164541?rel=author" rel="me" target="_blank"><img title="Присоединиться в Google+" src="/img/icons/google-plus.png" alt="Присоединиться в Google+" class="gplusico"></a>
+				<a href="http://vk.com/club47611192" target="_blank"><img src="/img/icons/vk.png" alt="Присоединиться ВКонтакте"/></a>
+				<!--/noindex-->
 <?
 	if (!TEST_ENV) {
 ?>
