@@ -30,7 +30,7 @@
 		}
 	}
 ?>
-<?=$this->element('pagination2', array('objectType' => $objectType))?>
+<?=$this->element('pagination', array('objectType' => $objectType))?>
 					</div>
 				</div>
 <?
