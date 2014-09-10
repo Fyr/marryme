@@ -3,7 +3,7 @@
 		$body = $aArticle['Article']['body'];
 	}
 	
-	if (mb_strlen($body, 'UTF-8') < 100) {
+	if (mb_strlen($body, 'UTF-8') < 140) {
 		echo $this->HtmlArticle->fulltext($body);
 	} else {
 ?>

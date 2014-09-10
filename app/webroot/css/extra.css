@@ -280,7 +280,7 @@ ol, ul {
 					text-decoration: underline;
 					cursor: pointer; }
 .article-show.collapsed {
-	height: 20px;
+	height: 74px;
 	overflow: hidden;
 }
 .more span.expand {
