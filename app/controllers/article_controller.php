@@ -160,7 +160,7 @@ class ArticleController extends SiteController {
 					'купить платье '.trim($aArticle['Article']['title']).' в магазине '.DOMAIN_TITLE.' недорого'
 				);
 			} elseif ($this->objectType == 'collections') {
-				$page_title = 'Коллекция '.$aArticle['Article']['title'];
+				$page_title = 'Модели коллекции '.$aArticle['Article']['title'];
 				$aProducts = $this->Article->find('all', array('conditions' => array('Article.object_id' => $articleID, 'Article.published' => 1), 'order' => array('Article.featured' => 'desc', 'Article.sorting' => 'asc')));
 				$this->set('aProducts', $aProducts);
 

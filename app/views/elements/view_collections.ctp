@@ -4,12 +4,7 @@
 
 	$url = $this->Router->catUrl(($aArticle['Category']['id'] == 20) ? 'subcategories' : 'brands', $aArticle['Category']);
 ?>
-<div class="block">
-			<ul class="description">
-				<li><strong>Категория:</strong> <a href="<?=$url?>"><?=$aBrand['Category']['title']?></a> </li>
-				<li><strong>Брэнд:</strong> <?=$aBrand['Article']['title']?></li>
-			</ul>
-			<?=$this->element('article_view', array('plugin' => 'articles'))?>
+
 <?
 /*
 	if ($aAnotherCollections) {
@@ -31,10 +26,8 @@
 	}
 	*/
 ?>
-</div>
-<?=$this->element('banner2')?>
 <div class="block">
-			<?=$this->element('title', array('title' => 'Модели коллекции '.$aArticle['Article']['title']))?>
+			<?// $this->element('title', array('title' => 'Модели коллекции '.$aArticle['Article']['title']))?>
 			<!--div align="center" style="margin-bottom: 20px">
 				<a href="javascript:void(0)" onclick="gallery_onClick()">Посмотреть галерею</a>
 			</div-->
@@ -63,6 +56,15 @@
 		}
 ?>
 					</div>
+</div>
+<?=$this->element('banner2')?>
+<div class="block">
+	<?=$this->element('title', array('title' => 'Коллекция '.$aArticle['Article']['title']))?>
+	<ul class="description">
+		<li><strong>Категория:</strong> <a href="<?=$url?>"><?=$aBrand['Category']['title']?></a> </li>
+		<li><strong>Брэнд:</strong> <?=$aBrand['Article']['title']?></li>
+	</ul>
+	<?=$this->element('article_view', array('plugin' => 'articles'))?>
 </div>
 <?
 	if ($aAnotherCollections) {
