@@ -3,7 +3,21 @@ class SitemapController extends SiteController {
 	var $name = 'Sitemap';
 	var $uses = array('articles.Article', 'SiteArticle', 'SiteProduct', 'category.Category');
 	// var $helpers = array('Router', 'ArticleVars');
-
+	
+	function index() {
+		$this->pageTitle = 'Карта сайта';
+		
+		// $aMainCategories = $this->Category->findAllByObjectType('brands');
+		$aBrands = $this->Article->findAllByObjectType('brands');
+		$this->set('aBrands', $aBrands);
+		
+		$aCollections = $this->Article->findAllByObjectType('collections');
+		$this->set('aCollections',  $aCollections);
+		
+		$aSubcategories = $this->Article->findAllByObjectType('subcategories');
+		$this->set('aSubcategories', $aSubcategories);
+	}
+	
 	function xml() {
 		header("Content-Type: text/xml");
 		$this->layout = 'empty';

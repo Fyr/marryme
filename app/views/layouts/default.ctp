@@ -173,99 +173,16 @@
 				</div>
 <?
 	if (SHOW_BLOCK_FEATURED && $randomProducts) {
-?>
-				<div class="block">
-					<?=$this->element('title', array('title' => 'Акции'))?>
-					<div class="new_items">
-<?
-		foreach($randomProducts as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
-?>
-						<div class="item">
-							<div class="image">
-								<a href="<?=$url?>"><img src="<?=$src?>" alt="<?=$title?>"/></a>
-								<span class="sticker new"></span>
-							</div>
-							<h4><a href="<?=$url?>"><?=$title?></a></h4>
-						</div>
-<?
-		}
-?>
-					</div>
-				</div>
-<?
+		echo $this->element('featured_products', array('title' => 'Акции', 'products' => $randomProducts, 'sticker' => 'new'));
 	}
 	if (SHOW_BLOCK_NEWS && $newProducts) {
-?>
-				<div class="block">
-					<?=$this->element('title', array('title' => 'Новинки'))?>
-					<div class="new_items">
-<?
-		foreach($newProducts as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
-?>
-						<div class="item">
-							<div class="image">
-								<a href="<?=$url?>"><img src="<?=$src?>" alt="<?=$title?>"/></a>
-								<span class="sticker newproduct"></span>
-							</div>
-							<h4><a href="<?=$url?>"><?=$title?></a></h4>
-						</div>
-<?
-		}
-?>
-					</div>
-				</div>
-<?
+		echo $this->element('featured_products', array('title' => 'Новинки', 'products' => $newProducts, 'sticker' => 'newproduct'));
 	}
 	if (SHOW_BLOCK_STOCK && $activeProducts) {
-?>
-				<div class="block">
-					<?=$this->element('title', array('title' => 'В наличии'))?>
-					<div class="new_items">
-<?
-		foreach($activeProducts as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
-?>
-						<div class="item">
-							<div class="image">
-								<a href="<?=$url?>"><img src="<?=$src?>" alt="<?=$title?>"/></a>
-								<span class="sticker active"></span>
-							</div>
-							<h4><a href="<?=$url?>"><?=$title?></a></h4>
-						</div>
-<?
-		}
-?>
-					</div>
-				</div>
-<?
+		echo $this->element('featured_products', array('title' => 'В наличии', 'products' => $activeProducts, 'sticker' => 'active'));
 	}
-?>
-
-<?
 	if (SHOW_BLOCK_AWAY && $pendingProducts) {
-?>
-				<div class="block">
-					<?=$this->element('title', array('title' => 'В пути'))?>
-					<div class="new_items">
-<?
-		foreach($pendingProducts as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x');
-?>
-						<div class="item">
-							<div class="image">
-								<a href="<?=$url?>"><img src="<?=$src?>" alt="<?=$title?>"/></a>
-								<span class="sticker pending"></span>
-							</div>
-							<h4><a href="<?=$url?>"><?=$title?></a></h4>
-						</div>
-<?
-		}
-?>
-					</div>
-				</div>
-<?
+		echo $this->element('featured_products', array('title' => 'В пути', 'products' => $pendingProducts, 'sticker' => 'pending'));
 	}
 ?>
 				<div class="block">

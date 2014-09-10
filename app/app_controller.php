@@ -151,7 +151,8 @@ class AppController extends Controller {
 		'companies' => array('title' => 'Агентства', 'href' => '/prazdnichnie-agentstva/'),
 		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides.html'),
 		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us.html'),
-		'contacts' => array('title' => 'Контакты', 'href' => '/contacts/')
+		'contacts' => array('title' => 'Контакты', 'href' => '/contacts/'),
+		'sitemap' => array('title' => 'Карта сайта', 'href' => '/sitemap/')
 	);
 	var $aBreadCrumbs = array();
 
