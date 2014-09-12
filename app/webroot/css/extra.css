@@ -295,3 +295,8 @@ ol, ul {
 .more .collapse {
 	display: none;
 }
+.address img {
+	width: 16px;
+	position:relative;
+	top: 1px;
+}
