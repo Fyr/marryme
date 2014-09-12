@@ -48,7 +48,7 @@
 	}
 	if ($company['site_url']) {
 ?>
-		<li><strong><?__('Site');?>:</strong> <a href="http://<?=$company['site_url']?>" target="_blank"><?=$company['site_url']?></a> </li>
+		<li><strong><?__('Site');?>:</strong> <a href="http://<?=$company['site_url']?>" rel="nofollow" target="_blank"><?=$company['site_url']?></a> </li>
 <?
 	}
 ?>
