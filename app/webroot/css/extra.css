@@ -295,7 +295,7 @@ ol, ul {
 .more .collapse {
 	display: none;
 }
-.address img {
+.address .phone img {
 	width: 16px;
 	position:relative;
 	top: 1px;

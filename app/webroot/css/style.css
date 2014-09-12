@@ -871,7 +871,7 @@ ul.description li strong{
 /* fix validate w3c */
 .w50 {width: 50px;}
 .w240 {width: 240px;}
-object[name="social_frame"] {width: 240px;border:0px none;height:400px;}
+object[name="social_frame"] {width: 260px;border:0px none;height:430px;}
 .list .item {background: none;}
 .textright {text-align: right;}
 table>.pad5 {border-spacing: 0;border-collapse:separate;}
