@@ -361,18 +361,22 @@ p.more a {
 	height: 360px;
 }
 .new_items .item .shadow{
-	background:url(/img/list_item_shadow.gif) center bottom no-repeat;
-	width: 113px;
+	background:url(/img/list_item_shadow.gif) center top no-repeat;
 	height: 7px;
 }
 .new_items .item .image{
 	height: 148px;
 }
-
-.new_items .item .image img{
+.new_items .item .image a {
+	display: block;
 	border:4px solid #ebebeb;
-	width:105px;
+	width: 105px;
 	height: 140px;
+	overflow: hidden;
+}
+
+.new_items .item .image img {
+	width:105px;
 }
 
 .new_items .item{

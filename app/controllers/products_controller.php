@@ -69,7 +69,7 @@ class ProductsController extends SiteController {
 
 		$this->grid['SiteArticle'] = array(
 			'conditions' => array('Article.object_type' => 'products', 'Article.published' => 1, 'Article.subcategory_id' => $aArticle['Article']['id']),
-			'fields' => array('Category.id', 'Category.title', 'Article.object_type', 'Article.title', 'Article.teaser', 'Article.featured', 'Article.price', 'Article.page_id'),
+			'fields' => array('Category.id', 'Category.title', 'Article.object_type', 'Article.title', 'Article.teaser', 'Article.featured', 'Article.is_active', 'Article.is_new', 'Article.is_pending', 'Article.price', 'Article.page_id'),
 			'order' => array('Article.featured' => 'desc', 'Article.sorting' => 'asc'),
 			'limit' => self::PER_PAGE
 		);

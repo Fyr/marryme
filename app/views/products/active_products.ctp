@@ -32,18 +32,9 @@
 									<a href="<?=$url?>">Посмотреть модель &laquo;<?=$title?>&raquo; из категории &laquo;<?=$category?>&raquo;</a>
 								</div>
 								<a id="image<?=$id?>" href="<?=$src_orig?>" title="Увеличить фото" rel="photoalbum"><img src="<?=$src?>" /></a>
-<?
-			if ($featured) {
-?>
-								<span class="sticker new"></span>
-<?
-			} elseif ($article['Article']['is_active']) {
-?>
-								<span class="sticker active"></span>
-<?
-			}
-?>
+								<?=$this->element('sticker', array('article' => $article))?>
 							</div>
+							<div class="shadow"></div>
 							<h4>
 								<a class="small" href="<?=$catUrl?>" title="<?=$category?>"><?=$category?></a><span class="small">:</span> <br/>
 								<a href="<?=$url?>" title="<?=$teaser?>"><?=$title?></a><br/>
@@ -62,6 +53,7 @@
 	}
 ?>
 	</div>
+	<div class="clear"></div>
 </div>
 
 <script type="text/javascript">

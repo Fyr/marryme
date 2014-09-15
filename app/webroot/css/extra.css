@@ -65,10 +65,15 @@ a.small, span.small {
 	margin: 0 0 10px 29px;
 	width: 158px;
 }
-
+.main_content .new_items .item .image {
+    height: 200px;
+}
 .main_content .new_items .item .image img {
-    border: 4px solid #EBEBEB;
     width: 150px;
+}
+.main_content .new_items .item .image a {
+	width: 150px;
+	height: 192px;
 }
 
 .main_content h3 {

@@ -27,6 +27,7 @@
 								<a id="image<?=$id?>" href="<?=$src_orig?>" title="Увеличить фото" rel="photoalbum"><img src="<?=$src?>" /></a>
 								<?=$this->element('sticker', array('article' => $article))?>
 							</div>
+							<div class="shadow"></div>
 							<h4>
 								<a class="small" href="<?=$catUrl?>" title="<?=$category?>"><?=$category?></a><span class="small">:</span> <br/>
 								<a href="<?=$url?>" title="<?=$teaser?>"><?=$title?></a><br/>
@@ -67,6 +68,7 @@
 ?>
 <?=$this->element('pagination2', array('filterURL' => $aFilters['url']))?>
 	</div>
+	<div class="clear"></div>
 </div>
 <?=$this->element('banner2')?>
 

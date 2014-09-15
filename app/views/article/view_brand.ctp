@@ -24,6 +24,7 @@
 								<a id="image<?=$id?>" href="<?=$src_orig?>" title="Увеличить фото" rel="photoalbum"><img src="<?=$src?>" /></a>
 								<?=$this->element('sticker', array('article' => $article))?>
 							</div>
+							<div class="shadow"></div>
 							<h4>
 								<a href="<?=$url?>" title="<?=$teaser?>"><?=$title?></a><br/>
 								<?=$this->element('prices', array('article' => $article))?>
@@ -33,6 +34,7 @@
 		}
 ?>
 					</div>
+					<div class="clear"></div>
 <?
 	}
 ?>
