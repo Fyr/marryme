@@ -14,7 +14,7 @@
 			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '151x', $featured);
 			$id = $article['Article']['id'];
 			$media = $article['Media'][0];
-			$src_orig = $this->PHMedia->getUrl($media['object_type'], $media['id'], null, $media['file'].$media['ext']);
+			$src_orig = $this->PHMedia->getUrl($media['object_type'], $media['id'], null, $media['file'].$media['ext'].'.png');
 ?>
 						<div class="item">
 							<div class="image">
