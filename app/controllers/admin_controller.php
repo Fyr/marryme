@@ -929,7 +929,7 @@ class AdminController extends AppController {
 		$aArticle['Media'] = $this->Media->getMedia('Company', $aArticle['Article']['id']);
 		$this->set('aArticle', $aArticle);
 	}
-
+/*
 	function update() {
 		$aArticles = $this->Article->find('all', array('conditions' => array('Article.object_type' => 'products')));
 		foreach($aArticles as $article) {
@@ -951,4 +951,13 @@ class AdminController extends AppController {
 		echo count($aArticles).' records processed';
 		exit;
 	}
+	*/
+	function utils() {
+
+	}
+
+	function removeImageCache() {
+		$this->set('stats', $this->Media->removeImageCache());
+	}
+
 }

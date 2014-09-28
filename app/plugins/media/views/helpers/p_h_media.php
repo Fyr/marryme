@@ -19,7 +19,7 @@ class PHMediaHelper extends AppHelper {
 
     function getFileInfo($filename) {
 		$aFName = explode('.', $filename);
-		$_ret = array('fname' => $aFName[0], 'orig_ext' => $aFName[1]);
+		$_ret = array('fname' => $aFName[0], 'orig_fname' => $aFName[0], 'orig_ext' => $aFName[1]);
 		if (isset($aFName[2]) && $aFName[2]) {
 			$_ret['ext'] = $aFName[2];
 		} else {
@@ -28,7 +28,7 @@ class PHMediaHelper extends AppHelper {
 		return $_ret;
     }
 
-    function getFileName($type, $id, $size = 'noresize', $filename) {
+    function getFileName($type, $id, $size, $filename) {
     	$aFName = $this->getFileInfo($filename);
     	$aSize = $this->getSizeInfo($size);
     	$_ret = $this->getPath($type, $id);

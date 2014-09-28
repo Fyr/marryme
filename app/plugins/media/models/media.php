@@ -2,6 +2,7 @@
 class Media extends AppModel
 {
     var $name = 'Media';
+    private $stats = array('files' => 0, 'filesize' => 0);
 
     /*
     function getImage($id, $size) {
@@ -206,4 +207,20 @@ class Media extends AppModel
 
 		ClassRegistry::init('Article')->save(array('id' => $objectID, 'images_filesize' => $size));
 	}
+
+	public function removeImageFiles($fname, $path) {
+		$info = pathinfo($fname);
+		if ($info['filename'] !== 'image') {
+			$this->stats['files']++;
+			$this->stats['filesize']+= filesize($path.$fname);
+			@unlink($path.$fname);
+		}
+	}
+
+	function removeImageCache() {
+		App::import('Vendor', 'noclass', array('file' => '../plugins/core/vendors/path.php'));
+		processPath(getPathContent(PATH_FILES_UPLOAD.'article/'), array($this, 'removeImageFiles'), true);
+		return $this->stats;
+	}
+
 }

@@ -4,8 +4,8 @@
 **/
 class Image 
 {
-	protected $rImage; // image resource to work with
-	
+	public $rImage; // image resource to work with
+
 	/**
 		Class constructor. Creates image resource and sets image size.
 		@param (int) $iSizeX - set image size X. Default value is 1.
