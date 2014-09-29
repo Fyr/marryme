@@ -24,13 +24,15 @@ class RouterController extends MediaAppController {
 		$image->load($_fname = $this->PHMedia->getFileName($type, $id, null, $aFName['orig_fname'].'.'.$aFName['orig_ext']));
 		if ($aSize) {
 			$image->resize($aSize['w'], $aSize['h']);
+		} elseif ($image->getSizeX() > 1500 && $image->getSizeY() > 1500) {
+			// авто-ресайз для очень больих картинок - вызывает ошибку памяти для image.class.php при разрешениях больше чем 1500
+			$image->resize(1500, null);
 		}
 
 		// Put watermark
 		$media = $this->Media->findById($id);
 		$article = $this->Article->findById($media['Media']['object_id']);
 		if ($article['Article']['object_type'] == 'products') {
-
 			$logo = new Image();
 			$logo->load('./img/logo.gif');
 
