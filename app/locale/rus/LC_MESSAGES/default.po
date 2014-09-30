@@ -17,25 +17,40 @@ msgid "Password"
 msgstr "Пароль"
 
 msgid "Jan"
-msgstr "Янв"
+msgstr "Января"
 
 msgid "Feb"
-msgstr "Фев"
+msgstr "Февраля"
 
 msgid "Mar"
-msgstr "Март"
+msgstr "Марта"
 
 msgid "Apr"
-msgstr "Апр"
+msgstr "Апреля"
 
 msgid "May"
-msgstr "Май"
+msgstr "Мая"
 
 msgid "Jun"
-msgstr "Июнь"
+msgstr "Июня
 
 msgid "Jul"
-msgstr "Июль"
+msgstr "Июля"
+
+msgid "Aug"
+msgstr "Августа"
+
+msgid "Sep"
+msgstr "Сентября"
+
+msgid "Oct"
+msgstr "Октября"
+
+msgid "Nov"
+msgstr "Ноября"
+
+msgid "Dec"
+msgstr "Декабря"
 
 msgid "Articles"
 msgstr "Статьи"
@@ -80,6 +95,9 @@ msgid "Today"
 msgstr "Сегодня"
 
 msgid "Yeerday"
+msgstr "Вчера"
+
+msgid "Yesterday"
 msgstr "Вчера"
 
 msgid "back to top"

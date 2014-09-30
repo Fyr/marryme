@@ -18,7 +18,7 @@
 
 		<div class="album">
 			<span class="count"><?=$imgCount?> фото</span><br />
-			<span class="update">Обновлён <?=$this->PHTime->niceShort($aArticle['Article']['modified'])?></span>
+			<span class="update">Обновлёно: <?=$this->PHTime->niceShort($aArticle['Article']['modified'])?></span>
 		</div>
 
 <?
