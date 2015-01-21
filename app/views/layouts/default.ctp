@@ -14,7 +14,7 @@
 		<div class="header title_page">
 			<div class="header_in">
 				<a href="/" class="logo"><img src="/img/logo.png" alt="Marry Me" /></a>
-				<h1>Салон свадебной<br/> и вечерней<br/> моды</h1>
+				<h2>Салон свадебной<br/> и вечерней<br/> моды</h2>
 				<div class="lady"></div>
 				<div class="lamp"></div>
 				<p class="moto_1">Любовь окрыляет...</p>

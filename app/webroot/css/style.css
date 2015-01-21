@@ -314,27 +314,27 @@ p.more a {
 	font-style:italic;
 }
 
-.content h3{
+.content h3, .content h1 {
 	margin:0 0 5px 0;
 	font:normal 20px minion_pro_meditalic, georgia, serif;
 }
 
-.content h3 i { font-style: normal; display:block; padding: 7px 10px 0 10px; text-align: center;}
+.content h3 i, .content h1 i { font-style: italic; display:block; padding: 7px 10px 0 10px; text-align: center;}
 
-.content h3 span{
+.content h1 span, .content h3 span{
 	display:block;
 	height:30px;
 	background:url(/img/content_header_right.jpg) no-repeat right 5px;
 	min-width:112px;
 }
 
-.content h3 span span{
+.content h1 span span, .content h3 span span{
 	display:block;
 	background:url(/img/content_header_left.jpg) no-repeat left 5px;
 	text-align:center;
 }
 
-.content h3 span span span{
+.content h1 span span span, .content h3 span span span{
 	background:url(/img/content_header_bullet.png) no-repeat center -3px;
 	text-align:center;
 }
