@@ -319,7 +319,7 @@ p.more a {
 	font:normal 20px minion_pro_meditalic, georgia, serif;
 }
 
-.content h3 i, .content h1 i { font-style: italic; display:block; padding: 7px 10px 0 10px; text-align: center;}
+.content h3 i, .content h1 i { display:block; padding: 7px 10px 0 10px; text-align: center; font-style: normal; }
 
 .content h1 span, .content h3 span{
 	display:block;
