@@ -5,6 +5,9 @@ class PagesController extends SiteController {
 	var $uses = array('articles.Article', 'SiteArticle');
 
 	function home() {
+		if ((isset($this->params['url']['url']) && $this->params['url']['url'] != '/') || $_SERVER['REQUEST_URI'] == '/index.php') {
+			return $this->redirect('/');
+		}
 		// $this->aBreadCrumbs = array('' => 'Главная');
 		$aArticle = $this->Article->find('first', array('conditions' => array('Article.page_id' => 'homepage')));
 		$this->set('content', $aArticle);

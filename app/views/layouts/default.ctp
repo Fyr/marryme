@@ -212,7 +212,7 @@
 	}
 ?>
 				<div class="block tag-cloud">
-					<?=$this->element('tag_cloud')?>
+					<?//$this->element('tag_cloud')?>
 				</div>
 
 				</div></div>

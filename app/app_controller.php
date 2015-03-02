@@ -226,4 +226,8 @@ class AppController extends Controller {
 		}
 		$this->set('aCatCollections', $aCatCollections);
 	}
+	
+	public function redirect($url, $status = null, $exit = true) {
+		return parent::redirect($url, 301);
+	}
 }
