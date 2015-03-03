@@ -960,4 +960,20 @@ class AdminController extends AppController {
 		$this->set('stats', $this->Media->removeImageCache());
 	}
 
+	function removePornoLinks() {
+		$this->layout = false;
+		// $re = '/<a style="text-decoration: none;" href="http:\/\/goldpussy[a-z\.\/\-]+"> <\/a>/';
+		$re = '/<a href="http:\/\/www\.gfc\.by/';
+		$aRows = $this->Article->find('all', array('conditions' => array('body LIKE "%http%"')));
+		fdebug($aRows);
+		/*
+		foreach($aRows as $row) {
+			$body = preg_replace($re, '<a rel="nofollow" href="http://www.gfc.by', $row['Article']['body']);
+			
+			$this->Article->create();
+			$this->Article->save(array('id' => $row['Article']['id'], 'body' => $body));
+		}
+		*/
+		exit;
+	}
 }
