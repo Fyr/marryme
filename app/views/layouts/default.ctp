@@ -47,6 +47,7 @@
 	<img src="/img/category_border_on.png" alt="" />
 	<img src="/img/drop_top.png" alt="" />
 	<img src="/img/drop_bottom.png" alt="" />
+	<img src="/img/navi_selected_seal.png" alt="" />
 </div>
 <!-- /preload -->
 <div class="page_wrap">

@@ -96,6 +96,8 @@ class SiteController extends AppController {
 
 		$this->loadModel('TagcloudLink');
 		$this->set('aTags', $this->TagcloudLink->find('all'));
+		
+		$this->set('pronoviasW1', $this->Article->findById((TEST_ENV) ? 819 : 2056));
 	}
 
 

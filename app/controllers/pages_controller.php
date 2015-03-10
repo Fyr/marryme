@@ -71,6 +71,10 @@ class PagesController extends SiteController {
 	}
 
 	function nonExist() {
-		$this->layout = 'error';
+		if (TEST_ENV) {
+			$this->layout = 'error';
+		} else {
+			$this->redirect('/');
+		}
 	}
 }
