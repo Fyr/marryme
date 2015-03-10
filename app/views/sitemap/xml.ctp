@@ -11,8 +11,8 @@
 		'/articles/',
 		'/photo/',
 		'/feedback/',
-		'/svadebnye-platjya-18/brands/',
-		'/vechernie-platjya-19/brands/',
+		$this->Router->catUrl('brands', array('id' => 18, 'title' => '-')),
+		$this->Router->catUrl('brands', array('id' => 19, 'title' => '-')),
 		'/aksessuary-20/subcategories/',
 		
 		'/prazdnichnie-agentstva/',

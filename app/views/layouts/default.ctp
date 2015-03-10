@@ -42,6 +42,13 @@
 <?
 	}
 ?>
+<!-- preload -->
+<div style="display: none">
+	<img src="/img/category_border_on.png" alt="" />
+	<img src="/img/drop_top.png" alt="" />
+	<img src="/img/drop_bottom.png" alt="" />
+</div>
+<!-- /preload -->
 <div class="page_wrap">
 	<div class="page_in">
 		<div class="header title_page">
@@ -77,21 +84,20 @@
 			</div>
 
 			<div class="categories_selection">
-
 					<div class="item">
 						<h3>Свадебные платья</h3>
 						<img src="/img/category_photo.jpg" alt="Свадебные платья" />
-						<a href="/svadebnye-platjya-18/brands/" class="button"></a>
+						<a href="<?=$this->Router->catUrl('brands', array('id' => 18, 'title' => '-'))?>" class="button"></a>
 					</div>
 					<div class="item">
 						<h3>Вечерние платья</h3>
 						<img src="/img/category_photo_2.jpg" alt="Вечерние платья" />
-						<a href="/vechernie-platjya-19/brands/" class="button"></a>
+						<a href="<?=$this->Router->catUrl('brands', array('id' => 19, 'title' => '-'))?>" class="button"></a>
 					</div>
 					<div class="item">
 						<h3>Аксессуары</h3>
 						<img src="/img/category_photo_3.jpg" alt="Аксессуары" />
-						<a href="/aksessuary-20/subcategories/" class="button"></a>
+						<a href="/aksessuary/subcategories/" class="button"></a>
 					</div>
 				</div>
 		</div>

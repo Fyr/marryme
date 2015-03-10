@@ -79,41 +79,19 @@
 	));
 
 	/* -= Brands =- */
-	Router::connect('/:category/brands', array(
-		'controller' => 'article',
-		'action' => 'index',
-		'category' => '[a-z0-9\-]+',
-		'object_type' => 'brands'
-	));
-	/*
-	Router::connect('/:category/brands/:id', array(
-		'controller' => 'article',
-		'action' => 'view',
-		'id' => '[a-z0-9\-]+\.html',
-		'object_type' => 'brands'
-	));
-	*/
 	Router::connect('/:category/brands/:id', array(
 		'controller' => 'article',
 		'action' => 'view_brand',
 		'id' => '[a-z0-9\-]+\.html',
 		'object_type' => 'brands'
 	));
-
-	/* -= Subcategories =- */
-	Router::connect('/:category/subcategories', array(
-		'controller' => 'products',
+	Router::connect('/:category/brands', array(
+		'controller' => 'article',
 		'action' => 'index',
 		'category' => '[a-z0-9\-]+',
-		'object_type' => 'subcategories'
+		'object_type' => 'brands'
 	));
-	Router::connect('/:category/subcategories/:id', array(
-		'controller' => 'products',
-		'action' => 'accessories',
-		'id' => '[a-z0-9\-]+\.html',
-		'object_type' => 'subcategory'
-	));
-
+	
 	/* -= Collections =- */
 	Router::connect('/:category/collections/:id', array(
 		'controller' => 'article',
@@ -122,59 +100,42 @@
 		'id' => '[a-z0-9\-]+\.html',
 		'object_type' => 'collections'
 	));
-	/*
-	Router::connect('/myarticle/page/:page', array('controller' => 'myarticle', 'action' => 'index', 'category' => '', 'object_type' => 'articles', 'page' => '[0-9]+'));
-	Router::connect('/myarticle/:category/page/:page', array('controller' => 'myarticle', 'action' => 'index', 'category' => '[a-z0-9\-]+', 'page' => '[0-9]+', 'object_type' => 'articles'));
-	Router::connect('/myarticle/:category/:id', array('controller' => 'myarticle', 'action' => 'view', 'category' => '[a-z0-9\-]+', 'id' => '[a-z0-9\-]+\.html', 'object_type' => 'articles'));
-	Router::connect('/myarticle/:category', array('controller' => 'myarticle', 'action' => 'index', 'category' => '[a-z0-9\-]+', 'object_type' => 'articles'));
-	Router::connect('/myarticle/', array('controller' => 'myarticle', 'action' => 'index', 'category' => '', 'object_type' => 'articles'));
-	*/
-	/*
-	Router::connect('/video/:category/:id', array(
-		'controller' => 'article',
-		'action' => 'view',
-		'category' => '[a-z0-9\-]+',
-		'id' => '[a-z0-9\-]+\.html',
-		'object_type' => 'videos'
-	));
-	Router::connect('/video/:category', array('controller' => 'article', 'action' => 'index', 'category' => '[a-z0-9\-]+', 'object_type' => 'videos'));
-	Router::connect('/video/', array('controller' => 'article', 'action' => 'index', 'category' => '', 'object_type' => 'videos'));
-	*/
-/*
-	Router::connect('/video/page/:page', array(
-		'controller' => 'article',
+	
+	/* -= Models =- */
+	Router::connect('/:category/product/page/:page', array(
+		'controller' => 'products',
 		'action' => 'index',
-		'category' => '',
-		'object_type' => 'videos',
+		'category' => '[a-z0-9\-]+',
+		'object_type' => 'products',
 		'page' => '[0-9]+'
 	));
-	Router::connect('/video/:category/page/:page', array(
-		'controller' => 'article',
-		'action' => 'index',
-		'category' => '[a-z0-9\-]+',
-		'page' => '[0-9]+',
-		'object_type' => 'videos'
-	));
-	Router::connect('/video/:category/:id', array(
-		'controller' => 'article',
+	Router::connect('/:category/product/:id', array(
+		'controller' => 'products',
 		'action' => 'view',
 		'category' => '[a-z0-9\-]+',
+		'object_type' => 'products',
 		'id' => '[a-z0-9\-]+\.html',
-		'object_type' => 'videos'
 	));
-	Router::connect('/video/:category', array(
-		'controller' => 'article',
+	Router::connect('/:category/product/', array(
+		'controller' => 'products',
+		'category' => '[a-z0-9\-]+',
+		'object_type' => 'products',
+		'action' => 'index'
+	));
+	
+	/* -= Accessories =- */
+	Router::connect('/:category/subcategories/:id', array(
+		'controller' => 'products',
+		'action' => 'accessories',
+		'id' => '[a-z0-9\-]+\.html',
+		'object_type' => 'subcategories'
+	));
+	Router::connect('/:category/subcategories', array(
+		'controller' => 'products',
 		'action' => 'index',
 		'category' => '[a-z0-9\-]+',
-		'object_type' => 'videos'
+		'object_type' => 'subcategories'
 	));
-	Router::connect('/video/', array(
-		'controller' => 'article',
-		'action' => 'index',
-		'category' => '',
-		'object_type' => 'videos'
-	));
-*/
 
 	Router::connect('/photo/page/:page', array(
 		'controller' => 'article',
@@ -205,57 +166,6 @@
 		'page' => '[0-9]+'
 	));
 	Router::connect('/feedback/', array('controller' => 'feedback', 'action' => 'index'));
-
-/*
-	Router::connect('/product/:category/page/:page', array(
-		'controller' => 'article',
-		'action' => 'index',
-		'category' => '[a-z0-9\-]+',
-		'page' => '[0-9]+',
-		'object_type' => 'products'
-	));
-	Router::connect('/product/:category/:id', array(
-		'controller' => 'article',
-		'action' => 'view',
-		'category' => '[a-z0-9\-]+',
-		'id' => '[a-z0-9\-]+\.html',
-		'object_type' => 'products'
-	));
-	Router::connect('/product/:category', array(
-		'controller' => 'article',
-		'action' => 'index',
-		'category' => '[a-z0-9\-]+',
-		'object_type' => 'products'
-	));
-	Router::connect('/product/', array(
-		'controller' => 'article',
-		'action' => 'index',
-		'category' => '',
-		'object_type' => 'products'
-	));
-	*/
-
-	Router::connect('/:category/product/page/:page', array(
-		'controller' => 'products',
-		'action' => 'index',
-		'category' => '[a-z0-9\-]+',
-		'object_type' => 'products',
-		'page' => '[0-9]+'
-	));
-	Router::connect('/:category/product/:id', array(
-		'controller' => 'products',
-		'action' => 'view',
-		'category' => '[a-z0-9\-]+',
-		'object_type' => 'products',
-		'id' => '[a-z0-9\-]+\.html',
-	));
-
-	Router::connect('/:category/product/', array(
-		'controller' => 'products',
-		'category' => '[a-z0-9\-]+',
-		'object_type' => 'products',
-		'action' => 'index'
-	));
 
 	/* -= companies =- */
 	Router::connect('/prazdnichnie-agentstva/page/:page', array(

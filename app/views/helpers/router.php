@@ -18,7 +18,7 @@ class RouterHelper extends AppHelper {
 		} elseif (in_array($aArticle['Article']['object_type'], array('news', 'articles', 'companies'))) {
 			return $dir.$id.'.html';
 		} else {
-			$category = (isset($aArticle['Category']['id']) && $aArticle['Category']['title']) ? $this->PHTranslit->convert($aArticle['Category']['title'], true).'-'.$aArticle['Category']['id'] : 'empty';
+			$category = (isset($aArticle['Category']['id']) && $aArticle['Category']['title']) ? $this->getCat($aArticle['Category']) : 'empty';
 		}
 
 		if ($aArticle['Article']['object_type'] == 'products') {
@@ -29,11 +29,23 @@ class RouterHelper extends AppHelper {
 		}
 		return '/'.$category.$dir.$id.'.html';
 	}
+	
+	function getCat($aCategory) {
+		if (isset($aCategory['id']) && $aCategory['id'] == 18) {
+			return 'svadebnye-platya';
+		} elseif (isset($aCategory['id']) && $aCategory['id'] == 19) {
+			return 'vechernie-platya';
+		} elseif (isset($aCategory['id']) && $aCategory['id'] == 20) {
+			return 'svadebnye-aksessuary';
+		}
+		$category = (isset($aCategory['id']) && $aCategory['title']) ? $aCategory['title'] : '';
+		return $this->PHTranslit->convert($category, true).'-'.$aCategory['id'];
+	}
 
 	function catUrl($objectType, $aCategory = null) {
-		$category = (isset($aCategory['id']) && $aCategory['title']) ? $aCategory['title'] : '';
 		$dir = $this->getDir($objectType);
-		$url = '/'.$this->PHTranslit->convert($category, true).'-'.$aCategory['id'].$dir;
+		$category = (isset($aCategory['id']) && $aCategory['title']) ? $aCategory['title'] : '';
+		$url = '/'.$this->getCat($aCategory).$dir;
 		return ($category) ? $url : $dir;
 	}
 

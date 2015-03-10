@@ -15,9 +15,9 @@
 						<div class="drop_m">
 							<div>
 								<ul>
-									<li><a href="/svadebnye-platjya-18/brands/">Свадебные платья</a></li>
-									<li><a href="/vechernie-platjya-19/brands/">Вечерние платья</a></li>
-									<li><a href="/aksessuary-20/subcategories/">Аксессуары</a></li>
+									<li><a href="<?=$this->Router->catUrl('brands', array('id' => 18, 'title' => '-'))?>">Свадебные платья</a></li>
+									<li><a href="<?=$this->Router->catUrl('brands', array('id' => 19, 'title' => '-'))?>">Вечерние платья</a></li>
+									<li><a href="/aksessuary/subcategories/">Аксессуары</a></li>
 								</ul>
 							</div>
 						</div>

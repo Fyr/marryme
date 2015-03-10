@@ -2,7 +2,7 @@
 class SiteController extends AppController {
 	// var $uses = array('articles.Article', 'SiteArticle');
 	var $uses = array('category.Category');
-	var $Router;
+	protected $Router;
 	// ---------------------
 	// Custom variables
 	// ---------------------
@@ -12,8 +12,8 @@ class SiteController extends AppController {
 		App::import('Helper', 'articles.PHTranslit');
 		App::import('Helper', 'Router');
 		$this->Router = new RouterHelper();
-
 		$this->Router->PHTranslit = new PHTranslitHelper();
+		
 		$this->beforeFilterMenu();
 		$this->beforeFilterLayout();
 	}
@@ -145,7 +145,7 @@ class AppController extends Controller {
 	var $aBottomLinks = array(
 		'news' => array('title' => 'Новости', 'href' => '/news/'),
 		'articles' => array('title' => 'Статьи', 'href' => '/articles/'),
-		'products' => array('title' => 'Каталог', 'href' => '/svadebnye-platjya-18/brands/'),
+		'products' => array('title' => 'Каталог', 'href' => '/svadebnye-platya/brands/'),
 		'feedback' => array('title' => 'Отзывы', 'href' => '/feedback/'),
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
 		'companies' => array('title' => 'Агентства', 'href' => '/prazdnichnie-agentstva/'),
@@ -227,7 +227,42 @@ class AppController extends Controller {
 		$this->set('aCatCollections', $aCatCollections);
 	}
 	
+	/*
 	public function redirect($url, $status = null, $exit = true) {
-		return parent::redirect($url, 301);
+		return parent::redirect($url, 301, $exit);
+	}
+	*/
+	
+	/**
+	 * Проверить категорию и сделать редирект для старых урлов
+	 *
+	 * @return unknown
+	 */
+	protected function getCategoryID() {
+		$category = (isset($this->params['category']) && $this->params['category']) ? $this->params['category'] : '';
+		
+		$url = '';
+		if ($category == 'svadebnye-platjya-18') {
+			$url = $this->Router->catUrl($this->params['object_type'], array('id' => 18, 'title' => '-'));
+		} elseif ($category == 'vechernie-platjya-19') {
+			$url = $this->Router->catUrl($this->params['object_type'], array('id' => 19, 'title' => '-'));
+		} elseif ($category == 'aksessuary-20') {
+			$url = $this->Router->catUrl($this->params['object_type'], array('id' => 20, 'title' => '-'));
+		}
+		if ($url) {
+			if (isset($this->params['id']) && $this->params['id']) {
+				$url.= '/'.$this->params['id'];
+			}
+			return $this->redirect($url);
+		}
+		
+		if ($category == 'svadebnye-platya') {
+			return 18;
+		} elseif ($category == 'vechernie-platya') {
+			return 19;
+		} elseif ($category == 'svadebnye-aksessuary') {
+			return 20;
+		}
+		return str_replace('-', '', strrchr($category, '-'));
 	}
 }

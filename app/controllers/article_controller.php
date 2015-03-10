@@ -26,18 +26,14 @@ class ArticleController extends SiteController {
 		$this->Article = $this->SiteArticle; // что работало все, что написано для Article в самом плагине
 	}
 
-	private function getCategoryID($category) {
-		return str_replace('-', '', strrchr($category, '-'));
-	}
-
 	function beforeFilterLayout() {
 		parent::beforeFilterLayout();
 		$this->objectType = $this->params['object_type'];
 		if (!in_array($this->objectType, array('articles', 'news', 'photos', 'products', 'brands', 'collections'))) {
 			$this->objectType = 'news';
 		}
-
-		$this->categoryID = (isset($this->params['category']) && $this->params['category']) ? $this->getCategoryID($this->params['category']) : '';
+		
+		$this->categoryID = $this->getCategoryID(); 
 		$this->aBreadCrumbs = array('/' => 'Главная', $this->aCatTitle[$this->objectType]);
 	}
 
@@ -79,7 +75,7 @@ class ArticleController extends SiteController {
 			);
 			$page_title = $aCategoryOptions[$this->categoryID];
 			$this->pageTitle = $aCategoryOptions[$this->categoryID];
-
+			
 			$pageID = false;
 			if ($this->categoryID == 18) {
 				$pageID = 'svadebnye-platjya';

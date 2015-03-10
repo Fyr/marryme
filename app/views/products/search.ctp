@@ -52,8 +52,8 @@
 		<br />
 		Вы можете посмотреть наши модели по другим ссылкам:<br />
 		<ul>
-			<li><a href="/svadebnye-platjya-18/brands/">Свадебные платья</a></li>
-			<li><a href="/vechernie-platjya-19/brands/">Вечерние платья</a></li>
+			<li><a href="<?=$this->Router->catUrl('brands', array('id' => 18, 'title' => '-'))?>">Свадебные платья</a></li>
+			<li><a href="<?=$this->Router->catUrl('brands', array('id' => 19, 'title' => '-'))?>">Вечерние платья</a></li>
 			<li><a href="/aksessuary-20/subcategories/">Аксессуары</a></li>
 <?
 		if (SHOW_SEARCH_ACTIVE) {

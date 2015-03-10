@@ -14,7 +14,7 @@ class ProductsController extends SiteController {
 
 		// Configure::write('Config.language', 'rus');
 		$this->Article = $this->SiteArticle; // что работало все, что написано для Article в самом плагине
-		$this->categoryID = (isset($this->params['category']) && $this->params['category']) ? $this->getCategoryID($this->params['category']) : '';
+		$this->categoryID = $this->getCategoryID();
 	}
 
 	function beforeRenderLayout() {
@@ -22,13 +22,9 @@ class ProductsController extends SiteController {
 		parent::beforeRenderLayout();
 	}
 
-	private function getCategoryID($category) {
-		return str_replace('-', '', strrchr($category, '-'));
-	}
-
 	function index() {
 		if ($this->categoryID != 20) {
-			$this->redirect('/aksessuary-20/subcategories/');
+			return $this->redirect('/aksessuary-20/subcategories/');
 		}
 		$this->grid['SiteArticle'] = array(
 			'conditions' => array('Article.object_type' => 'subcategories', 'Article.published' => 1, 'Article.category_id' => $this->categoryID),
@@ -62,7 +58,7 @@ class ProductsController extends SiteController {
 
 	function accessories() {
 		if ($this->categoryID != 20) {
-			$this->redirect('/aksessuary-20/subcategories/');
+			return $this->Router->catUrl('brands', array('id' => 20, 'title' => '-'));
 		}
 		$aArticle = $this->PCArticle->view(str_replace('.html', '', $this->params['id']));
 		$this->set('aArticle', $aArticle);
