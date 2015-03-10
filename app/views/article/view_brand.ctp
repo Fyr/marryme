@@ -11,7 +11,7 @@
 					<div class="new_items">
 <?
 		foreach($aProducts as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '151x', $featured);
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'thumb150x192', $featured);
 			$id = $article['Article']['id'];
 			$media = $article['Media'][0];
 			$src_orig = $this->PHMedia->getUrl($media['object_type'], $media['id'], null, $media['file'].$media['ext'].'.png');

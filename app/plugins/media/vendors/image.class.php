@@ -5,7 +5,7 @@
 class Image 
 {
 	public $rImage; // image resource to work with
-
+	
 	/**
 		Class constructor. Creates image resource and sets image size.
 		@param (int) $iSizeX - set image size X. Default value is 1.
@@ -127,6 +127,7 @@ class Image
 	/**
 		Performs an image resizing constrain proportions. If new sizes do not correspond to image actial sizes, 
 		image is filled with given background color. 
+		Result image can be smaller then specified area according to proportions.
 		@param (int) $iNewSizeX - new size X
 		@param (int) $iNewSizeY - new size Y
 		@param (string) $sHexBkgColor - hexadecimal string of RGB-color representation for background color
@@ -140,7 +141,6 @@ class Image
 		$iW = $iNewSizeX;
 		$iH = $iNewSizeY;
         
-		
 		//$iNewSizeX = min($iNewSizeX, $iSourceX); - reduce only
 		//$iNewSizeY = min($iNewSizeY, $iSourceY);
         
@@ -168,6 +168,36 @@ class Image
 		$this->setImage($rImage);
 	}
 	
+	/**
+	 * Resize image as a thumb (result image fills whole given area)
+	 *
+	 * @param int $iNewSizeX
+	 * @param int $iNewSizeY
+	 */
+	public function thumb($iNewSizeX, $iNewSizeY) 
+	{
+		$iSourceX = $this->getSizeX();
+		$iSourceY = $this->getSizeY();
+        
+		$fAspectX = $iNewSizeX / $iSourceX;
+		$fAspectY = $iNewSizeY / $iSourceY;
+		
+		$fAspect = max($fAspectX, $fAspectY);
+		
+		$iDestX = $iSourceX * $fAspect;
+		$iDestY = $iSourceY * $fAspect;
+		
+		$rImage = imagecreatetruecolor($iNewSizeX, $iNewSizeY);
+		imagecopyresampled($rImage, $this->getImage(), ($iNewSizeX - $iDestX) / 2, ($iNewSizeY - $iDestY) / 2, 0, 0, $iDestX, $iDestY, $iSourceX, $iSourceY);
+		$this->setImage($rImage);
+	}
+	
+	public function crop($x, $y, $sizeX, $sizeY) {
+		$rImage = imagecreatetruecolor($sizeX, $sizeY);
+		imagecopy($rImage, $this->getImage(), 0, 0, $x, $y, $sizeX, $sizeY);
+		$this->setImage($rImage);
+	}
+	
 	/** 
 		Divides hexadecimal string of RGB-color representation into a RGB-color array accordingly. 
 		If $i parameter is passed, returns only appropriate color component (R,G or B)
@@ -191,7 +221,7 @@ class Image
 	public function getColor($sHexColor) 
 	{
 		$aColor = $this->getAColor($sHexColor);
-		return imagecolorallocate(&$this->rImage, $aColor[0], $aColor[1], $aColor[2]);
+		return imagecolorallocate($this->rImage, $aColor[0], $aColor[1], $aColor[2]);
 	}
 	
 	/**
@@ -211,6 +241,7 @@ class Image
 		} 
 		else 
 			imagegif($rImage, $sOutFile);
+		
 	}
 	
 	public function outputJpg($sOutFile = false, $rImage = false) 
@@ -234,7 +265,7 @@ class Image
 		}
 		if ($sOutFile === false) 
 		{
-			header("Content-type: image/png");
+			header("Content-type: image/png"); 
 			imagepng($rImage);
 		} 
 		else 
@@ -315,4 +346,3 @@ class Image
 			imagefilledrectangle($this->getImage(), $iX1, $iY1, $iX2, $iY2, $this->getColor($xHexColor));
 	}
 }
-?>

@@ -1,11 +1,19 @@
 <?
 class PHMediaHelper extends AppHelper {
+	
+	private $basePath = PATH_FILES_UPLOAD;
+	
+	function setBasePath($path) {
+		$this->basePath = $path;
+	}
 
     function getSizeInfo($size) {
     	$_ret = array();
     	if ($size && strpos($size, 'x') !== false) {
+    		
     		$_ret = array('w' => null, 'h' => null);
 
+    		$size = str_replace('thumb', '', $size);
     		$aSize = explode('x', $size);
     		if (isset($aSize[0]) && $aSize[0]) {
     			$_ret['w'] = $aSize[0];
@@ -28,42 +36,82 @@ class PHMediaHelper extends AppHelper {
 		return $_ret;
     }
 
+    /**
+     * Return real media-file path with name
+     *
+     * @param str $type - object type
+     * @param int $id - media ID
+     * @param str $size - size of image: noresize, "<width>x", "<width>x<height>"
+     * @param str $filename - file name with extension. Used to speed up image output
+     * @return str
+     */
     function getFileName($type, $id, $size, $filename) {
     	$aFName = $this->getFileInfo($filename);
+    	$prefix = '';
+    	if (strpos($size, 'thumb') !== false) {
+    		$prefix = 'thumb';
+    	}
     	$aSize = $this->getSizeInfo($size);
     	$_ret = $this->getPath($type, $id);
     	if ($aSize) {
-    		$_ret.= $aSize['w'].'x'.$aSize['h'].'.'.$aFName['ext'];
+    		$_ret.= $prefix.$aSize['w'].'x'.$aSize['h'].'.'.$aFName['ext'];
     	} else {
-    		$_ret.= $filename;
+    		$_ret.= $filename; // clean image file for no resizing
     	}
     	return $_ret;
     }
 
+    /**
+     * Return real path for media-file
+     *
+     * @param str $type - object type
+     * @param int $id - media ID
+     * @return str
+     */
     function getPath($type, $id) {
-    	$page = floor($id/100);
-		$path = PATH_FILES_UPLOAD.strtolower($type).'/'.$page.'/'.$id.'/';
-		return $path;
+		return $this->getPagePath($type, $id).$id.'/';
     }
 
     function getPagePath($type, $id) {
     	$page = floor($id/100);
-		$path = PATH_FILES_UPLOAD.$type.'/'.$page;
+		$path = $this->getTypePath($type).$page.'/';
 		return $path;
     }
+    
+    function getTypePath($type) {
+        return $this->basePath.strtolower($type).'/';
+    }
 
+    /**
+     * Return URL for image
+     *
+     * @param str $type - object type
+     * @param int $id - media ID
+     * @param str $size - size of image: noresize, "<width>x", "<width>x<height>"
+     * @param str
+     */
     function getUrl($type, $id, $size, $filename) {
-    	$page = floor($id/100);
-    	// $aSize = $this->getSizeInfo($size);
     	if (!$size) {
     		$size = 'noresize';
     	}
-		return '/media/router/index/'.$type.'/'.$id.'/'.$size.'/'.$filename;
+		return Configure::read('baseURL.media').'/media/router/index/'.strtolower($type).'/'.$id.'/'.$size.'/'.$filename;
     }
 
+    /**
+     * Return raw URL for file. Can be used for download binary file
+     *
+     * @param str $type - object type
+     * @param int $id - media ID
+     * @param str $filename - file name with extension. Used to speed up image output
+     * @return str
+     */
     function getRawUrl($type, $id, $filename) {
     	$page = floor($id/100);
-    	return '/files/'.$type.'/'.$page.'/'.$id.'/'.rawurlencode($filename);
+    	return Configure::read('baseURL.media').'/files/'.strtolower($type).'/'.$page.'/'.$id.'/'.rawurlencode($filename);
     }
 
+    function getResizeMethod($size) {
+    	return (strpos($size, 'thumb') !== false) ? 'thumb' : 'resize';
+    }
+    
 }

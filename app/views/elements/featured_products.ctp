@@ -3,7 +3,7 @@
 					<div class="new_items">
 <?
 		foreach($products as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x130');
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'thumb105x141');
 ?>
 						<div class="item">
 							<div class="image">
