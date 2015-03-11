@@ -11,7 +11,7 @@
 					<div class="new_items">
 <?
 		foreach($aProducts as $article) {
-			$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'thumb150x192', $featured);
+			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '160x192', $featured);
 			$id = $article['Article']['id'];
 			$media = $article['Media'][0];
 			$src_orig = $this->PHMedia->getUrl($media['object_type'], $media['id'], null, $media['file'].$media['ext'].'.png');
@@ -21,7 +21,7 @@
 								<div id="link<?=$id?>" class="hide">
 									<a href="<?=$url?>">Посмотреть модель <?=$title?></a>
 								</div>
-								<a id="image<?=$id?>" href="<?=$src_orig?>" title="Увеличить фото" rel="photoalbum"><img src="<?=$src?>" /></a>
+								<a id="image<?=$id?>" href="<?=$src_orig?>" title="Увеличить фото" rel="photoalbum"><img src="<?=$src?>" alt="<?=$title?>" /></a>
 								<?=$this->element('sticker', array('article' => $article))?>
 							</div>
 							<div class="shadow"></div>
