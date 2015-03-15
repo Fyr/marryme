@@ -15,7 +15,7 @@
 		$this->Router->catUrl('brands', array('id' => 19, 'title' => '-')),
 		'/aksessuary-20/subcategories/',
 		
-		'/prazdnichnie-agentstva/',
+		'/svadebnye-salony-minsk/',
 		'/pages/show/brides.html',
 		'/pages/show/about-us.html',
 		'/contacts/'

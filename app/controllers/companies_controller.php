@@ -24,14 +24,11 @@ class CompaniesController extends SiteController {
 		$aArticles = $this->PCGrid->paginate('SiteCompany');
 		$this->set('aArticles', $aArticles);
 
-		$this->aBreadCrumbs = array('/' => 'Главная', __('Companies', true));
-		$this->pageTitle = __('Companies', true);
-
-		$content = $this->Article->findByPageId('prazdnichnye-agentstva');
+		$content = $this->Article->findByPageId('companies');
 		$content['Seo'] = $this->Seo->defaultSeo($content['Seo'],
 			$content['Article']['title'],
-			'праздничные агентства',
-			'праздничные агентства на '.DOMAIN_TITLE
+			'свадебные салоны',
+			'свадебные салоны на '.DOMAIN_TITLE
 		);
 		$this->data['SEO'] = $content['Seo'];
 		if (isset($this->params['page']) && intval($this->params['page']) > 1) {
@@ -39,6 +36,9 @@ class CompaniesController extends SiteController {
 			$content = false;
 		}
 		$this->set('content', $content);
+		
+		$this->aBreadCrumbs = array('/' => 'Главная', $content['Article']['title']);
+		$this->pageTitle = __('Companies', true);
 	}
 
 	function view() {

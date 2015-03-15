@@ -10,7 +10,7 @@
 }
 */
 </style>
-					<?=$this->element('title', array('title' => 'Праздничные агентства'))?>
+					<?=$this->element('title', array('title' => $content['Article']['title']))?>
 					<div class="list">
 <?
 		foreach($aArticles as $article) {

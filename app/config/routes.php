@@ -168,18 +168,18 @@
 	Router::connect('/feedback/', array('controller' => 'feedback', 'action' => 'index'));
 
 	/* -= companies =- */
-	Router::connect('/prazdnichnie-agentstva/page/:page', array(
+	Router::connect('/svadebnye-salony-minsk/page/:page', array(
 		'controller' => 'companies',
 		'action' => 'index',
 		'page' => '[0-9]+'
 	));
-	Router::connect('/prazdnichnie-agentstva/:id', array(
+	Router::connect('/svadebnye-salony-minsk/:id', array(
 		'controller' => 'companies',
 		'action' => 'view',
 		'id' => '[a-z0-9\-]+\.html',
 	));
-	Router::connect('/prazdnichnie-agentstva/', array(
+	Router::connect('/svadebnye-salony-minsk/', array(
 		'controller' => 'companies',
 		'action' => 'index',
 	));
-?>
+	

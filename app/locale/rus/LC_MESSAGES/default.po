@@ -386,7 +386,7 @@ msgid "Size"
 msgstr "Размер"
 
 msgid "Companies"
-msgstr "Компании"
+msgstr "Свадебные салоны"
 
 msgid "Site"
 msgstr "Сайт"
