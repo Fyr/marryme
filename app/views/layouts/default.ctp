@@ -195,7 +195,10 @@
 	}
 ?>
 
-
+				<div class="block">
+					<?=$this->element('sb_search_form')?>
+				</div>
+				
 				<div class="block">
 					<?=$this->element('sb_title', array('title' => 'Новости'))?>
 					<div class="item">
@@ -225,9 +228,6 @@
 		echo $this->element('featured_products', array('title' => 'В пути', 'products' => $pendingProducts, 'sticker' => 'pending'));
 	}
 ?>
-				<div class="block">
-					<?=$this->element('sb_search_form')?>
-				</div>
 
 				<div class="block">
 					<a href="javascript:void(0)" onclick="var url='http://gfc.by'; window.location.href=url;"><img src="/img/gfc.png" alt="Grand Fiesta Company"/></a>
