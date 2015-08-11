@@ -1,7 +1,7 @@
 <div class="footer">
 	<div class="footer_in">
 			<a href="/" class="logo"><img src="/img/footer_logo.jpg" alt="Marry Me" /></a>
-			<h6>Салон свадебной<br/> и вечерней<br/> моды</h6>
+			<span class="h6">Салон свадебной<br/> и вечерней<br/> моды</span>
 			<div class="navigation">
 				<?=$this->element('bottom_links')?>
 			</div>

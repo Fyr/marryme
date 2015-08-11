@@ -1,6 +1,6 @@
 <?
 class CompaniesController extends SiteController {
-	const PER_PAGE = 2;
+	const PER_PAGE = 100;
 
 	var $components = array('articles.PCArticle', 'grid.PCGrid', 'comments.PCComment', 'SiteComment', 'Email', 'SiteEmail');
 	var $helpers = array('core.PHA', 'core.PHCore', 'Time', 'core.PHTime', 'articles.HtmlArticle', 'ArticleVars');

@@ -139,8 +139,8 @@ class AppController extends Controller {
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
 		'articles' => array('title' => 'Статьи', 'href' => '/articles/'),
 		'companies' => array('title' => 'Свадебные салоны', 'href' => '/svadebnye-salony-minsk/'),
-		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides.html'),
-		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us.html'),
+		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides'),
+		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us'),
 		'contacts' => array('title' => 'Контакты', 'href' => '/contacts/')
 	);
 
@@ -151,9 +151,9 @@ class AppController extends Controller {
 		'feedback' => array('title' => 'Отзывы', 'href' => '/feedback/'),
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
 		'companies' => array('title' => 'Свадебные салоны', 'href' => '/svadebnye-salony-minsk/'),
-		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides.html'),
-		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us.html'),
-		'contacts' => array('title' => 'Контакты', 'href' => '/contacts/'),
+		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides'),
+		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us'),
+		'contacts' => array('title' => 'Контакты', 'href' => '/contacts'),
 		'sitemap' => array('title' => 'Карта сайта', 'href' => '/sitemap/')
 	);
 	var $aBreadCrumbs = array();
@@ -229,11 +229,10 @@ class AppController extends Controller {
 		$this->set('aCatCollections', $aCatCollections);
 	}
 	
-	/*
+	
 	public function redirect($url, $status = null, $exit = true) {
 		return parent::redirect($url, 301, $exit);
 	}
-	*/
 	
 	/**
 	 * Проверить категорию и сделать редирект для старых урлов

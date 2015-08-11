@@ -2,7 +2,7 @@
 	bottom:-1px;
 }
 
-.header h2{
+.header .h2 {
 	position:absolute;
 	z-index:500;
 	top:45px;
@@ -15,10 +15,10 @@
 	color:#470303;
 }
 
-.footer h6{
+.footer .h6{
 	position:absolute;
 	z-index:500;
-	top:42px;
+	top:62px;
 	left:500px;
 	text-align:right;
 	font-size:10px;

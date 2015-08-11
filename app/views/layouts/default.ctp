@@ -55,7 +55,7 @@
 		<div class="header title_page">
 			<div class="header_in">
 				<a href="/" class="logo"><img src="/img/logo.png" alt="Marry Me" /></a>
-				<h2>Салон свадебной<br/> и вечерней<br/> моды</h2>
+				<span class="h2">Салон свадебной<br/> и вечерней<br/> моды</span>
 				<div class="lady"></div>
 				<div class="lamp"></div>
 				<p class="moto_1">Любовь окрыляет...</p>
@@ -86,17 +86,17 @@
 
 			<div class="categories_selection">
 					<div class="item">
-						<h3>Свадебные платья</h3>
+						<span class="h3">Свадебные платья</span>
 						<img src="/img/category_photo.jpg" alt="Свадебные платья" />
 						<a href="<?=$this->Router->catUrl('brands', array('id' => 18, 'title' => '-'))?>" class="button"></a>
 					</div>
 					<div class="item">
-						<h3>Вечерние платья</h3>
+						<span class="h3">Вечерние платья</span>
 						<img src="/img/category_photo_2.jpg" alt="Вечерние платья" />
 						<a href="<?=$this->Router->catUrl('brands', array('id' => 19, 'title' => '-'))?>" class="button"></a>
 					</div>
 					<div class="item">
-						<h3>Аксессуары</h3>
+						<span class="h3">Аксессуары</span>
 						<img src="/img/category_photo_3.jpg" alt="Аксессуары" />
 						<a href="/aksessuary/subcategories/" class="button"></a>
 					</div>
@@ -130,7 +130,7 @@
 	if (isset($showMainCategories) && $showMainCategories) {
 ?>
 				<div class="block">
-					<?=$this->element('title', array('title' => 'Каталог'))?>
+					<?=$this->element('sb_title', array('title' => 'Каталог'))?>
 					<div class="ddnMenu">
 <?
 		foreach($aMainCategories as $category) {
@@ -149,7 +149,7 @@
 	if (isset($showSBCategories) && $showSBCategories) {
 ?>
 				<div class="block">
-					<?=$this->element('title', array('title' => 'Бренды'))?>
+					<?=$this->element('sb_title', array('title' => 'Бренды'))?>
 					<div class="ddnMenu">
 <?
 		foreach($aBrandCollections as $brandID => $aID) {
@@ -177,7 +177,7 @@
 	if (isset($showAcsCategories) && $showAcsCategories) {
 ?>
 				<div class="block">
-					<?=$this->element('title', array('title' => 'Аксессуары'))?>
+					<?=$this->element('sb_title', array('title' => 'Аксессуары'))?>
 					<div class="ddnMenu">
 <?
 		foreach($aAcsCategories as $article) {
@@ -197,7 +197,7 @@
 
 
 				<div class="block">
-					<?=$this->element('title', array('title' => 'Новости'))?>
+					<?=$this->element('sb_title', array('title' => 'Новости'))?>
 					<div class="item">
 <?
 	$this->ArticleVars->init($upcomingEvent, $url, $title, $teaser);
@@ -248,6 +248,21 @@
   ga('send', 'pageview');
 
 </script>
+<!-- Код тега ремаркетинга Google -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 948513588;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/948513588/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
 <?
 	}
 ?>

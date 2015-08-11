@@ -1,5 +1,5 @@
 				<div class="block">
-					<?=$this->element('title', array('title' => $title))?>
+					<?=$this->element('sb_title', array('title' => $title))?>
 					<div class="new_items">
 <?
 		foreach($products as $article) {
