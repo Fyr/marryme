@@ -67,6 +67,6 @@ class RouterHelper extends AppHelper {
 		}
 		$category = (isset($this->params['category']) && $this->params['category']) ? '/'.$this->params['category'] : '';
 		$url = str_replace(array('/article/', '/products/'), $category.$this->getDir($objectType), $url);
-		return str_replace('page/1', '', str_replace('index/', '', str_replace('page:', 'page/', $url)));
+		return preg_replace('/page\/1$/', '', str_replace('index/', '', str_replace('page:', 'page/', $url)));
 	}
 }
