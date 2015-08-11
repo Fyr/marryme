@@ -2,7 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title><?=$pageTitle?></title>
+<?
+	$title = $this->PHA->read($this->data, 'SEO.title');
+	$title = ($title) ? $title : $pageTitle;
+?>	
+	<title><?=$title?></title>
 	<?=$this->element('seo_info', array('plugin' => 'seo', 'data' => $this->PHA->read($this->data, 'SEO')))?>
 <?=$this->Html->css(array('style', 'extra', 'edits'))?>
 <?=$this->Html->script(array('modernizr-2.6.2.min', 'jquery', 'jquery.bxSlider.min', 'script', '/core/js/jquery.preload-images', 'preload', '/ddaccordion/js/ddaccordion', 'ddn', 'swfobject', 'tagcloud'))?>
