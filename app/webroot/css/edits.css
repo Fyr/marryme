@@ -68,17 +68,17 @@
 }
 
 .header .navigation .no-touch  li.expandable:hover>a{
-	background:url(/img/drop_left.png) no-repeat left top;
+	background:url(../img/drop_left.png) no-repeat left top;
 }
 
 .header .navigation .no-touch li.expandable:hover a>span{
-	background:url(/img/drop_right.png) no-repeat right top;
+	background:url(../img/drop_right.png) no-repeat right top;
 	line-height:30px;
 	height:26px;
 	display:block;
 }
 .header .drop_m{
-	background:url(/img/drop_bottom.png) no-repeat left bottom;
+	background:url(../img/drop_bottom.png) no-repeat left bottom;
 	width:139px;
 	position:absolute;
 	left:50%;
@@ -89,7 +89,7 @@
 }
 
 .header .navigation .drop_m>div{
-	background:url(/img/drop_top.png) no-repeat left top;
+	background:url(../img/drop_top.png) no-repeat left top;
 	width:139px;
 	padding:12px 0 12px 0;
 }

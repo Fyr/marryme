@@ -11,12 +11,12 @@ class RouterHelper extends AppHelper {
 		}
 		*/
 		if ($aArticle['Article']['object_type'] == 'photos') {
-			return $dir.'view/'.$id.'.html';
+			return $dir.'view/'.$id;
 		}
 		if ($aArticle['Article']['object_type'] == 'pages') {
-			return $dir.'show/'.$id.'.html';
+			return $dir.'show/'.$id;
 		} elseif (in_array($aArticle['Article']['object_type'], array('news', 'articles', 'companies'))) {
-			return $dir.$id.'.html';
+			return $dir.$id;
 		} else {
 			$category = (isset($aArticle['Category']['id']) && $aArticle['Category']['title']) ? $this->getCat($aArticle['Category']) : 'empty';
 		}
@@ -27,7 +27,7 @@ class RouterHelper extends AppHelper {
 				$id.= '-'.$aArticle['Article']['page_id'];
 			}
 		}
-		return '/'.$category.$dir.$id.'.html';
+		return '/'.$category.$dir.$id;
 	}
 	
 	function getCat($aCategory) {

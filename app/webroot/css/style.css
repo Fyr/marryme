@@ -339,7 +339,7 @@ p.more a {
 	text-align:center;
 }
 
-.content h4, .content .h4{
+.content h4, .content .h4 {
 	font:bold 13px/14px arial;
 	margin:0 0 5px 0;
 }
@@ -413,7 +413,7 @@ p.more a {
 	background:url(/img/sticker_v_puti.png)  no-repeat;
 }
 
-.new_items h4{
+.new_items h4, .new_items .h4{
 	font:italic 11px arial;
 }
 
@@ -449,7 +449,7 @@ p.more a {
 	margin:0 0 5px 0;
 }
 
-.main_content h4{
+.main_content h4, .main_content .h4 {
 	font:italic 14px arial;
 }
 

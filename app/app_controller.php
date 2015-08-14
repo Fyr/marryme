@@ -9,8 +9,14 @@ class SiteController extends AppController {
 
 
 	function beforeFilter() {
-		if ($this->params['action'] == 'index' && isset($this->params['url']) && isset($this->params['url']['url'])) {
-			if (substr($this->params['url']['url'], -1) != '/') {
+		if (isset($this->params['url']) && isset($this->params['url']['url'])) {
+			
+			if (strpos($this->params['url']['url'], '.html') !== false) {
+				$this->redirect('/'.str_replace('.html', '', $this->params['url']['url']));
+				return;
+			}
+			
+			if ($this->params['action'] == 'index' && substr($this->params['url']['url'], -1) != '/') {
 				$this->redirect('/'.$this->params['url']['url'].'/');
 				return;
 			}

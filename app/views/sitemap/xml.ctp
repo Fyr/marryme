@@ -16,8 +16,8 @@
 		'/aksessuary-20/subcategories/',
 		
 		'/svadebnye-salony-minsk/',
-		'/pages/show/brides.html',
-		'/pages/show/about-us.html',
+		'/pages/show/brides',
+		'/pages/show/about-us',
 		'/contacts/'
 	);
 	foreach($aStatic as $url) {

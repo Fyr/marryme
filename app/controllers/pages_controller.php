@@ -32,9 +32,11 @@ class PagesController extends SiteController {
 	}
 
 	function show($pageID) {
+		/*
 		if (strpos($pageID, '.html') !== false) {
 			return $this->redirect(array('action' => 'show', str_replace('.html', '', $pageID)));
 		}
+		*/
 		$aArticle = $this->Article->findByPage_id($pageID);
 
 		if (!$aArticle) {

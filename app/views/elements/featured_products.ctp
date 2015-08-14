@@ -11,7 +11,7 @@
 								<span class="sticker <?=$sticker?>"></span>
 							</div>
 							<div class="shadow"></div>
-							<h4><a href="<?=$url?>"><?=$title?></a></h4>
+							<span class="h4"><a href="<?=$url?>"><?=$title?></a></span>
 						</div>
 <?
 		}
