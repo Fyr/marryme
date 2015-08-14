@@ -55,7 +55,7 @@
 							</td>
 						</tr>
 <?
-	if (SHOW_PRICE) {
+	if (SHOW_PRICE) { /*
 ?>
 						<tr>
 							<td>Цена, $</td>
@@ -65,7 +65,7 @@
 							</td>
 						</tr>
 <?
-	}
+	*/}
 	if (SHOW_SEARCH_ACTIVE) {
 ?>
 						<tr>

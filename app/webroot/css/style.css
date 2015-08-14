@@ -319,7 +319,7 @@ p.more a {
 	font:normal 20px minion_pro_meditalic, georgia, serif;
 }
 
-.content h3 i, .content h1 i, .content .h1 i { display:block; padding: 7px 10px 0 10px; text-align: center; font-style: normal; }
+.content h3 i, .content h1 i, .content .h1 i, .content .h1 h1 { display:block; padding: 7px 10px 0 10px; text-align: center; font-style: normal; }
 
 .content h1 span, .content .h1 span, .content h3 span{
 	display:block;
@@ -335,11 +335,11 @@ p.more a {
 }
 
 .content h1 span span span,.content .h1 span span span, .content h3 span span span{
-	background:url(/img/content_header_bullet.png) no-repeat center -3px;
+	background:url(/img/content_header_bullet.png) no-repeat center -4px;
 	text-align:center;
 }
 
-.content h4{
+.content h4, .content .h4{
 	font:bold 13px/14px arial;
 	margin:0 0 5px 0;
 }

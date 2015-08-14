@@ -1,1 +1,1 @@
-<h1><i><?=$title?></i><span><span><span></span></span></span></h1>
+<span class="h1"><h1><?=$title?></h1><span><span><span></span></span></span></span>

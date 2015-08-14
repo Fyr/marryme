@@ -9,6 +9,13 @@ class SiteController extends AppController {
 
 
 	function beforeFilter() {
+		if ($this->params['action'] == 'index' && isset($this->params['url']) && isset($this->params['url']['url'])) {
+			if (substr($this->params['url']['url'], -1) != '/') {
+				$this->redirect('/'.$this->params['url']['url'].'/');
+				return;
+			}
+		}
+		
 		App::import('Helper', 'articles.PHTranslit');
 		App::import('Helper', 'Router');
 		$this->Router = new RouterHelper();

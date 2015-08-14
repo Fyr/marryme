@@ -56,6 +56,12 @@
 		'category' => '',
 		'object_type' => 'articles'
 	));
+	Router::connect('/articles', array(
+		'controller' => 'article',
+		'action' => 'index',
+		'category' => '',
+		'object_type' => 'articles'
+	));
 	/* -= News =- */
 	Router::connect('/news/page/:page', array(
 		'controller' => 'article',
@@ -77,7 +83,12 @@
 		'category' => '',
 		'object_type' => 'news'
 	));
-
+	Router::connect('/news', array(
+		'controller' => 'article',
+		'action' => 'index',
+		'category' => '',
+		'object_type' => 'news'
+	));
 	/* -= Brands =- */
 	Router::connect('/:category/brands/:id', array(
 		'controller' => 'article',
@@ -154,6 +165,11 @@
 		'action' => 'index',
 		'object_type' => 'photos'
 	));
+	Router::connect('/photo', array(
+		'controller' => 'article',
+		'action' => 'index',
+		'object_type' => 'photos'
+	));
 
 	Router::connect('/feedback/page/:page', array(
 		'controller' => 'feedback',
@@ -165,7 +181,14 @@
 		'action' => 'home',
 		'page' => '[0-9]+'
 	));
-	Router::connect('/feedback/', array('controller' => 'feedback', 'action' => 'index'));
+	Router::connect('/feedback/', array(
+		'controller' => 'feedback', 
+		'action' => 'index'
+	));
+	Router::connect('/feedback', array(
+		'controller' => 'feedback', 
+		'action' => 'index'
+	));
 
 	/* -= companies =- */
 	Router::connect('/svadebnye-salony-minsk/page/:page', array(
@@ -179,6 +202,10 @@
 		'id' => '[a-z0-9\-]+\.html',
 	));
 	Router::connect('/svadebnye-salony-minsk/', array(
+		'controller' => 'companies',
+		'action' => 'index',
+	));
+	Router::connect('/svadebnye-salony-minsk', array(
 		'controller' => 'companies',
 		'action' => 'index',
 	));

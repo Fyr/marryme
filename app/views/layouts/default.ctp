@@ -200,16 +200,12 @@
 ?>
 
 				<div class="block">
-					<?=$this->element('sb_search_form')?>
-				</div>
-				
-				<div class="block">
 					<?=$this->element('sb_title', array('title' => 'Новости'))?>
 					<div class="item">
 <?
 	$this->ArticleVars->init($upcomingEvent, $url, $title, $teaser);
 ?>
-						<h4><?=$title?></h4>
+						<span class="h4"><?=$title?></span>
 						<p><?=$teaser?></p>
 						<p class="more"><a href="<?=$url?>">подробнее</a></p>
 					</div>
@@ -232,6 +228,10 @@
 		echo $this->element('featured_products', array('title' => 'В пути', 'products' => $pendingProducts, 'sticker' => 'pending'));
 	}
 ?>
+
+				<div class="block">
+					<?=$this->element('sb_search_form')?>
+				</div>
 
 				<div class="block">
 					<a href="javascript:void(0)" onclick="var url='http://gfc.by'; window.location.href=url;"><img src="/img/gfc.png" alt="Grand Fiesta Company"/></a>
