@@ -48,10 +48,10 @@
 								<?=$this->element('sticker', array('article' => $article))?>
 							</div>
 							<div class="shadow"></div>
-							<h4>
+							<span class="h4">
 								<a href="<?=$url?>" title="<?=$teaser?>"><?=$title?></a><br/>
 								<?=$this->element('prices', array('article' => $article))?>
-							</h4>
+							</span>
 						</div>
 <?
 		}
@@ -77,7 +77,7 @@
 		foreach($aAnotherCollections as $article) {
 			$this->ArticleVars->init($article, $url, $title, $teaser, $src, '151x', $featured);
 ?>
-					<h4><a href="<?=$url?>"><?=$title?></a></h4><br />
+					<span class="h4"><a href="<?=$url?>"><?=$title?></a></span><br />
 <?
 		}
 ?>

@@ -28,7 +28,7 @@
 			}
 ?>
 							<div class="description">
-								<h4><a href="<?=$url?>"><?=$title?></a></h4>
+								<span class="h4"><a href="<?=$url?>"><?=$title?></a></span>
 	<ul class="description">
 <?
 	if ($company['address']) {

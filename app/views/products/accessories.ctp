@@ -37,7 +37,7 @@
 								<?=$this->element('sticker', array('article' => $article))?>
 							</div>
 							<div class="shadow"></div>
-							<h4><a class="small" href="<?=$url?>" title="<?=$teaser?>"><?=$title?></a><br />
+							<span class="h4"><a class="small" href="<?=$url?>" title="<?=$teaser?>"><?=$title?></a><br />
 <?
 			if (SHOW_PRICE) {
 ?>
@@ -45,7 +45,7 @@
 <?
 			}
 ?>
-							</h4>
+							</span>
 						</div>
 <?
 		}
@@ -53,7 +53,7 @@
 	foreach($aText as $url => $title) {
 ?>
 		<div style="margin-bottom: 5px;">
-			<h4><a href="<?=$url?>"><?=$title?></a></h4>
+			<span class="h4"><a href="<?=$url?>"><?=$title?></a></span>
 		</div>
 <?
 	}

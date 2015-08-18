@@ -20,7 +20,7 @@
 			}
 ?>
 							<div class="description">
-								<h4><a href="<?=$url?>"><?=$title?></a></h4>
+								<span class="h4"><a href="<?=$url?>"><?=$title?></a></span>
 								<!--p class="category">Категория: <a href="">Свадебные платья</a></p-->
 								<p><?=$teaser?></p>
 								<p class="more"><a href="<?=$url?>">подробнее</a></p>

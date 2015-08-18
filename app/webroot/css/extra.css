@@ -80,7 +80,7 @@ a.small, span.small {
 	border: medium none;
 }
 
-.main_content h1 {
+.main_content h1, .main_content .h1 {
 	font-size: 22px;
 }
 

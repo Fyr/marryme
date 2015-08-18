@@ -25,10 +25,10 @@
 								<?=$this->element('sticker', array('article' => $article))?>
 							</div>
 							<div class="shadow"></div>
-							<h4>
+							<span class="h4">
 								<a href="<?=$url?>" title="<?=$teaser?>"><?=$title?></a><br/>
 								<?=$this->element('prices', array('article' => $article))?>
-							</h4>
+							</span>
 						</div>
 <?
 		}

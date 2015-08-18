@@ -25,7 +25,7 @@
 							<div class="image">
 								<a href="<?=$url?>" title="<?=$title?>"><img src="<?=$src?>" alt="<?=$title?>" /></a>
 							</div>
-							<h4><a href="<?=$url?>"><?=$title?></a></h4>
+							<span class="h4"><a href="<?=$url?>"><?=$title?></a></span>
 						</div>
 <?
 		}
@@ -33,7 +33,7 @@
 	foreach($aText as $url => $title) {
 ?>
 		<div style="margin-bottom: 5px;">
-			<h4><a href="<?=$url?>"><?=$title?></a></h4>
+			<span class="h4"><a href="<?=$url?>"><?=$title?></a></span>
 		</div>
 <?
 	}
