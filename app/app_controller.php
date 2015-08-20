@@ -151,7 +151,7 @@ class AppController extends Controller {
 		'feedback' => array('title' => 'Отзывы', 'href' => '/feedback/'),
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
 		'articles' => array('title' => 'Статьи', 'href' => '/articles/'),
-		'companies' => array('title' => 'Свадебные салоны', 'href' => '/svadebnye-salony-minsk/'),
+		// 'companies' => array('title' => 'Свадебные салоны', 'href' => '/svadebnye-salony-minsk/'),
 		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides'),
 		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us'),
 		'contacts' => array('title' => 'Контакты', 'href' => '/contacts/')
@@ -163,7 +163,7 @@ class AppController extends Controller {
 		'products' => array('title' => 'Каталог', 'href' => '/svadebnye-platya/brands/'),
 		'feedback' => array('title' => 'Отзывы', 'href' => '/feedback/'),
 		'photos' => array('title' => 'Наши невесты', 'href' => '/photo/'),
-		'companies' => array('title' => 'Свадебные салоны', 'href' => '/svadebnye-salony-minsk/'),
+		// 'companies' => array('title' => 'Свадебные салоны', 'href' => '/svadebnye-salony-minsk/'),
 		'brides' => array('title' => 'Невестам', 'href' => '/pages/show/brides'),
 		'about-us' => array('title' => 'О салоне', 'href' => '/pages/show/about-us'),
 		'contacts' => array('title' => 'Контакты', 'href' => '/contacts'),

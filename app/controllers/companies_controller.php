@@ -7,6 +7,10 @@ class CompaniesController extends SiteController {
 	var $uses = array('category.Category', 'articles.Article', 'media.Media', 'seo.Seo', 'SiteArticle', 'comments.Comment', 'Contact', 'Company', 'SiteCompany');
 
 	var $objectType = 'companies';
+	
+	function beforeFilter() {
+		$this->redirect('/');
+	}
 
 	function beforeRenderLayout() {
 		$this->set('objectType', $this->objectType);
