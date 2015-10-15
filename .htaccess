@@ -1,3 +1,9 @@
+Redirect 301 /news/kupit-svadebnoe-plate-v-minske http://marry-me.by/svadebnye-platya/brands/
+Redirect 301 /articles/koktejlnye-platja-pravila-jetiketa http://marry-me.by/articles/koktejlnye-platja
+Redirect 301 /articles/korotkie-vechernie-platja-prostoj-vyhod-iz-slozhnoj-situacii http://marry-me.by/articles/korotkie-platja
+Redirect 301 /articles/svadebnye-platja-la-sposa http://marry-me.by/articles/la-sposa
+Redirect 301 /articles/vechernee-plate-kupit-v-minske-legko http://marry-me.by/articles/dlinnye-platya
+
 <IfModule mod_rewrite.c>
 Options +FollowSymLinks
 RewriteEngine On

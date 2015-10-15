@@ -62,7 +62,6 @@
 	<a class="section" href="<?=$aMenu['feedback']['href']?>"><?=$aMenu['feedback']['title']?></a>
 	<a class="section" href="<?=$aMenu['photos']['href']?>"><?=$aMenu['photos']['title']?></a>
 	<a class="section" href="<?=$aMenu['articles']['href']?>"><?=$aMenu['articles']['title']?></a>
-	<a class="section" href="<?=$aMenu['companies']['href']?>"><?=$aMenu['companies']['title']?></a>
 	<a class="section" href="<?=$aMenu['brides']['href']?>"><?=$aMenu['brides']['title']?></a>
 	<a class="section" href="<?=$aMenu['about-us']['href']?>"><?=$aMenu['about-us']['title']?></a>
 	<a class="section" href="<?=$aMenu['contacts']['href']?>"><?=$aMenu['contacts']['title']?></a>

@@ -93,6 +93,7 @@ class ArticleController extends SiteController {
 					'купить '.mb_strtolower($aCategoryOptions[$this->categoryID], 'utf8').' в магазине '.DOMAIN_TITLE.' недорого'
 				);
 				$this->data['SEO'] = $content['Seo'];
+				
 			} else {
 				$this->data['SEO'] = array(
 					'keywords' => $aCategoryOptions[$this->categoryID],
@@ -111,11 +112,23 @@ class ArticleController extends SiteController {
 
 		$aArticles = $this->PCGrid->paginate('SiteArticle');
 		$this->set('aArticles', $aArticles);
+		
+		if ($this->categoryID == 18 || $this->categoryID == 19) {
+			$brands_ids = Set::classicExtract($aArticles, '{n}.Article.id');
+			$aRelatedProducts = array();
+			$order = array('Article.created' => 'DESC');
+			$limit = 6;
+			foreach($brands_ids as $brand_id) {
+				$conditions = array('Article.brand_id' => $brand_id, 'Article.object_type' => 'products', 'Article.published' => 1);
+				$aRelatedProducts[$brand_id] = $this->Article->find('all', compact('conditions', 'order', 'limit'));
+			}
+			$this->set('aRelatedProducts', $aRelatedProducts);
+		}
+		
 		$this->set('page_title', $page_title);
 	}
 
 	function view() {
-
 		$aArticle = $this->PCArticle->view($this->params['id']);
 		if (!$aArticle) {
 			$this->redirect('/pages/nonExist');
@@ -155,6 +168,7 @@ class ArticleController extends SiteController {
 					$categoryTitle.', '.trim($aArticle['Article']['title']),
 					'купить платье '.trim($aArticle['Article']['title']).' в магазине '.DOMAIN_TITLE.' недорого'
 				);
+				
 			} elseif ($this->objectType == 'collections') {
 				$page_title = 'Модели коллекции '.$aArticle['Article']['title'];
 				$aProducts = $this->Article->find('all', array('conditions' => array('Article.object_id' => $articleID, 'Article.published' => 1), 'order' => array('Article.featured' => 'desc', 'Article.sorting' => 'asc')));
