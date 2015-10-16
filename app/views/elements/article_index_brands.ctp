@@ -8,7 +8,7 @@
 								<a href="<?=$url?>"><img src="<?=$src?>" alt="" style="border: none;" /></a>
 							</div-->
 							<div class="description">
-								<span class="h4"><a href="<?=$url?>"><b><?=$title?></b></a></span>
+								<span class="h4"><a href="<?=$url?>" title="посмотреть все модели" rel="nofollow"><b><?=$title?></b></a></span>
 								<p><?=$teaser?></p>
 								<!--p class="more"><a href="<?=$url?>">посмотреть коллекции</a></p-->
 							</div>
@@ -18,22 +18,23 @@
 		
 		foreach($aRelatedProducts[$id] as $_article) {
 			$this->ArticleVars->init($_article, $_url, $_title, $_teaser, $_src, '160x192');
+			$alt = ($_article['Category']['id'] == 18) ? 'cвадебное платье '.$_title : 'платье '.$_title;
 ?>
 						
 							<div class="item">
 								<div class="image">
-									<a href="<?=$url?>" title="посмотреть коллекции" rel="photoalbum"><img src="<?=$_src?>" alt="<?=$_title?>" /></a>
+									<a href="<?=$_url?>" title="посмотреть модель <?=$_title?>" rel="nofollow"><img src="<?=$_src?>" alt="<?=$alt?>" /></a>
 								</div>
 								<div class="shadow"></div>
 								<span class="h4">
-									<a href="<?=$url?>" title="посмотреть коллекции"><?=$_title?></a><br/>
+									<a href="<?=$_url?>" title="посмотреть модель <?=$_title?>" rel="nofollow"><?=$_title?></a><br/>
 								</span>
 							</div>
 <?
 		}
 ?>
 						</div>
-						<p class="more"><a href="<?=$url?>">посмотреть коллекции</a></p>
+						<p class="more more-brands"><a href="<?=$url?>" rel="nofollow">посмотреть все модели</a></p>
 						<div class="clear"></div>
 <?
 	}

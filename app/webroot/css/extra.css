@@ -314,3 +314,10 @@ ol, ul {
 	display: block;
 	text-align: center;
 }
+p.more-brands {
+	font:normal 12px arial;
+	font-size:12px !important
+}
+.content .main_content .more-brands a:visited {
+	color: #173c67;
+}
