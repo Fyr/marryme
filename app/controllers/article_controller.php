@@ -130,8 +130,8 @@ class ArticleController extends SiteController {
 
 	function view() {
 		$aArticle = $this->PCArticle->view($this->params['id']);
-		if (!$aArticle) {
-			$this->redirect('/pages/nonExist');
+		if (!$aArticle || !$aArticle['Article']['published']) {
+			return $this->redirect('/pages/nonExist');
 		}
 
 		$articleID = $aArticle['Article']['id'];
@@ -235,7 +235,7 @@ class ArticleController extends SiteController {
 	public function view_brand() {
 		$aArticle = $this->PCArticle->view($this->params['id']);
 		if (!$aArticle) {
-			$this->redirect('/pages/nonExist');
+			return $this->redirect('/pages/nonExist');
 		}
 
 		$articleID = $aArticle['Article']['id'];

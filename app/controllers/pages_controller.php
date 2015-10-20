@@ -40,7 +40,7 @@ class PagesController extends SiteController {
 		$aArticle = $this->Article->findByPage_id($pageID);
 
 		if (!$aArticle) {
-			$this->redirect('/pages/nonExist');
+			return $this->redirect('/pages/nonExist');
 		}
 
 		$this->set('aArticle', $aArticle);
@@ -75,10 +75,6 @@ class PagesController extends SiteController {
 	}
 
 	function nonExist() {
-		if (TEST_ENV) {
-			$this->layout = 'error';
-		} else {
-			$this->redirect('/');
-		}
+		$this->layout = 'error';
 	}
 }

@@ -49,7 +49,7 @@ class CompaniesController extends SiteController {
 		$this->Article = $this->SiteCompany; // что работало все, что написано для Article в самом плагине
 		$aArticle = $this->PCArticle->view(str_replace('.html', '', $this->params['id']));
 		if (!$aArticle) {
-			$this->redirect('/pages/nonExist');
+			return $this->redirect('/pages/nonExist');
 		}
 
 		$articleID = $aArticle['Article']['id'];

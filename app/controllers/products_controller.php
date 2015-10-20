@@ -110,7 +110,7 @@ class ProductsController extends SiteController {
 		list($id) = explode('-', $this->params['id']);
 		$aArticle = $this->SiteArticle->findById($id);
 		if (!$aArticle) {
-			$this->redirect('/pages/nonExist');
+			return $this->redirect('/pages/nonExist');
 		}
 
 		$articleID = $aArticle['Article']['id'];
