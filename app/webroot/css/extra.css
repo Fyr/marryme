@@ -321,3 +321,8 @@ p.more-brands {
 .content .main_content .more-brands a:visited {
 	color: #173c67;
 }
+
+h2, h3, h4, h5, h6 {
+	font-size: 1em;
+	font-weight: bold;
+}
