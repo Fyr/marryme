@@ -1,7 +1,6 @@
 <?
 	foreach($aArticles as $article) {
 		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '113x', $featured, $id);
-		//$url = '/product/?data[filter][Article.brand_id]='.$id;
 ?>
 						<div class="item">
 							<!--div class="image" style="background: none;">
@@ -9,7 +8,7 @@
 							</div-->
 							<div class="description">
 								<span class="h4"><a href="<?=$url?>" title="посмотреть все модели" rel="nofollow"><b><?=$title?></b></a></span>
-								<p><?=$teaser?></p>
+								<p><noindex><?=$teaser?></noindex></p>
 								<!--p class="more"><a href="<?=$url?>">посмотреть коллекции</a></p-->
 							</div>
 						</div>

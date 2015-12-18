@@ -8,7 +8,7 @@
 						<param name=flashVars value="link=http://marry-me.by<?=$this->Router->url($pronoviasW1)?>" />
 						<param name="wmode" value="transparent">
 						<!--<![endif]-->
-						<a href="<?=$this->Router->url($pronoviasW1)?>">
+						<a href="<?=$this->Router->url($pronoviasW1)?>" rel="nofollow">
 						<img src="/img/banner570x70.png" alt="" />
 						</a>
 						<!--[if !IE]>-->

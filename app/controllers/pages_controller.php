@@ -49,32 +49,12 @@ class PagesController extends SiteController {
 		$this->pageTitle = (isset($aArticle['Seo']['title']) && $aArticle['Seo']['title']) ? $aArticle['Seo']['title'] : $aArticle['Article']['title'];
 		$this->data['SEO'] = $aArticle['Seo'];
 	}
-/*
-	function faqList() {
-		$this->aBreadCrumbs = array('/' => 'Главная', 'Вопросы и Ответы');
 
-		$this->loadModel('faqs.Faq');
-		$aFaq = $this->Faq->find('all');
-		$this->set('aFaq', $aFaq);
-	}
-
-	function faq($faq_id) {
-		$this->loadModel('faqs.Faq');
-		$this->loadModel('faqs.FaqQA');
-
-		$aFaq = $this->Faq->findById($faq_id);
-		$aFaqQA = $this->FaqQA->getFaq($faq_id);
-		$this->aBreadCrumbs = array('/' => 'Главная', '/pages/faqList' => 'Вопросы и Ответы', $aFaq['Faq']['title']);
-
-		$this->set('aFaq', $aFaq);
-		$this->set('aFaqQA', $aFaqQA);
-	}
-
-*/
 	function inprogress() {
 	}
 
 	function nonExist() {
+		header("HTTP/1.0 404 Not Found");
 		$this->layout = 'error';
 	}
 }
