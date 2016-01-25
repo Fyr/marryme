@@ -1,13 +1,14 @@
 User-agent: *
-/*captcha
-/*fonts
-/*?
-/admin
+Disallow: /*captcha
+Disallow: /*fonts
+Disallow: /*?
+Disallow: /admin
 
 User-agent: Yandex
-/*captcha
-/*fonts
-/*?
-/admin
+Disallow: /*captcha
+Disallow: /*fonts
+Disallow: /*?
+Disallow: /admin
+
 Host: marry-me.by
 Sitemap: http://marry-me.by/sitemap.xml

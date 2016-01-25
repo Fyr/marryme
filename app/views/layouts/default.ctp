@@ -240,7 +240,7 @@
 	if (!TEST_ENV) {
 ?>
 				<div class="block">
-<object data="http://inpro.by/1/Social_tabs_240x400.html" name="social_frame"></object>
+					<object data="http://social.marry-me.by/social_tabs.html" name="social_frame"></object>
 				</div>
 <script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
